@@ -7,6 +7,7 @@ fi
 
 which home-manager > /dev/null 2>&1
 if [ $? -eq  1 ]; then
+  export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
   # https://github.com/rycee/home-manager
 
   # 1. Make sure you have a working Nix installation. If you are not using NixOS then you may here have to run

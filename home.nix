@@ -74,6 +74,7 @@ in
       enable = true;
       controlMaster = "auto";
       controlPersist = "60m";
+      serverAliveInterval = 60;
     };
     taskwarrior = {
       enable = true;
