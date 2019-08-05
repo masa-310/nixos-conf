@@ -14,6 +14,7 @@ in
       thunderbird
       slack
       nodejs
+      xmobar
       yarn
       zsh
     ];
@@ -67,7 +68,7 @@ in
       vimAlias = true;
       withPython3 = true;
       configure = {
-      	customRC = builtins.readFile("${homedir}/home-manager/.dotfiles/nvim/init.vim");
+      	#customRC = builtins.readFile("${homedir}/home-manager/.dotfiles/nvim/init.vim");
       };
     };
     ssh = {
@@ -125,7 +126,7 @@ in
           p.xmonad-contrib
           p.xmonad-extras
         ];
-        config = "${homedir}/home-manager/.dotfiles/xmonad.hs";
+        #config = "${homedir}/home-manager/.dotfiles/xmonad.hs";
       };
     };
   };
