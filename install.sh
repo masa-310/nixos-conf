@@ -29,5 +29,3 @@ ln -s ${HOME}/home-manager/home.nix ${HOME}/.config/nixpkgs/home.nix  -f
 ln -s ${HOME}/home-manager/config.nix ${HOME}/.config/nixpkgs/config.nix  -f
 ln -s ${HOME}/home-manager/.dotfiles/nvim ${HOME}/.config/nvim -f
 ln -s ${HOME}/home-manager/.dotfiles/.xmonad ${HOME}/.xmonad -f
-
-home-manager switch
