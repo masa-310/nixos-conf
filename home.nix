@@ -15,6 +15,7 @@ in
       evince
       google-chrome
       thunderbird
+      tree
       slack
       nodejs
       xmobar
