@@ -28,6 +28,9 @@ fi
 ln -s ${HOME}/home-manager/home.nix ${HOME}/.config/nixpkgs/home.nix  -f
 ln -s ${HOME}/home-manager/config.nix ${HOME}/.config/nixpkgs/config.nix  -f
 ln -s ${HOME}/home-manager/.dotfiles/nvim ${HOME}/.config/nvim -f
-ln -s ${HOME}/home-manager/.dotfiles/.xmonad ${HOME}/.xmonad -f
+mkdir ${HOME}/.xmonad -p
+ln -s ${HOME}/home-manager/.dotfiles/xmonad.hs ${HOME}/.xmonad/xmonad.hs -f
+ln -s ${HOME}/home-manager/.dotfiles/.Xresource ${HOME}/.Xresource -f
+#ln -s ${HOME}/home-manager/.dotfiles/.zshrc ${HOME}/.zshrc -f
 
 home-manager switch

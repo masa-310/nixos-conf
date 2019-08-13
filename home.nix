@@ -10,6 +10,9 @@ in
     keyboard.layout = "us";
     #keyboard.language = "en";
     packages = with pkgs; [
+      docker
+      docker-compose
+      evince
       google-chrome
       thunderbird
       slack
@@ -30,7 +33,7 @@ in
     };
     firefox = {
       enable = true;
-      enableAdobeFlash = true;
+      #enableAdobeFlash = true;
     };
     fzf = {
       enable = true;
