@@ -14,9 +14,11 @@ in
       docker-compose
       evince
       google-chrome
+      imagemagick
       thunderbird
       tree
       slack
+      slop
       nodejs
       xmobar
       yarn
