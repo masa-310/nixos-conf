@@ -19,7 +19,7 @@ in
       tree
       slack
       slop
-      nodejs
+      nodejs-11_x
       xmobar
       yarn
       zsh
@@ -29,6 +29,9 @@ in
   programs = {
     home-manager.enable = true;
     command-not-found = {
+      enable = true;
+    };
+    autorandr = {
       enable = true;
     };
     feh = {
@@ -61,9 +64,6 @@ in
       ];
     };
     htop = {
-      enable = true;
-    };
-    jq = {
       enable = true;
     };
     #lsd = {
@@ -124,6 +124,7 @@ in
       name = "Vanilla-DMZ";
       size = 16;
     };
+    profileExtra = builtins.readFile("${homedir}/home-manager/.dotfiles/.xprofile");
     windowManager = {
       xmonad = {
         enable = true;
