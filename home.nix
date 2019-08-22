@@ -31,9 +31,6 @@ in
     command-not-found = {
       enable = true;
     };
-    autorandr = {
-      enable = true;
-    };
     feh = {
       enable = true;
     };
