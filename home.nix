@@ -4,6 +4,9 @@ let
   homedir = builtins.getEnv "HOME";
 in
 {
+  imports = [
+    "${homedir}/home-manager/machine_specific.nix"
+  ];
   # Let Home Manager install and manage itself.
   fonts.fontconfig.enable = true;
   home = {
