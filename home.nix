@@ -19,7 +19,7 @@ in
       tree
       slack
       slop
-      nodejs-11_x
+      nodejs-10_x
       xmobar
       yarn
       zsh
@@ -85,6 +85,7 @@ in
     };
     tmux = {
       enable = true;
+      extraConfig = builtins.readFile("${homedir}/home-manager/.dotfiles/.tmux.conf");
     };
     urxvt = {
       enable = true;
