@@ -10,16 +10,19 @@ in
     keyboard.layout = "us";
     #keyboard.language = "en";
     packages = with pkgs; [
+      android-studio
       docker
       docker-compose
       evince
       google-chrome
+      google-cloud-sdk
       imagemagick
       thunderbird
       tree
       slack
       slop
       nodejs-10_x
+      wmname
       xmobar
       yarn
       zsh
