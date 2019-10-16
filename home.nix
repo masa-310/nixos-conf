@@ -16,6 +16,7 @@ in
       android-studio
       docker
       docker-compose
+      elm
       evince
       google-chrome
       google-cloud-sdk
@@ -26,6 +27,9 @@ in
       slop
       nodejs-10_x
       wmname
+      strongswan
+      nodejs-11_x
+      xl2tpd
       xmobar
       yarn
       zsh
@@ -44,8 +48,7 @@ in
       enable = true;
       #enableAdobeFlash = true;
     };
-    fzf = {
-      enable = true;
+    fzf = { enable = true;
       enableZshIntegration = true;
     };
     git = {
