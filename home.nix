@@ -16,7 +16,6 @@ in
       android-studio
       docker
       docker-compose
-      elm
       evince
       google-chrome
       google-cloud-sdk
