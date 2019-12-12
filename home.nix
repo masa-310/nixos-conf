@@ -29,7 +29,6 @@ in
       pciutils
       wmname
       strongswan
-      nodejs-12_x
       xl2tpd
       xmobar
       yarn
