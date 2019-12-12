@@ -19,12 +19,14 @@ in
       evince
       google-chrome
       google-cloud-sdk
+      jq
       imagemagick
       thunderbird
       tree
       slack
       slop
       nodejs-10_x
+      pciutils
       wmname
       xmobar
       yarn
