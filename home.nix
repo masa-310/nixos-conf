@@ -16,6 +16,8 @@ in
       android-studio
       docker
       docker-compose
+      jq
+      openjdk11
       evince
       google-chrome
       google-cloud-sdk
