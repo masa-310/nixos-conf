@@ -28,6 +28,9 @@ in
       nodejs-10_x
       pciutils
       wmname
+      strongswan
+      nodejs-12_x
+      xl2tpd
       xmobar
       yarn
       zsh
@@ -46,8 +49,7 @@ in
       enable = true;
       #enableAdobeFlash = true;
     };
-    fzf = {
-      enable = true;
+    fzf = { enable = true;
       enableZshIntegration = true;
     };
     git = {
@@ -94,6 +96,21 @@ in
     tmux = {
       enable = true;
       extraConfig = builtins.readFile("${homedir}/home-manager/.dotfiles/.tmux.conf");
+      plugins = with pkgs; [
+        {
+          plugin = tmuxPlugins.resurrect;
+          extraConfig = ''
+          set -g @resurrect-strategy-nvim 'session'
+          '';
+        }
+        {
+          plugin = tmuxPlugins.continuum;
+          extraConfig = ''
+          set -g @continuum-restore 'on'
+          set -g @continuum-save-interval '60' # minutes
+          '';
+        }
+      ];
     };
     urxvt = {
       enable = true;
