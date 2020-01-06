@@ -21,15 +21,17 @@ in
       evince
       google-chrome
       google-cloud-sdk
+      jq
       imagemagick
       thunderbird
       texlive.combined.scheme-full
       tree
       slack
       slop
+      nodejs-10_x
+      pciutils
       wmname
       strongswan
-      nodejs-12_x
       xl2tpd
       xmobar
       yarn
