@@ -23,6 +23,7 @@ in
       google-cloud-sdk
       imagemagick
       thunderbird
+      texlive.combined.scheme-full
       tree
       slack
       slop
