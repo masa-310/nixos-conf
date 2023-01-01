@@ -1,0 +1,3 @@
+#!/bin/sh
+
+nix build '.?submodules=1#homeConfigurations.ninjin.activationPackage' --extra-experimental-features 'nix-command flakes' && result/activate 
