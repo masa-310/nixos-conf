@@ -1,4 +1,4 @@
-{ system, nixpkgs, home-manager, dotfile-path, hostname, ... }:
+{ system, nixpkgs, pkgs, home-manager, dotfile-path, hostname, ... }:
 
 {
   nixosConfigurations = nixpkgs.lib.nixosSystem {
@@ -10,13 +10,9 @@
     ];
   };
   homeConfigurations =
-    let pkgs = import nixpkgs {
-      inherit system;
-      config.allowUnfree = true;
-    };
-    in home-manager.lib.homeManagerConfiguration {
+    home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
-      extraSpecialArgs = { inherit dotfile-path hostname; };
+      extraSpecialArgs = { inherit dotfile-path hostname system; };
       modules = [
         ../../home
         ./configuration.nix

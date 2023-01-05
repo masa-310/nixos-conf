@@ -11,14 +11,18 @@
       url = path:./dotfiles;
       flake = false;
     };
+    xmonad-config.url = "github:masa-310/.xmonad";
   };
-  outputs = {self, nixpkgs, home-manager, dotfile-path, ... }: 
-    let 
+  outputs = {self, nixpkgs, home-manager, dotfile-path, xmonad-config, ... }: 
+    let
+      overlay = final: prev: { inherit xmonad-config; };
+      overlays = [overlay];
       system = "x86_64-linux";
       config = {
         allowUnfree = true;
       };
-      configurations = import ./hosts { inherit system config nixpkgs home-manager dotfile-path; };
+      pkgs = import nixpkgs { inherit system overlays config; };
+      configurations = import ./hosts { inherit system config home-manager dotfile-path nixpkgs pkgs; };
       nixosConfigurations = builtins.mapAttrs (_: conf: conf.nixosConfigurations) configurations;
       homeConfigurations = builtins.mapAttrs (_: conf: conf.homeConfigurations) configurations;
     in {
