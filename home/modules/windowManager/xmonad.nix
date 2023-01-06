@@ -2,10 +2,10 @@
 
 with builtins;
 with lib;
-let self = config.modules.wm.xmonad;
+let self = config.modules.windowManager.xmonad;
 in {
   imports = [];
-  options.modules.wm.xmonad = {
+  options.modules.windowManager.xmonad = {
     enable = mkEnableOption "xmonad";
   };
   config =
@@ -13,10 +13,9 @@ in {
       home.sessionVariables.XMONAD_HOST = hostname;
       xsession.windowManager = {
         xmonad.enable = true;
-        command = pkgs.xmonad-config;
       };
       home.file.".xmonad/xmonad-${system}" = {
-        source = pkgs.xmonad-config;
+        source = pkgs.xmonad-config.defaultPackage.${system} + "/bin/xmonad-config";
         onChange = ''
           # Attempt to restart xmonad if X is running.
           if [[ -v DISPLAY ]]; then

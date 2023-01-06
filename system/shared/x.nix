@@ -12,10 +12,7 @@
     libinput.enable = true;
 
     displayManager = {
-      setupCommands = "autorandr --load";
-      sddm = {
-        enable = true;
-      };
+      startx.enable = true;
     };
   };
   services.autorandr = {

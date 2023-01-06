@@ -1,7 +1,9 @@
 { config, pkgs, ...}:
 
 {
-  networking.wireless.iwd.enable = true;                                                                                                                                                                              boot.loader.systemd-boot.enable = true;                                                                 
+  networking.wireless.iwd.enable = true;
+  networking.wireless.iwd.settings.Setting.EnableNetworkConfiguration = true;
+  boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Configure network proxy if necessary
@@ -34,6 +36,7 @@
     mplus-outline-fonts.githubRelease
     dina-font
     proggyfonts
+    inconsolata-nerdfont
   ];
 
   # Open ports in the firewall.

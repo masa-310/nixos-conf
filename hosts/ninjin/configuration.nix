@@ -9,7 +9,7 @@
       enable = true;
       version = 16;
     };
-    wm.xmonad = {
+    windowManager.xmonad = {
       enable = true;
     };
   };

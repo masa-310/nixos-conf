@@ -5,13 +5,18 @@
   imports = [
     ./modules/editor/nvim.nix
     ./modules/program/nodejs.nix
-    ./modules/wm/xmonad.nix
+    ./modules/windowManager/xmonad.nix
   ];
   # Let Home Manager install and manage itself.
   fonts.fontconfig.enable = true;
   home.stateVersion = "22.11";
   home.username = "masashi";
   home.homeDirectory = "/home/masashi";
+  home.file.".xinitrc" = {
+    text = ''
+    exec xmonad
+    '';
+  };
   home.keyboard.layout = "us";
   home.packages = with pkgs; [
     # android-studio

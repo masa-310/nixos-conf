@@ -12,5 +12,6 @@
     inetutils
     git
     gptfdisk
+    dmenu
   ];
 }
