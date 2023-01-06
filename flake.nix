@@ -11,7 +11,9 @@
       url = path:./dotfiles;
       flake = false;
     };
-    xmonad-config.url = "github:masa-310/.xmonad";
+    # not work for some reason
+    # xmonad-config.url = "github:masa-310/.xmonad";
+    xmonad-config.url = path:./conf/.xmonad;
   };
   outputs = {self, nixpkgs, home-manager, dotfile-path, xmonad-config, ... }: 
     let

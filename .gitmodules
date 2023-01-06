@@ -1,3 +1,6 @@
 [submodule "dotfiles"]
 	path = dotfiles
 	url = https://github.com/masa-310/dotfiles.git
+[submodule "conf/.xmonad"]
+	path = conf/.xmonad
+	url = https://github.com/masa-310/.xmonad
