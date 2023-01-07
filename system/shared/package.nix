@@ -14,5 +14,6 @@
     gptfdisk
     dmenu
     xorg.xev
+    xorg.xmodmap
   ];
 }
