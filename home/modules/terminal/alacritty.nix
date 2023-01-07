@@ -10,9 +10,9 @@ in {
   };
   config = mkIf self.enable {
     home.packages = [
-      pkgs.alacritty;
+      pkgs.alacritty
     ];
-    home.file.".config".alacritty = {
+    home.file.".config"."alacritty.yml" = {
       source = dotfile-path + "/alacritty.yml";
     };
   };

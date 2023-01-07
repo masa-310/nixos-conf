@@ -6,6 +6,7 @@
     ./modules/editor/nvim.nix
     ./modules/program/nodejs.nix
     ./modules/windowManager/xmonad.nix
+    ./modules/terminal/alacritty.nix
   ];
   # Let Home Manager install and manage itself.
   fonts.fontconfig.enable = true;

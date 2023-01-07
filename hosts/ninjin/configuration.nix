@@ -12,5 +12,8 @@
     windowManager.xmonad = {
       enable = true;
     };
+    terminal.alacritty = {
+      enable = true;
+    };
   };
 }
