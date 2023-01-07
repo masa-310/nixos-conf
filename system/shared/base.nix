@@ -15,9 +15,14 @@
      consoleKeyMap = "us";
      defaultLocale = "en_US.UTF-8";
      inputMethod = {
-       enabled = "fcitx";
+       enabled = "fcitx5";
        fcitx.engines = with pkgs.fcitx-engines; [ mozc ];
      };
+   };
+   environment.variables ={
+      GTK_IM_MODULE = "fcitx";
+      QT_IM_MODULE = "fcitx";
+      XMODIFIERS = "@im=fcitx";
    };
    console = {
      font = "Lat2-Terminus16";
