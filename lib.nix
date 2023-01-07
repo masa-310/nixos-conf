@@ -1,5 +1,0 @@
-{ ... }:
-
-{
-  dotfile-path = ./dotfiles
-}
