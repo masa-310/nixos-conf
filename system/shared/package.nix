@@ -13,5 +13,6 @@
     git
     gptfdisk
     dmenu
+    xorg.xev
   ];
 }
