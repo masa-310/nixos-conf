@@ -12,8 +12,8 @@ in {
     home.packages = [
       pkgs.alacritty
     ];
-    home.file.".config"."alacritty.yml" = {
-      source = dotfile-path + "/alacritty.yml";
+    home.file.".config/alacritty.yml" = {
+      source = "${dotfile-path}/alacritty.yml";
     };
   };
 }

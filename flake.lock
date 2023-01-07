@@ -976,11 +976,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1672882961,
-        "narHash": "sha256-fkvKetVAJweOE3svQA0mTWivBuEjshUPHUibyJI4YYw=",
+        "lastModified": 1673069944,
+        "narHash": "sha256-fgE+neCr44K0RGBA+g5BvrKmOqGZtP71PSULAbl5lns=",
         "owner": "masa-310",
         "repo": ".xmonad",
-        "rev": "2b7bf043b2977fed490e49b58ff6717e497d13a9",
+        "rev": "1b830f818ad257a57ce94bd573973451367c195f",
         "type": "github"
       },
       "original": {

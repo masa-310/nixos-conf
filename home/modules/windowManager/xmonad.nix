@@ -14,14 +14,20 @@ in {
       xsession.windowManager = {
         xmonad.enable = true;
       };
-      home.file.".xmonad/xmonad-${system}" = {
+      home.file.".xinitrc" = {
         source = pkgs.xmonad-config.defaultPackage.${system} + "/bin/xmonad-config";
-        onChange = ''
-          # Attempt to restart xmonad if X is running.
-          if [[ -v DISPLAY ]]; then
-            ${config.xsession.windowManager.command} --restart
-          fi
-        '';
       };
+
+      #home.file.".xmonad/xmonad-config" = {
+      #  # home.file.".xmonad/xmonad-${system}" = {
+      #    source = pkgs.xmonad-config.defaultPackage.${system} + "/bin/xmonad-config";
+      #    onChange = ''
+      #      # Attempt to restart xmonad if X is running.
+      #      if [[ -v DISPLAY ]]; then
+      #        ${config.xsession.windowManager.command} --restart
+      #      fi
+      #    '';
+      #  };
+      #};
     };
 }

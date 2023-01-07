@@ -13,11 +13,6 @@
   home.stateVersion = "22.11";
   home.username = "masashi";
   home.homeDirectory = "/home/masashi";
-  home.file.".xinitrc" = {
-    text = ''
-    exec xmonad
-    '';
-  };
   home.keyboard.layout = "us";
   home.packages = with pkgs; [
     # android-studio
