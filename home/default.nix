@@ -5,6 +5,7 @@
   imports = [
     ./modules/editor/nvim.nix
     ./modules/program/nodejs.nix
+    ./modules/program/starship.nix
     ./modules/windowManager/xmonad.nix
     ./modules/terminal/alacritty.nix
     ./modules/shell/zsh.nix

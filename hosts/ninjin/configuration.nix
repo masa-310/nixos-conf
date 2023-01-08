@@ -14,6 +14,10 @@
       enable = true;
       version = 16;
     };
+    program.starship = {
+      enable = true;
+      shell = "zsh";
+    };
     windowManager.xmonad = {
       enable = true;
     };
