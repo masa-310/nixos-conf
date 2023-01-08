@@ -42,8 +42,8 @@ in {
       history.ignoreSpace = true;
       historySubstringSearch = {
         enable = true;
-        searchDownKey = "^P";
-        searchUpKey = "^N";
+        searchDownKey = "^N";
+        searchUpKey = "^P";
       };
       plugins = [
         {
