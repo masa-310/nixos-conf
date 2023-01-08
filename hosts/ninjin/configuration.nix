@@ -20,5 +20,8 @@
     terminal.alacritty = {
       enable = true;
     };
+    shell.zsh = {
+      enable = true;
+    };
   };
 }

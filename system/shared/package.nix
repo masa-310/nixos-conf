@@ -15,5 +15,7 @@
     dmenu
     xorg.xev
     xorg.xmodmap
+    nix-prefetch
+    nix-prefetch-git
   ];
 }

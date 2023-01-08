@@ -7,6 +7,7 @@
     ./modules/program/nodejs.nix
     ./modules/windowManager/xmonad.nix
     ./modules/terminal/alacritty.nix
+    ./modules/shell/zsh.nix
   ];
   # Let Home Manager install and manage itself.
   fonts.fontconfig.enable = true;
