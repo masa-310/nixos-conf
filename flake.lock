@@ -979,13 +979,13 @@
         "lastModified": 1673089007,
         "narHash": "sha256-Oqs5lPtjo+KbWxGMaqxwqcmdyR5CziIxrzqwhJEQeWE=",
         "owner": "masa-310",
-        "repo": ".xmonad",
+        "repo": "xmonad-conf",
         "rev": "c80e83b03f845ee05460b3c8a0ad7e41ee6f7310",
         "type": "github"
       },
       "original": {
         "owner": "masa-310",
-        "repo": ".xmonad",
+        "repo": "xmonad-conf",
         "type": "github"
       }
     },
