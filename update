@@ -1,0 +1,1 @@
+nix flake update '.?submodule=1' --extra-experimental-features 'nix-command flakes'
