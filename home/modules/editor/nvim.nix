@@ -21,6 +21,8 @@ in {
         runtime! init.vim
         runtime! conf/*.vim
         runtime! plugins/*.vim
+
+        let g:coc_config_home = '${dotfile-path}/nvim'
       '';
     };
   };

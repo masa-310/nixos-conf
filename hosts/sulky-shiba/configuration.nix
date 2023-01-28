@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ system, nixpkgs, pkgs, home-manager, dotfile-path, hostname, ... }:
 
 {
   home.file.".Xmodmap" = {

@@ -10,7 +10,9 @@ in {
   };
   config = mkIf self.enable {
     home.packages = with pkgs.elmPackages; [
+      pkgs.watchman
       elm
+      elm-test
       elm-language-server
       elm-format
       elm-analyse
