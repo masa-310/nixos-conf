@@ -8,7 +8,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     dotfile-path = {
-      url = path:./dotfiles;
+      url = "github:masa-310/dotfiles";
       flake = false;
     };
     xmonad-config.url = "github:masa-310/xmonad-conf";
