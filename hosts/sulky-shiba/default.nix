@@ -1,3 +1,3 @@
 input:
 
-import ../shared input@{ current-path: builtins.toString ./. };
+import ../shared input

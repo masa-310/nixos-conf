@@ -11,6 +11,8 @@
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
   boot.loader.grub.device = "/dev/sda";
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
   boot.initrd.checkJournalingFS = false;
 
   fileSystems."/" =
