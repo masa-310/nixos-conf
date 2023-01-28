@@ -1,11 +1,6 @@
 { lib, config, pkgs, ... }:
 
 {
-  home.file.".Xmodmap" = {
-    text = ''
-    keycode 102 = Super_L
-    '';
-  };
   modules = {
     editor.neovim = {
       enable = true;

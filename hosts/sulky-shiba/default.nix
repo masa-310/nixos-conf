@@ -1,3 +1,3 @@
 input:
 
-import ../shared input
+(import ../shared input) // (import ./configuration input)
