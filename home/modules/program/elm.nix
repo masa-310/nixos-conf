@@ -16,7 +16,8 @@ in {
       elm-language-server
       elm-format
       elm-analyse
-      create-elm-app
+      # broken for now
+      # create-elm-app
     ];
   };
 }

@@ -13,6 +13,7 @@
     git
     gptfdisk
     dmenu
+    openssl
     xorg.xev
     xorg.xmodmap
     nix-prefetch
