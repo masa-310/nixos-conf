@@ -6,6 +6,7 @@
     ./modules/editor/nvim.nix
     ./modules/program/nodejs.nix
     ./modules/program/starship.nix
+    ./modules/program/polybar.nix
     ./modules/windowManager/xmonad.nix
     ./modules/terminal/alacritty.nix
     ./modules/shell/zsh.nix
@@ -29,6 +30,7 @@
     # texlive.combined.scheme-full
     tree
     slack
+    obsidian
     # slop
     # nodejs-10_x
     pciutils
@@ -41,6 +43,13 @@
   ];
 
   programs = {
+    direnv = {
+      enable = true;
+      enableZshIntegration = true;
+      nix-direnv = {
+        enable = true;
+      };
+    };
     command-not-found = {
       enable = true;
     };

@@ -1,6 +1,7 @@
 { config, pkgs, ...}:
 
 {
+  # networking.wireless.enable = true;
   networking.wireless.iwd.enable = true;
   networking.wireless.iwd.settings.Setting.EnableNetworkConfiguration = true;
   boot.loader.systemd-boot.enable = true;
@@ -69,7 +70,7 @@
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
   # should.
-  #programs.ssh.forwardX11 = true;
+  programs.ssh.forwardX11 = true;
 
   users.users.masashi = {
     isNormalUser = true;
@@ -95,5 +96,9 @@
     "nix-command"
     "flakes"
   ];
+  nix.extraOptions = ''
+    keep-outputs = true
+    keep-derivations = true
+  '';
   system.stateVersion = "22.11"; # Did you read the comment?
 }

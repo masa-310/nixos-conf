@@ -18,5 +18,9 @@ in {
       pkgs.${"nodejs-${toString self.version}_x"}
       pkgs.yarn
     ];
+    home.sessionPath = [ "$(${pkgs.yarn}/bin/yarn global bin)" ];
+    home.file.".npmrc".text = ''
+      prefix=$XDG_DATA_HOME/npm
+    '';
   };
 }

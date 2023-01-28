@@ -18,6 +18,9 @@
       enable = true;
       shell = "zsh";
     };
+    program.polybar = {
+      enable = true;
+    };
     windowManager.xmonad = {
       enable = true;
     };
