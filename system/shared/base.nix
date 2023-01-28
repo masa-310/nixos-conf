@@ -4,8 +4,6 @@
   # networking.wireless.enable = true;
   networking.wireless.iwd.enable = true;
   networking.wireless.iwd.settings.Setting.EnableNetworkConfiguration = true;
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";

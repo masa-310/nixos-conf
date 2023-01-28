@@ -1,0 +1,3 @@
+input:
+
+import ../shared input
