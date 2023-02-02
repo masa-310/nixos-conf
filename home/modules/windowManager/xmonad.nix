@@ -3,6 +3,7 @@
 with builtins;
 with lib;
 let self = config.modules.windowManager.xmonad;
+    xmonadCommand = pkgs.xmonad-config.defaultPackage.${system} + "/bin/xmonad-config";
 in {
   imports = [];
   options.modules.windowManager.xmonad = {
@@ -10,12 +11,16 @@ in {
   };
   config =
     mkIf self.enable {
-      home.sessionVariables.XMONAD_HOST = hostname;
       xsession.windowManager = {
         xmonad.enable = true;
       };
       home.file.".xinitrc" = {
-        source = pkgs.xmonad-config.defaultPackage.${system} + "/bin/xmonad-config";
+        text = ''
+          #!/bin/sh
+
+          ${xmonadCommand} ${hostname}
+          ;
+        '';
       };
 
       #home.file.".xmonad/xmonad-config" = {
