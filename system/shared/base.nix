@@ -89,7 +89,7 @@
 
   nixpkgs.config = {
     allowUnfree = true;
-    permittedInsecurePackages = "electron-18.1.0";
+    permittedInsecurePackages = [ "electron-18.1.0" ];
   };
   nix.settings.extra-experimental-features = [
     "nix-command"

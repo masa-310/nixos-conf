@@ -20,6 +20,7 @@
       system = "x86_64-linux";
       config = {
         allowUnfree = true;
+        permittedInsecurePackages = [ "electron-18.1.0" ];
       };
       pkgs = import nixpkgs { inherit system overlays config; };
       configurations = import ./hosts { inherit system config home-manager dotfile-path nixpkgs pkgs; };

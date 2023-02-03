@@ -15,11 +15,11 @@ in {
         xmonad.enable = true;
       };
       home.file.".xinitrc" = {
+        executable = true;
         text = ''
           #!/bin/sh
 
-          ${xmonadCommand} ${hostname}
-          ;
+          XMONAD_HOST=${hostname} ${xmonadCommand}
         '';
       };
 
