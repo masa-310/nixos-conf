@@ -10,5 +10,8 @@
     program.elm = {
       enable = true;
     };
+    # program.haskell = {
+    #   enable = true;
+    # };
   };
 }

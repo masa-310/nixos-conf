@@ -10,6 +10,8 @@
     curl
     unzip
     inetutils
+    acpi
+    pavucontrol
     git
     gptfdisk
     dmenu
@@ -18,5 +20,6 @@
     xorg.xmodmap
     nix-prefetch
     nix-prefetch-git
+    gnumeric
   ];
 }

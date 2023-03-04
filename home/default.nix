@@ -6,6 +6,7 @@
     ./modules/editor/nvim.nix
     ./modules/program/nodejs.nix
     ./modules/program/elm.nix
+    ./modules/program/haskell.nix
     ./modules/program/starship.nix
     ./modules/program/polybar.nix
     ./modules/windowManager/xmonad.nix

@@ -1,13 +1,14 @@
 { system, nixpkgs, pkgs, home-manager, dotfile-path, hostname, ... }:
 
-let path = ../. + "/${hostname}/hardware-configuration.nix";
+let hardwareConfigPath = ../. + "/${hostname}/hardware-configuration.nix";
+    homeConfigPath = ../. + "/${hostname}/configuration.nix";
 in {
   nixosConfigurations = nixpkgs.lib.nixosSystem {
     inherit system;
     specialArgs = {};
     modules = [
       ../../system
-      path
+      hardwareConfigPath
     ];
   };
   homeConfigurations =
@@ -17,6 +18,7 @@ in {
       modules = [
         ../../home
         ./configuration.nix
+        homeConfigPath
       ];
     };
 }
