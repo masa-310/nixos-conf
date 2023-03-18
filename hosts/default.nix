@@ -1,4 +1,4 @@
-args:
+{ system, nixpkgs, pkgs, home-manager, dotfile-path, ... }:
 
 let dir = builtins.readDir ./.;
     hosts = builtins.foldl' (
@@ -8,5 +8,27 @@ let dir = builtins.readDir ./.;
     ) [] (builtins.attrNames dir);
 in builtins.listToAttrs (builtins.map (hostname: {
   name  = hostname;
-  value = import (./. + "/${hostname}")  (args // { inherit hostname; });
+  value = let homeConfigPath = ./. + "/${hostname}/home-configuration.nix";
+              systemConfigPath = ./. + "/${hostname}/system-configuration.nix";
+              hardwareConfigPath = ./. + "/${hostname}/hardware-configuration.nix";
+          in {
+            nixosConfigurations = nixpkgs.lib.nixosSystem {
+              inherit system;
+              specialArgs = {};
+              modules = [
+                ../system
+                systemConfigPath
+                hardwareConfigPath
+              ];
+            };
+            homeConfigurations =
+              home-manager.lib.homeManagerConfiguration {
+                inherit pkgs;
+                extraSpecialArgs = { inherit dotfile-path hostname system; };
+                modules = [
+                  ../home
+                  homeConfigPath
+                ];
+              };
+          };
 }) hosts)

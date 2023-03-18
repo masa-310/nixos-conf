@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ system, nixpkgs, pkgs, home-manager, dotfile-path, hostname, ... }:
 
 {
   home.file.".Xmodmap" = {
@@ -30,5 +30,11 @@
     shell.zsh = {
       enable = true;
     };
+    program.elm = {
+      enable = true;
+    };
+    # program.haskell = {
+    #   enable = true;
+    # };
   };
 }

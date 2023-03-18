@@ -21,5 +21,7 @@
     nix-prefetch
     nix-prefetch-git
     gnumeric
+    scrot
+    ripgrep
   ];
 }
