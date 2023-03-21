@@ -14,7 +14,7 @@ in builtins.listToAttrs (builtins.map (hostname: {
           in {
             nixosConfigurations = nixpkgs.lib.nixosSystem {
               inherit system;
-              specialArgs = {};
+              specialArgs = { inherit hostname; };
               modules = [
                 ../system
                 systemConfigPath
