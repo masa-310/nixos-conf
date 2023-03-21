@@ -23,5 +23,6 @@
     gnumeric
     scrot
     ripgrep
+    xsel
   ];
 }
