@@ -1,10 +1,18 @@
 { config, pkgs, hostname, ...}:
 
 {
-  # networking.wireless.enable = true;
-  networking.wireless.iwd.enable = true;
-  networking.wireless.iwd.settings.Setting.EnableNetworkConfiguration = true;
   networking.hostName = hostname;
+  networking = {
+    wireless = {
+      iwd = {
+        enable = true;
+        settings.Setting.EnableNetworkConfiguration = true;
+      };
+    };
+    extraHosts = ''
+    127.0.0.1 ads.nicovideo.jp
+    '';
+  };
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";

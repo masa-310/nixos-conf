@@ -9,6 +9,7 @@
     ./modules/program/haskell.nix
     ./modules/program/starship.nix
     ./modules/program/polybar.nix
+    ./modules/program/go.nix
     ./modules/windowManager/xmonad.nix
     ./modules/terminal/alacritty.nix
     ./modules/shell/zsh.nix
