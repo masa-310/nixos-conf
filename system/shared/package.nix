@@ -24,5 +24,6 @@
     scrot
     ripgrep
     xsel
+    pinta
   ];
 }
