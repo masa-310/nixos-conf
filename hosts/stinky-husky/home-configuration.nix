@@ -33,6 +33,10 @@
     program.elm = {
       enable = true;
     };
+    program.texlive = {
+      enable = true;
+      scheme = "japanese";
+    };
     # program.haskell = {
     #   enable = true;
     # };

@@ -9,6 +9,7 @@
     wget
     curl
     unzip
+    gnumake
     inetutils
     acpi
     pavucontrol

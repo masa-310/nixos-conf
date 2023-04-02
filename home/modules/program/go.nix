@@ -5,7 +5,7 @@ with lib;
 let self = config.modules.program.go;
 in {
   imports = [];
-  options.modules.program.elm = {
+  options.modules.program.go = {
     enable = mkEnableOption "go";
   };
   config = mkIf self.enable {
