@@ -33,6 +33,11 @@
     program.elm = {
       enable = true;
     };
+    program.c = {
+      enable = true;
+      # build clang failed for some reason
+      # use-clang = true;
+    };
     program.texlive = {
       enable = true;
       scheme = "japanese";
