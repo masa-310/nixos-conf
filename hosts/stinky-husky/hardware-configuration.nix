@@ -24,7 +24,7 @@
     };
 
   fileSystems."/home" =
-    { device = "/dev/sdb1";
+    { device = "/dev/disk/by-label/NIXHOME";
       fsType = "ext4";
     };
 
