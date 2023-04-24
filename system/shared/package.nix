@@ -26,5 +26,6 @@
     ripgrep
     xsel
     pinta
+    killall
   ];
 }
