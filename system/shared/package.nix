@@ -27,5 +27,7 @@
     xsel
     pinta
     killall
+    peek
+    xfce.thunar
   ];
 }
