@@ -41,7 +41,10 @@
     # nodejs-10_x
     pciutils
     wmname
-    rofi
+    zeal
+    qt6.full
+    rbw
+    bat
     # strongswan
     # xl2tpd
     # xmobar
