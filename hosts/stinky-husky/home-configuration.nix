@@ -12,11 +12,14 @@
     };
     program.nodejs = {
       enable = true;
-      version = 16;
+      version = 18;
     };
     program.starship = {
       enable = true;
       shell = "zsh";
+    };
+    program.rofi = {
+      enable = true;
     };
     program.polybar = {
       enable = true;

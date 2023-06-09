@@ -9,6 +9,7 @@
     ./modules/program/haskell.nix
     ./modules/program/starship.nix
     ./modules/program/polybar.nix
+    ./modules/program/rofi.nix
     ./modules/program/go.nix
     ./modules/program/c.nix
     ./modules/program/texlive.nix
@@ -40,6 +41,10 @@
     # nodejs-10_x
     pciutils
     wmname
+    zeal
+    qt6.full
+    rbw
+    bat
     # strongswan
     # xl2tpd
     # xmobar
@@ -86,6 +91,7 @@
       ignores = [
         "*.swp"
         ".dccache"
+        ".envrc"
       ];
     };
     htop = {
