@@ -1,4 +1,4 @@
-{ system, nixpkgs, pkgs, home-manager, dotfile-path, ... }:
+{ system, nixpkgs, pkgs, unstable, home-manager, dotfile-path, ... }:
 
 let dir = builtins.readDir ./.;
     hosts = builtins.foldl' (
@@ -14,17 +14,18 @@ in builtins.listToAttrs (builtins.map (hostname: {
           in {
             nixosConfigurations = nixpkgs.lib.nixosSystem {
               inherit system;
-              specialArgs = { inherit hostname; };
+              specialArgs = { inherit hostname pkgs unstable; };
               modules = [
                 ../system
                 systemConfigPath
                 hardwareConfigPath
               ];
             };
+            # Home Mangerはunstable
             homeConfigurations =
               home-manager.lib.homeManagerConfiguration {
                 inherit pkgs;
-                extraSpecialArgs = { inherit dotfile-path hostname system; };
+                extraSpecialArgs = { inherit dotfile-path hostname system unstable; };
                 modules = [
                   ../home
                   homeConfigPath

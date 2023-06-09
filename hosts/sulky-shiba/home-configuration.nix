@@ -12,7 +12,7 @@
     };
     program.nodejs = {
       enable = true;
-      version = 16;
+      version = 18;
     };
     program.starship = {
       enable = true;
