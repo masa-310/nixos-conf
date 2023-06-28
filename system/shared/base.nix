@@ -1,9 +1,18 @@
-{ config, pkgs, ...}:
+{ config, pkgs, unstable, hostname, ...}:
 
 {
-  # networking.wireless.enable = true;
-  networking.wireless.iwd.enable = true;
-  networking.wireless.iwd.settings.Setting.EnableNetworkConfiguration = true;
+  networking.hostName = hostname;
+  networking = {
+    wireless = {
+      iwd = {
+        enable = true;
+        settings.Setting.EnableNetworkConfiguration = true;
+      };
+    };
+    extraHosts = ''
+    127.0.0.1 ads.nicovideo.jp
+    '';
+  };
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -15,7 +24,6 @@
      defaultLocale = "en_US.UTF-8";
      inputMethod = {
        enabled = "fcitx5";
-       fcitx.engines = with pkgs.fcitx-engines; [ mozc ];
        fcitx5.addons = with pkgs; [
          fcitx5-mozc
        ];
@@ -69,6 +77,7 @@
   # servers. You should change this only after NixOS release notes say you
   # should.
   programs.ssh.forwardX11 = true;
+  programs.zsh.enable = true;
 
   users.users.masashi = {
     isNormalUser = true;
@@ -97,6 +106,13 @@
   nix.settings.extra-experimental-features = [
     "nix-command"
     "flakes"
+  ];
+  nix.nixPath = [
+    "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos"
+    "nixos-config=/etc/nixos/configuration.nix"
+    "/nix/var/nix/profiles/per-user/root/channels"
+
+    "unstable=${unstable.outPath}"
   ];
   nix.extraOptions = ''
     keep-outputs = true

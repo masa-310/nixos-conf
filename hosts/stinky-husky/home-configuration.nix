@@ -18,6 +18,9 @@
       enable = true;
       shell = "zsh";
     };
+    program.rofi = {
+      enable = true;
+    };
     program.polybar = {
       enable = true;
     };
@@ -32,6 +35,15 @@
     };
     program.elm = {
       enable = true;
+    };
+    program.c = {
+      enable = true;
+      # build clang failed for some reason
+      # use-clang = true;
+    };
+    program.texlive = {
+      enable = true;
+      scheme = "japanese";
     };
     # program.haskell = {
     #   enable = true;

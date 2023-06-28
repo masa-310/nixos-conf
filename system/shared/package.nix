@@ -9,6 +9,7 @@
     wget
     curl
     unzip
+    gnumake
     inetutils
     acpi
     pavucontrol
@@ -23,5 +24,10 @@
     gnumeric
     scrot
     ripgrep
+    xsel
+    pinta
+    killall
+    peek
+    xfce.thunar
   ];
 }

@@ -9,7 +9,7 @@ in {
     enable = mkEnableOption "nodejs";
     version = mkOption {
       type = types.number;
-      default = 16;
+      default = 18;
       description = "Nodejs version. Should be eigther of 14, 16, or 18";
     };
   };
