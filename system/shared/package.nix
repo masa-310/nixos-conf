@@ -7,6 +7,7 @@
   environment.systemPackages = with pkgs; [
     vim
     wget
+    ed
     curl
     unzip
     gnumake
@@ -29,5 +30,6 @@
     killall
     peek
     xfce.thunar
+    imagemagick
   ];
 }

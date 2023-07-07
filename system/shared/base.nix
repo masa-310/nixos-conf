@@ -78,6 +78,7 @@
   # should.
   programs.ssh.forwardX11 = true;
   programs.zsh.enable = true;
+  programs.adb.enable = true;
 
   users.users.masashi = {
     isNormalUser = true;
@@ -85,6 +86,7 @@
     extraGroups = [
       "wheel"
       "docker"
+      "adbusers"
     ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       firefox
@@ -118,5 +120,5 @@
     keep-outputs = true
     keep-derivations = true
   '';
-  system.stateVersion = "22.11"; # Did you read the comment?
+  system.stateVersion = "23.05"; # Did you read the comment?
 }
