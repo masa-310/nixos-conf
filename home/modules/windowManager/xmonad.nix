@@ -19,6 +19,12 @@ in {
         text = ''
           #!/bin/sh
 
+          export XMODIFIERS=@im=fcitx
+          export GTK_IM_MODULE=fcitx
+          export QT_IM_MODULE=fcitx
+          export QT5_IM_MODULE=fcitx
+          export QT_QPA_PLATFORMTHEME=qt5ct
+
           XMONAD_HOST=${hostname} ${xmonadCommand}
         '';
       };

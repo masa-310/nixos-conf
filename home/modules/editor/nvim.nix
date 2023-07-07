@@ -9,6 +9,9 @@ in {
     enable = mkEnableOption "neovim";
   };
   config = mkIf self.enable {
+    home.packages = [
+      pkgs.luajitPackages.jsregexp
+    ];
     programs.neovim = {
       enable = true;
       vimAlias = true;
@@ -19,8 +22,8 @@ in {
 
         set runtimepath+=${dotfile-path}/nvim
         runtime! init.vim
-        runtime! conf/*.vim
-        runtime! plugins/*.vim
+
+        source ${config.home.homeDirectory}/.nvimrc
 
         let g:coc_config_home = '${dotfile-path}/nvim'
       '';

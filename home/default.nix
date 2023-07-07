@@ -19,38 +19,49 @@
   ];
   # Let Home Manager install and manage itself.
   fonts.fontconfig.enable = true;
-  home.stateVersion = "22.11";
-  home.username = "masashi";
-  home.homeDirectory = "/home/masashi";
-  home.keyboard.layout = "us";
-  home.packages = with pkgs; [
-    # android-studio
-    docker
-    docker-compose
-    jq
-    # openjdk11
-    evince
-    google-chrome
-    # google-cloud-sdk
-    imagemagick
-    # texlive.combined.scheme-full
-    tree
-    slack
-    obsidian
-    # slop
-    # nodejs-10_x
-    pciutils
-    wmname
-    zeal
-    qt6.full
-    rbw
-    bat
-    # strongswan
-    # xl2tpd
-    # xmobar
-    # yarn
-    # zsh
-  ];
+  home = {
+    stateVersion = "23.05";
+    username = "masashi";
+    homeDirectory = "/home/masashi";
+    keyboard.layout = "us";
+    packages = with pkgs; [
+      # android-studio
+      docker
+      docker-compose
+      jq
+      # openjdk11
+      evince
+      google-chrome
+      # google-cloud-sdk
+      imagemagick
+      # texlive.combined.scheme-full
+      tree
+      slack
+      obsidian
+      # slop
+      # nodejs-10_x
+      pciutils
+      wmname
+      zeal
+      qt6.full
+      rbw
+      bat
+      pinta
+      wezterm
+      # strongswan
+      # xl2tpd
+      # xmobar
+      # yarn
+      # zsh
+    ];
+    pointerCursor = {
+      #package = pkgs.redglass;
+      #name = "redglass";
+      package = pkgs.vanilla-dmz;
+      name = "Vanilla-DMZ";
+      size = 16;
+    };
+  };
 
   programs = {
     direnv = {
@@ -87,11 +98,17 @@
         lg = "log";
         pl = "pull";
         ps = "push";
+        st = "status";
+        ignore = "update-index --skip-worktree";
+        unignore = "update-index --no-skip-worktree";
       };
       ignores = [
         "*.swp"
         ".dccache"
         ".envrc"
+        ".direnv"
+        ".vim"
+        "shell.nix"
       ];
     };
     htop = {
@@ -156,13 +173,6 @@
 
   xsession = {
     enable = true;
-    pointerCursor = {
-      #package = pkgs.redglass;
-      #name = "redglass";
-      package = pkgs.vanilla-dmz;
-      name = "Vanilla-DMZ";
-      size = 16;
-    };
     # profileExtra = builtins.readFile("${homedir}/home-manager/.dotfiles/.xprofile");
     # windowManager = {
     #   xmonad = {
