@@ -1,7 +1,7 @@
 {
   description = "NixOS config";
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-23.05";
+    nixpkgs.url = "nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
