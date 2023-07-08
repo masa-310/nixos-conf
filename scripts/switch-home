@@ -1,8 +1,4 @@
 #!/bin/sh
 
-if [ "$1" == "" ]; then
-  echo "Error: host name required"
-  exit 1
-fi
-
-nix build ".?submodule=1#homeConfigurations.${1}.activationPackage" --extra-experimental-features 'nix-command flakes' && result/activate 
+hostname=`hostname`
+nix build ".?submodule=1#homeConfigurations.${hostname}.activationPackage" --extra-experimental-features 'nix-command flakes' && result/activate 

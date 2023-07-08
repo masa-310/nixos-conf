@@ -27,6 +27,9 @@
     terminal.alacritty = {
       enable = true;
     };
+    program.rofi = {
+      enable = true;
+    };
     shell.zsh = {
       enable = true;
     };
