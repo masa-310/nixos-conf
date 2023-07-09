@@ -15,4 +15,9 @@
       vaapiVdpau
     ];
   };
+  modules = {
+    service.picom = {
+      enable = true;
+    };
+  };
 }
