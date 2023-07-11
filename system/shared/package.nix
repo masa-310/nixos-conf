@@ -31,5 +31,6 @@
     peek
     xfce.thunar
     imagemagick
+    gnupg
   ];
 }
