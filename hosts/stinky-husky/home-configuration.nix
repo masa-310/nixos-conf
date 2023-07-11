@@ -27,7 +27,7 @@
     windowManager.xmonad = {
       enable = true;
     };
-    terminal.alacritty = {
+    terminal.wezterm = {
       enable = true;
     };
     shell.zsh = {

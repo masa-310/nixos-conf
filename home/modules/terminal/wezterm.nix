@@ -12,7 +12,7 @@ in {
     home.packages = [
       pkgs.wezterm
     ];
-    home.file.".config/.wezterm.lua" = {
+    home.file.".wezterm.lua" = {
       source = "${dotfile-path}/.wezterm.lua";
     };
   };

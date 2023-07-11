@@ -15,6 +15,7 @@
     ./modules/program/texlive.nix
     ./modules/windowManager/xmonad.nix
     ./modules/terminal/alacritty.nix
+    ./modules/terminal/wezterm.nix
     ./modules/shell/zsh.nix
   ];
   # Let Home Manager install and manage itself.
