@@ -36,6 +36,9 @@
     program.elm = {
       enable = true;
     };
+    program.go = {
+      enable = true;
+    };
     program.c = {
       enable = true;
       # build clang failed for some reason

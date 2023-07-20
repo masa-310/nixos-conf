@@ -18,14 +18,9 @@ in {
       withNodeJs = true;
       withPython3 = true;
       extraConfig = ''
-        source ${pkgs.vimPlugins.vim-plug}/plug.vim
-
         set runtimepath+=${dotfile-path}/nvim
         runtime! init.vim
-
         source ${config.home.homeDirectory}/.nvimrc
-
-        let g:coc_config_home = '${dotfile-path}/nvim'
       '';
     };
   };
