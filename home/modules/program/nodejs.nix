@@ -17,6 +17,7 @@ in {
     home.packages = [
       pkgs.${"nodejs-${toString self.version}_x"}
       pkgs.yarn
+      nodePackages.eslint
     ];
     home.sessionPath = [ "$(${pkgs.yarn}/bin/yarn global bin)" ];
     home.file.".npmrc".text = ''

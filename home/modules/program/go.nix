@@ -13,6 +13,7 @@ in {
       go
       gopls
       air
+      golangci-lint
     ];
   };
 }
