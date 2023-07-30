@@ -19,5 +19,8 @@
     service.picom = {
       enable = true;
     };
+    service.printer = {
+      enable = true;
+    };
   };
 }
