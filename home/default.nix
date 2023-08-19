@@ -17,6 +17,7 @@
     ./modules/terminal/alacritty.nix
     ./modules/terminal/wezterm.nix
     ./modules/shell/zsh.nix
+    ./modules/tool/unixporn.nix
   ];
   # Let Home Manager install and manage itself.
   fonts.fontconfig.enable = true;
@@ -49,6 +50,7 @@
       bat
       pinta
       wezterm
+      cspell
       # strongswan
       # xl2tpd
       # xmobar

@@ -32,5 +32,6 @@
     xfce.thunar
     imagemagick
     gnupg
+    dmidecode
   ];
 }

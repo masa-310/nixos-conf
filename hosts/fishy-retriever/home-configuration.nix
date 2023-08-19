@@ -37,5 +37,8 @@
     program.c = {
       enable = true;
     };
+    tool.unixporn = {
+      enable = true;
+    };
   };
 }
