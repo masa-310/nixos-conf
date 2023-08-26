@@ -50,7 +50,6 @@
       bat
       pinta
       wezterm
-      cspell
       # strongswan
       # xl2tpd
       # xmobar

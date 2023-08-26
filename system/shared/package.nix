@@ -33,5 +33,6 @@
     imagemagick
     gnupg
     dmidecode
+    sysstat
   ];
 }
