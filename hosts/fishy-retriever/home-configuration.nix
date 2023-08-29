@@ -37,6 +37,9 @@
     program.c = {
       enable = true;
     };
+    program.rust = {
+      enable = true;
+    };
     tool.unixporn = {
       enable = true;
     };
