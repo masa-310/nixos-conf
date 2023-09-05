@@ -46,7 +46,7 @@
       pciutils
       wmname
       zeal
-      qt6.full
+      # qt6.full
       rbw
       bat
       pinta

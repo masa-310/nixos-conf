@@ -19,6 +19,7 @@ in {
       pkgs.yarn
       pkgs.nodePackages.eslint
       pkgs.nodePackages.prettier
+      pkgs.nodePackages.typescript-language-server
     ];
     home.sessionPath = [ "$(${pkgs.yarn}/bin/yarn global bin)" ];
     home.file.".npmrc".text = ''
