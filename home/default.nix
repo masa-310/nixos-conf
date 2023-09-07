@@ -40,16 +40,23 @@
       tree
       slack
       obsidian
-      # slop
       # nodejs-10_x
       pciutils
       wmname
       zeal
-      qt6.full
+      #qt6.full
       rbw
       bat
       pinta
+      drawing
+      xpaint
       wezterm
+      nil
+      ripgrep
+      maim
+      slop
+      # shotgun
+      # hacksaw
       # strongswan
       # xl2tpd
       # xmobar

@@ -9,8 +9,12 @@ in {
     enable = mkEnableOption "neovim";
   };
   config = mkIf self.enable {
-    home.packages = [
-      pkgs.luajitPackages.jsregexp
+    # install lua related packages
+    home.packages = with pkgs; [
+      luajitPackages.jsregexp
+      lua-language-server
+      efm-langserver
+      stylua
     ];
     programs.neovim = {
       enable = true;
