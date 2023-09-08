@@ -14,12 +14,13 @@ in {
     };
   };
   config = mkIf self.enable {
-    home.packages = [
+    home.packages = with pkgs; with nodePackages; [
       pkgs.${"nodejs-${toString self.version}_x"}
-      pkgs.yarn
-      pkgs.nodePackages.eslint
-      pkgs.nodePackages.prettier
-      pkgs.nodePackages.typescript-language-server
+      typescript-language-server
+      yarn
+      eslint
+      eslint_d
+      prettier
     ];
     home.sessionPath = [ "$(${pkgs.yarn}/bin/yarn global bin)" ];
     home.file.".npmrc".text = ''
