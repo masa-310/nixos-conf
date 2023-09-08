@@ -23,9 +23,8 @@
     nix-prefetch
     nix-prefetch-git
     gnumeric
-    scrot
-    ripgrep
     xsel
+    xclip
     pinta
     killall
     peek
