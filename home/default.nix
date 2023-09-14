@@ -45,12 +45,12 @@
       pciutils
       wmname
       zeal
-      #qt6.full
+      # qt6.full
       rbw
       bat
-      pinta
       drawing
       wezterm
+      nodePackages.cspell
       nil
       ripgrep
       maim

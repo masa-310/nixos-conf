@@ -11,8 +11,9 @@ in {
   config = mkIf self.enable {
     home.packages = with pkgs; [
       rustc
-      cargo
+      rustfmt
       rust-analyzer
+      cargo
       cargo-edit
     ];
   };

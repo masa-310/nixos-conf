@@ -2,7 +2,7 @@
 
 with builtins;
 with lib;
-let self = config.modules.program.nodejs;
+let self = config.modules.program.elm;
 in {
   imports = [];
   options.modules.program.elm = {
