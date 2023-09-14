@@ -39,6 +39,9 @@
     program.go = {
       enable = true;
     };
+    program.rust = {
+      enable = true;
+    };
     program.c = {
       enable = true;
       # build clang failed for some reason
