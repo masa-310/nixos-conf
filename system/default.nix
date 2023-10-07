@@ -4,5 +4,6 @@
     ./shared
     ./modules/service/picom.nix
     ./modules/service/printer.nix
+    ./modules/service/greetd.nix
   ];
 }

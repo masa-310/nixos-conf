@@ -13,5 +13,8 @@
     service.picom = {
       enable = true;
     };
+    service.greetd = {
+      enable = true;
+    };
   };
 }

@@ -5,6 +5,7 @@ with lib;
 let self = config.modules.service.greetd;
 in {
   imports = [];
+  # TODO startx以外
   options.modules.service.greetd = {
     enable = mkEnableOption "greetd";
   };
