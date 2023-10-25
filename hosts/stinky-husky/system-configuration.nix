@@ -44,5 +44,11 @@
     service.printer = {
       enable = true;
     };
+    service.greetd = {
+      enable = true;
+    };
+    service.mail = {
+      enable = true;
+    };
   };
 }

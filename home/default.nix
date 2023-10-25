@@ -55,6 +55,7 @@
       ripgrep
       maim
       slop
+      zoom-us
       # shotgun
       # hacksaw
       # strongswan
