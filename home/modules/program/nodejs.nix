@@ -21,6 +21,7 @@ in {
       eslint
       eslint_d
       prettier
+      nodePackages."@tailwindcss/language-server"
     ];
     home.sessionPath = [ "$(${pkgs.yarn}/bin/yarn global bin)" ];
     home.file.".npmrc".text = ''

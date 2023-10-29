@@ -47,10 +47,10 @@
       # build clang failed for some reason
       # use-clang = true;
     };
-    program.texlive = {
-      enable = true;
-      scheme = "japanese";
-    };
+    #program.texlive = {
+    #  enable = true;
+    #  scheme = "japanese";
+    #};
     # program.haskell = {
     #   enable = true;
     # };
