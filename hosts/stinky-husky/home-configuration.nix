@@ -33,6 +33,9 @@
     shell.zsh = {
       enable = true;
     };
+    tool._1password = {
+      enable = true;
+    };
     program.elm = {
       enable = true;
     };
