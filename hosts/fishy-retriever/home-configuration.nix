@@ -43,5 +43,8 @@
     tool.unixporn = {
       enable = true;
     };
+    tool._1password = {
+      enable = true;
+    };
   };
 }
