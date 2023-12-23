@@ -57,6 +57,7 @@
       maim
       slop
       zoom-us
+      dconf
       # shotgun
       # hacksaw
       # strongswan

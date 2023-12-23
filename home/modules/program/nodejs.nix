@@ -20,6 +20,7 @@ in {
       yarn
       eslint
       eslint_d
+      vscode-langservers-extracted
       prettier
       nodePackages."@tailwindcss/language-server"
     ];
