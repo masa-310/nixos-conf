@@ -1,6 +1,9 @@
 { system, nixpkgs, pkgs, home-manager, dotfile-path, hostname, ... }:
 
 {
+  home.packages = with pkgs; [
+    weston
+  ];
   modules = {
     editor.neovim = {
       enable = true;

@@ -19,7 +19,7 @@
       system = "x86_64-linux";
       config = {
         allowUnfree = true;
-        permittedInsecurePackages = [ "electron-18.1.0" ];
+        permittedInsecurePackages = [ "electron-25.9.0" ];
       };
       pkgs = import nixpkgs-unstable { inherit system overlays config; } // { outPath = nixpkgs.outPath; };
       unstable = import nixpkgs-unstable { inherit system overlays config; } // { outPath = nixpkgs-unstable.outPath; };
