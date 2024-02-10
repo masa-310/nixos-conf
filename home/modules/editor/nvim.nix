@@ -1,4 +1,4 @@
-{ lib, config, pkgs, dotfile-path, ... }:
+{ lib, config, pkgs, dotfile, ... }:
 
 with builtins;
 with lib;
@@ -22,7 +22,7 @@ in {
       withNodeJs = true;
       withPython3 = true;
       extraConfig = ''
-        set runtimepath+=${dotfile-path}/nvim
+        set runtimepath+=${dotfile}/nvim
         runtime! init.vim
         source ${config.home.homeDirectory}/.nvimrc
       '';

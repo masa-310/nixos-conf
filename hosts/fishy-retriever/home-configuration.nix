@@ -1,4 +1,4 @@
-{ system, nixpkgs, pkgs, home-manager, dotfile-path, hostname, ... }:
+{ system, nixpkgs, pkgs, home-manager, dotfile, hostname, ... }:
 
 {
   home.packages = with pkgs; [
