@@ -1,4 +1,4 @@
-{ lib, config, pkgs, dotfile-path, hostname, system, ... }:
+{ lib, config, pkgs, dotfile, hostname, system, ... }:
 
 with builtins;
 with lib;

@@ -1,4 +1,4 @@
-{ lib, config, pkgs, dotfile-path, ... }:
+{ lib, config, pkgs, dotfile, ... }:
 
 with builtins;
 with lib;
@@ -13,7 +13,7 @@ in {
       pkgs.alacritty
     ];
     home.file.".config/alacritty.yml" = {
-      source = "${dotfile-path}/alacritty.yml";
+      source = "${dotfile}/alacritty.yml";
     };
   };
 }

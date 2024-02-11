@@ -83,7 +83,7 @@
         "type": "github"
       }
     },
-    "dotfile-path": {
+    "dotfile": {
       "flake": false,
       "locked": {
         "lastModified": 1706362347,
@@ -583,7 +583,7 @@
     },
     "root": {
       "inputs": {
-        "dotfile-path": "dotfile-path",
+        "dotfile": "dotfile",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-unstable": "nixpkgs-unstable",

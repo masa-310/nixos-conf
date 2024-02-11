@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: 
+{ config, pkgs, hostname, ... }: 
 
 
 {
@@ -58,6 +58,7 @@
       slop
       zoom-us
       dconf
+      just
       # shotgun
       # hacksaw
       # strongswan
@@ -72,6 +73,17 @@
       package = pkgs.vanilla-dmz;
       name = "Vanilla-DMZ";
       size = 16;
+    };
+    shellAliases = {
+      g = "git";
+      l = "ls";
+      la = "ls -a";
+      ll = "ls -l";
+      lla = "ls -la";
+      flake-pull = "pushd $HOME/nixos-conf; just update; popd";
+      flake-pull-dotfile = "pushd $HOME/nixos-conf; just update-dotfile; popd";
+      home-switch = "pushd $HOME/nixos-conf; just home; popd";
+      nixos-switch = "pushd $HOME/nixos-conf; just system; popd";
     };
   };
 
