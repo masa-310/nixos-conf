@@ -24,7 +24,7 @@ in builtins.listToAttrs (builtins.map (hostname: {
             # Home Mangerはunstable
             homeConfigurations =
               home-manager.lib.homeManagerConfiguration {
-                inherit pkgs;
+                pkgs = unstable;
                 extraSpecialArgs = { inherit dotfile-path hostname system unstable; };
                 modules = [
                   ../home

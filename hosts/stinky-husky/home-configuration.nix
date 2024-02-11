@@ -6,56 +6,7 @@
     keycode 102 = Super_L
     '';
   };
-  modules = {
-    editor.neovim = {
-      enable = true;
-    };
-    program.nodejs = {
-      enable = true;
-      version = 18;
-    };
-    program.starship = {
-      enable = true;
-      shell = "zsh";
-    };
-    program.rofi = {
-      enable = true;
-    };
-    program.polybar = {
-      enable = true;
-    };
-    windowManager.xmonad = {
-      enable = true;
-    };
-    terminal.wezterm = {
-      enable = true;
-    };
-    shell.zsh = {
-      enable = true;
-    };
-    tool._1password = {
-      enable = true;
-    };
-    program.elm = {
-      enable = true;
-    };
-    program.go = {
-      enable = true;
-    };
-    program.rust = {
-      enable = true;
-    };
-    program.c = {
-      enable = true;
-      # build clang failed for some reason
-      # use-clang = true;
-    };
-    #program.texlive = {
-    #  enable = true;
-    #  scheme = "japanese";
-    #};
-    # program.haskell = {
-    #   enable = true;
-    # };
-  };
+  imports = [
+    ../../templates/home/base.nix
+  ];
 }

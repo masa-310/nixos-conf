@@ -1,6 +1,9 @@
 { lib, config, pkgs, ... }:
 
 {
+  imports = [
+     ../../templates/system/base.nix
+ ];
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -36,19 +39,5 @@
       nvidia-vaapi-driver
       vaapiVdpau
     ];
-  };
-  modules = {
-    service.picom = {
-      enable = true;
-    };
-    service.printer = {
-      enable = true;
-    };
-    service.greetd = {
-      enable = true;
-    };
-    service.mail = {
-      enable = true;
-    };
   };
 }

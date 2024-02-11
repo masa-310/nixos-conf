@@ -1,4 +1,4 @@
 #!/bin/sh
 
 hostname=`hostname`
-sudo nixos-rebuild switch --flake ".?submodules=1#${hostname}"
+sudo nixos-rebuild switch --flake ".?submodules=1#${hostname}" --show-trace
