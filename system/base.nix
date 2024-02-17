@@ -126,6 +126,10 @@
 
   # nix settings 
   nix = {
+    optimise = {
+      automatic = true;
+      dates = [ "03:45" ];
+    };
     settings.extra-experimental-features = [
       "nix-command"
       "flakes"
