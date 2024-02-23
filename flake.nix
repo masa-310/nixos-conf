@@ -11,10 +11,11 @@
       flake = false;
     };
     xmonad-config.url = "github:masa-310/xmonad-conf";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
-  outputs = {self, nixpkgs, nixpkgs-unstable, home-manager, dotfile, xmonad-config, ... }: 
+  outputs = {self, nixpkgs, nixpkgs-unstable, home-manager, dotfile, nixos-hardware, xmonad-config, ... }: 
     let
-      overlay = final: prev: { inherit xmonad-config; };
+      overlay = final: prev: { inherit xmonad-config nixos-hardware; };
       overlays = [overlay];
       system = "x86_64-linux";
       config = {

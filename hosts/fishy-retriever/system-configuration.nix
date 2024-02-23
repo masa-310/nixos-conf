@@ -1,11 +1,14 @@
 { lib, config, pkgs, ... }:
 
 {
+  imports = [
+     ../../templates/system/base.nix
+    pkgs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-11th-gen
+ ];
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   networking.firewall.allowedTCPPorts = [ 3000 3001 ];
-
   hardware.opengl = {
     enable = true;
   };

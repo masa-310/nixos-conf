@@ -20,6 +20,7 @@
     ./modules/shell/zsh.nix
     ./modules/tool/unixporn.nix
     ./modules/tool/1password.nix
+    ./modules/tool/newsboat.nix
   ];
   # Let Home Manager install and manage itself.
   fonts.fontconfig.enable = true;
