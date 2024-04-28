@@ -30,3 +30,6 @@ clean-user:
 
 gc:
   sudo nix-collect-garbage -d
+
+op:
+  nix store optimise

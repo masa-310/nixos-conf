@@ -31,6 +31,9 @@
         # build clang failed for some reason
         # use-clang = true;
       };
+      sql = {
+        enable = true;
+      };
     };
     windowManager.xmonad = {
       enable = true;
@@ -45,6 +48,9 @@
       enable = true;
     };
     tool._1password = {
+      enable = true;
+    };
+    tool.unixporn = {
       enable = true;
     };
     #program.texlive = {

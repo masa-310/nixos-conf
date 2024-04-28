@@ -32,6 +32,7 @@
     dmidecode
     sysstat
     zip
+    lm_sensors
   ];
 
   # ssh
