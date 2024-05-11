@@ -23,6 +23,8 @@ in {
       vscode-langservers-extracted
       prettier
       nodePackages."@tailwindcss/language-server"
+      volta
+      pm2
     ];
     home.sessionPath = [ "$(${pkgs.yarn}/bin/yarn global bin)" ];
     home.file.".npmrc".text = ''

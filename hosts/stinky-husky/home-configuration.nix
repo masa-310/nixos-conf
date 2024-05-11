@@ -9,4 +9,11 @@
   imports = [
     ../../templates/home/base.nix
   ];
+  modules = {
+    tool = {
+      aws = {
+        enable = true;
+      };
+    };
+  };
 }

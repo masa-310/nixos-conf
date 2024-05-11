@@ -21,6 +21,7 @@
     ./modules/shell/zsh.nix
     ./modules/tool/unixporn.nix
     ./modules/tool/1password.nix
+    ./modules/tool/aws.nix
   ];
   # Let Home Manager install and manage itself.
   fonts.fontconfig.enable = true;
@@ -64,9 +65,9 @@
       # hacksaw
       # strongswan
       # xl2tpd
-      # xmobar
-      # yarn
-      # zsh
+      ngrok
+      dnsutils
+      gh
     ];
     pointerCursor = {
       #package = pkgs.redglass;

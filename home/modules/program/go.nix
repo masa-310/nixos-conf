@@ -13,7 +13,12 @@ in {
       go
       gopls
       air
+      go-migrate
       golangci-lint
+      gotools
+      wire
+      mockgen
+      gotestsum
     ];
   };
 }
