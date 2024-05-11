@@ -1,4 +1,4 @@
-{ config, pkgs, pkg-path, unstable-path, extra, ...}:
+{ config, pkgs, extra, ...}:
 
 {
   # packages
@@ -134,8 +134,8 @@
       "flakes"
     ];
     nixPath = [
-      "nixpkgs=${pkg-path}"
-      "unstable=${unstable-path}"
+      "nixpkgs=${extra.pkg-path}"
+      "unstable=${extra.unstable-path}"
       "nixos-config=/etc/nixos/configuration.nix"
       "/nix/var/nix/profiles/per-user/root/channels"
     ];

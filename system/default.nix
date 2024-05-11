@@ -1,4 +1,4 @@
-{ config, pkgs, home-manager, pkg-path, unstable-path, ... }:
+{ config, pkgs, home-manager, ... }:
 
 { imports = [
     ./base.nix
