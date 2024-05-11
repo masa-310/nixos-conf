@@ -13,6 +13,7 @@
     ./modules/program/go.nix
     ./modules/program/c.nix
     ./modules/program/rust.nix
+    ./modules/program/sql.nix
     ./modules/program/texlive.nix
     ./modules/windowManager/xmonad.nix
     ./modules/terminal/alacritty.nix
@@ -82,8 +83,8 @@
       la = "ls -a";
       ll = "ls -l";
       lla = "ls -la";
-      flake-pull = "pushd $HOME/nixos-conf; just update; popd";
-      flake-pull-dotfile = "pushd $HOME/nixos-conf; just update-dotfile; popd";
+      nixconf-pull = "pushd $HOME/nixos-conf; just update; popd";
+      nixconf-pull-dotfile = "pushd $HOME/nixos-conf; just update-dotfile; popd";
       home-switch = "pushd $HOME/nixos-conf; just home; popd";
       nixos-switch = "pushd $HOME/nixos-conf; just system; popd";
     };
