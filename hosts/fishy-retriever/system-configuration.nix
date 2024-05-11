@@ -1,9 +1,9 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, pkgs, extra, ... }:
 
 {
   imports = [
      ../../templates/system/base.nix
-    pkgs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-11th-gen
+    extra.nixos-hardware.nixosModules.lenovo-thinkpad-x1-11th-gen
  ];
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;

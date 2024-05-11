@@ -1,4 +1,4 @@
-{ config, pkgs, unstable, hostname, ...}:
+{ config, pkgs, pkg-path, unstable-path, extra, ...}:
 
 {
   # packages
@@ -28,7 +28,6 @@
     peek
     xfce.thunar
     imagemagick
-    gnupg
     dmidecode
     sysstat
     zip
@@ -44,7 +43,7 @@
 
   # network
   networking = {
-    hostName = hostname;
+    hostName = extra.hostname;
     wireless = {
       iwd = {
         enable = true;
@@ -119,12 +118,12 @@
   };
 
   # nixpkgs
-  nixpkgs.config = {
-    allowUnfree = true;
-    permittedInsecurePackages = [ "electron-18.1.0" ];
-  };
+  # nixpkgs.config = {
+  #   allowUnfree = true;
+  #   permittedInsecurePackages = [ "electron-18.1.0" ];
+  # };
 
-  # nix settings 
+  # nix settings
   nix = {
     optimise = {
       automatic = true;
@@ -135,10 +134,10 @@
       "flakes"
     ];
     nixPath = [
-      "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos"
+      "nixpkgs=${pkg-path}"
+      "unstable=${unstable-path}"
       "nixos-config=/etc/nixos/configuration.nix"
       "/nix/var/nix/profiles/per-user/root/channels"
-      "unstable=${unstable.outPath}"
     ];
     extraOptions = ''
       keep-outputs = true
@@ -151,4 +150,10 @@
   # servers. You should change this only after NixOS release notes say you
   # should.
   system.stateVersion = "23.05"; # Did you read the comment?
+  services.pcscd.enable = true;
+  programs.gnupg.agent = {
+   enable = true;
+   enableSSHSupport = true;
+};
+
 }

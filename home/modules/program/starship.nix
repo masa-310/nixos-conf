@@ -1,4 +1,4 @@
-{ lib, config, pkgs, dotfile, ... }:
+{ lib, config, pkgs, extra, ... }:
 
 with builtins;
 with lib;
@@ -20,7 +20,7 @@ in {
       enableZshIntegration = self.shell == "zsh";
     };
     home.file.".config/starship.toml" = {
-      source = dotfile + "/starship.toml";
+      source = extra.dotfile + "/starship.toml";
     };
   };
 }

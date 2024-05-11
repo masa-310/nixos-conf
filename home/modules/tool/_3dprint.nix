@@ -2,17 +2,16 @@
 
 with builtins;
 with lib;
-let self = config.modules.tool.unixporn;
+let self = config.modules.tool._3dprint;
 in {
   imports = [];
-  options.modules.tool.unixporn = {
-    enable = mkEnableOption "unixporn";
+  options.modules.tool._3dprint = {
+    enable = mkEnableOption "_3dprint";
   };
   config = mkIf self.enable {
     home.packages = with pkgs; [
-      neofetch
-      btop
-      pipes
+      openscad
+      prusa-slicer
     ];
   };
 }

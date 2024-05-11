@@ -1,4 +1,7 @@
-{ system, nixpkgs, pkgs, unstable, home-manager, dotfile, ... }:
+# extra = {
+#   inherit dotfile nixos-hardware xmonad-config
+# }
+{ system, home-manager, pkgs, unstable, extra }:
 
 let dir = builtins.readDir ./.;
     hosts = builtins.foldl' (
@@ -12,20 +15,23 @@ in builtins.listToAttrs (builtins.map (hostname: {
               systemConfigPath = ./. + "/${hostname}/system-configuration.nix";
               hardwareConfigPath = ./. + "/${hostname}/hardware-configuration.nix";
           in {
-            nixosConfigurations = nixpkgs.lib.nixosSystem {
+            nixosConfigurations = unstable.lib.nixosSystem {
               inherit system;
-              specialArgs = { inherit hostname pkgs unstable; };
+              specialArgs = {
+                extra = extra // { inherit system hostname; pkg-path=pkgs.outPath; unstable-path=unstable.outPath;};
+              };
               modules = [
                 ../system
                 systemConfigPath
                 hardwareConfigPath
               ];
             };
-            # Home Mangerはunstable
             homeConfigurations =
               home-manager.lib.homeManagerConfiguration {
                 pkgs = unstable;
-                extraSpecialArgs = { inherit dotfile hostname system unstable; };
+                extraSpecialArgs = {
+                  extra = extra // { inherit system unstable hostname; };
+                };
                 modules = [
                   ../home
                   homeConfigPath
