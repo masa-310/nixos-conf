@@ -1,4 +1,4 @@
-{ lib, config, pkgs, dotfile, ... }:
+{ lib, config, pkgs, extra, ... }:
 
 with builtins;
 with lib;
@@ -14,7 +14,7 @@ in {
       script = "";
     };
     home.file.".config/polybar" = {
-      source = dotfile + "/polybar";
+      source = extra.dotfile + "/polybar";
     };
   };
 }

@@ -1,4 +1,4 @@
-{ lib, config, pkgs, dotfile, ... }:
+{ lib, config, pkgs, extra, ... }:
 
 with builtins;
 with lib;
@@ -17,7 +17,7 @@ in {
       configPath = ".config/rofi/config-generated.rasi";
     };
     home.file.".config/rofi/config.rasi" = {
-      source = dotfile + "/config.rasi";
+      source = extra.dotfile + "/config.rasi";
     };
     home.packages = with pkgs; [
       # https://github.com/NixOS/nixpkgs/issues/218311

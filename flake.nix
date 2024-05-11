@@ -11,21 +11,24 @@
       flake = false;
     };
     xmonad-config.url = "github:masa-310/xmonad-conf";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
-  outputs = {self, nixpkgs, nixpkgs-unstable, home-manager, dotfile, xmonad-config, ... }: 
+  outputs = {self, nixpkgs, nixpkgs-unstable, home-manager, dotfile, nixos-hardware, xmonad-config, ... }: 
     let
-      overlay = final: prev: { inherit xmonad-config; };
+      overlay = final: prev: {};
       overlays = [overlay];
       system = "x86_64-linux";
+
       config = {
         allowUnfree = true;
         permittedInsecurePackages = [ "electron-25.9.0" ];
       };
-      pkgs = import nixpkgs { inherit system overlays config; } // { outPath = nixpkgs.outPath; };
-      unstable = import nixpkgs-unstable { inherit system overlays config; } // { outPath = nixpkgs-unstable.outPath; };
-      configurations = import ./hosts { inherit system config home-manager dotfile nixpkgs pkgs unstable; };
-      nixosConfigurations = builtins.mapAttrs (_: conf: conf.nixosConfigurations) configurations;
-      homeConfigurations = builtins.mapAttrs (_: conf: conf.homeConfigurations) configurations;
+      pkgs = import nixpkgs { inherit system overlays config; } // { outPath = nixpkgs.outPath; lib = nixpkgs.lib;};
+      unstable = import nixpkgs-unstable { inherit system overlays config; } // { outPath = nixpkgs-unstable.outPath; lib = nixpkgs-unstable.lib;};
+      extra = { inherit dotfile nixos-hardware xmonad-config; };
+      confByHost = import ./hosts { inherit system home-manager pkgs unstable extra; };
+      nixosConfigurations = builtins.mapAttrs (_: conf: conf.nixosConfigurations) confByHost;
+      homeConfigurations = builtins.mapAttrs (_: conf: conf.homeConfigurations) confByHost;
     in {
       inherit nixosConfigurations homeConfigurations;
     };

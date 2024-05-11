@@ -1,4 +1,4 @@
-{ config, pkgs, hostname, ... }: 
+{ config, pkgs, ... }: 
 
 
 {
@@ -22,6 +22,8 @@
     ./modules/tool/unixporn.nix
     ./modules/tool/1password.nix
     ./modules/tool/aws.nix
+    ./modules/tool/newsboat.nix
+    ./modules/tool/_3dprint.nix
   ];
   # Let Home Manager install and manage itself.
   fonts.fontconfig.enable = true;

@@ -47,8 +47,13 @@
     shell.zsh = {
       enable = true;
     };
-    tool._1password = {
-      enable = true;
+    tool = {
+      _1password = {
+        enable = true;
+      };
+      newsboat = {
+        enable = true;
+      };
     };
     tool.unixporn = {
       enable = true;

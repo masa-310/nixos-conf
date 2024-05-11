@@ -1,4 +1,4 @@
-{ lib, config, pkgs, dotfile, ... }:
+{ lib, config, pkgs, ... }:
 
 with builtins;
 with lib;
