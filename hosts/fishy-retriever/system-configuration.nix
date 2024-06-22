@@ -19,5 +19,8 @@
     service.greetd = {
       enable = true;
     };
+    hardware.touchpad = {
+      enable = true;
+    };
   };
 }

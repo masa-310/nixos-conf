@@ -9,5 +9,6 @@
     ./modules/service/printer.nix
     ./modules/display/x.nix
     ./modules/user/masashi.nix
+    ./modules/hardware/touchpad.nix
   ];
 }
