@@ -73,6 +73,7 @@
       tomato-c
       tenv
       fd
+      aichat
     ];
     pointerCursor = {
       #package = pkgs.redglass;
@@ -91,6 +92,7 @@
       nixconf-pull-dotfile = "pushd $HOME/nixos-conf; just update-dotfile; popd";
       home-switch = "pushd $HOME/nixos-conf; just home; popd";
       nixos-switch = "pushd $HOME/nixos-conf; just system; popd";
+      hey = "aichat";
     };
   };
 
