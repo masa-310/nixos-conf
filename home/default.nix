@@ -70,6 +70,9 @@
       ngrok
       dnsutils
       gh
+      tomato-c
+      tenv
+      fd
     ];
     pointerCursor = {
       #package = pkgs.redglass;

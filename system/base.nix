@@ -119,10 +119,10 @@
   };
 
   # nixpkgs
-  # nixpkgs.config = {
-  #   allowUnfree = true;
-  #   permittedInsecurePackages = [ "electron-18.1.0" ];
-  # };
+  nixpkgs.config = {
+    allowUnfree = true;
+    permittedInsecurePackages = [ "electron-18.1.0" ];
+  };
 
   # nix settings
   nix = {
