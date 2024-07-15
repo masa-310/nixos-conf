@@ -71,6 +71,7 @@
       dnsutils
       gh
       aichat
+      slack-cli
     ];
     pointerCursor = {
       #package = pkgs.redglass;
