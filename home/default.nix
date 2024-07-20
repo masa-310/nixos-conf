@@ -70,8 +70,11 @@
       ngrok
       dnsutils
       gh
+      tomato-c
+      tenv
+      fd
       aichat
-      slack-cli
+      # slack-cli
     ];
     pointerCursor = {
       #package = pkgs.redglass;
