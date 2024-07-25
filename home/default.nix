@@ -1,10 +1,11 @@
-{ config, pkgs, ... }: 
+ config, pkgs, ... }: 
 
 
 {
   imports = [
     ./modules/editor/nvim.nix
     ./modules/program/nodejs.nix
+    ./modules/program/scala.nix
     ./modules/program/elm.nix
     ./modules/program/haskell.nix
     ./modules/program/starship.nix
