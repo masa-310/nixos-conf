@@ -18,6 +18,9 @@
       mail = {
         enable = true;
       };
+      _1password = {
+        enable = true;
+      };
     };
     display = {
       x = {
