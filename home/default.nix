@@ -5,6 +5,7 @@
   imports = [
     ./modules/editor/nvim.nix
     ./modules/program/nodejs.nix
+    ./modules/program/scala.nix
     ./modules/program/elm.nix
     ./modules/program/haskell.nix
     ./modules/program/starship.nix
@@ -89,10 +90,9 @@
       la = "ls -a";
       ll = "ls -l";
       lla = "ls -la";
-      nixconf-pull = "pushd $HOME/nixos-conf; just update; popd";
-      nixconf-pull-dotfile = "pushd $HOME/nixos-conf; just update-dotfile; popd";
-      home-switch = "pushd $HOME/nixos-conf; just home; popd";
-      nixos-switch = "pushd $HOME/nixos-conf; just system; popd";
+      nixconf-home = "pushd $HOME/nixos-conf; just update home; popd";
+      nixconf-system = "pushd $HOME/nixos-conf; just update system; popd";
+      nixconf-dotfiles = "pushd $HOME/nixos-conf; just update-dotfile system; popd";
       hey = "aichat";
     };
   };

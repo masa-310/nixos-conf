@@ -102,7 +102,7 @@
   ];
 
   # Enable sound.
-  sound.enable = true;
+  # sound.enable = true;
   # sound
   hardware.pulseaudio = {
     enable = true;
