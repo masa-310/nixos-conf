@@ -11,5 +11,6 @@
     ./modules/display/x.nix
     ./modules/user/masashi.nix
     ./modules/hardware/touchpad.nix
+    ./modules/hardware/nvidia.nix
   ];
 }
