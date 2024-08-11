@@ -48,9 +48,6 @@
       enable = true;
     };
     tool = {
-      _1password = {
-        enable = true;
-      };
       newsboat = {
         enable = true;
       };

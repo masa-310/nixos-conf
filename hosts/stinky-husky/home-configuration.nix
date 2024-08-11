@@ -10,6 +10,11 @@
     ../../templates/home/base.nix
   ];
   modules = {
+    program = {
+      scala = {
+        enable = true;
+      };
+    };
     tool = {
       aws = {
         enable = true;
