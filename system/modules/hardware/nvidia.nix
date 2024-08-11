@@ -11,7 +11,6 @@ in {
   };
   config = mkIf self.enable {
     services.xserver.videoDrivers = [ "nvidia" ];
-    hardware.opengl.enable = true;
     hardware.nvidia = {
       # Modesetting is needed most of the time
       modesetting.enable = true;
