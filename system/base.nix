@@ -32,6 +32,8 @@
     sysstat
     zip
     lm_sensors
+    lshw
+    hdparm
   ];
 
   # ssh
