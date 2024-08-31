@@ -45,7 +45,7 @@
       # texlive.combined.scheme-full
       tree
       slack
-      obsidian
+      # obsidian
       # nodejs-10_x
       pciutils
       wmname
