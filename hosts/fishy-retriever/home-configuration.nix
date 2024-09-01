@@ -14,6 +14,9 @@
       _3dprint = {
         enable = true;
       };
+      xid-gen = {
+        enable = true;
+      };
     };
   };
 }

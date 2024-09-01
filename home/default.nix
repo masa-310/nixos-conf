@@ -24,6 +24,7 @@
     ./modules/tool/aws.nix
     ./modules/tool/newsboat.nix
     ./modules/tool/_3dprint.nix
+    ./modules/tool/xid-gen.nix
   ];
   # Let Home Manager install and manage itself.
   fonts.fontconfig.enable = true;
