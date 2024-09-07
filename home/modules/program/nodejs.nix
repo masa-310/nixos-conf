@@ -18,7 +18,7 @@ in {
       pkgs.${"nodejs-${toString self.version}_x"}
       typescript-language-server
       yarn
-      eslint
+      # eslint
       eslint_d
       vscode-langservers-extracted
       prettier

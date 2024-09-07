@@ -34,6 +34,8 @@
     lm_sensors
     lshw
     hdparm
+    cmake
+    pkg-config
   ];
 
   # ssh
