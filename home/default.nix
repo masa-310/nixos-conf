@@ -28,7 +28,6 @@
   # Let Home Manager install and manage itself.
   fonts.fontconfig.enable = true;
   home = {
-    stateVersion = "23.05";
     username = "masashi";
     homeDirectory = "/home/masashi";
     keyboard.layout = "us";
