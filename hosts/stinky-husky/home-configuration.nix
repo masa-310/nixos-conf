@@ -19,6 +19,9 @@
       aws = {
         enable = true;
       };
+      xid-gen = {
+        enable = true;
+      };
     };
   };
   home.stateVersion = "24.05";
