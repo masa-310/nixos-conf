@@ -110,7 +110,7 @@
   # sound.enable = true;
   # sound
   hardware.pulseaudio = {
-    enable = true;
+    enable = false;
     package = pkgs.pulseaudioFull;
   };
 
