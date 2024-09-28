@@ -91,7 +91,7 @@
       lla = "ls -la";
       nixconf-home = "pushd $HOME/nixos-conf; just update home; popd";
       nixconf-system = "pushd $HOME/nixos-conf; just update system; popd";
-      nixconf-dotfiles = "pushd $HOME/nixos-conf; just update-dotfile system; popd";
+      nixconf-dotfiles = "pushd $HOME/nixos-conf; just update-dotfile home; popd";
       hey = "aichat";
     };
   };
