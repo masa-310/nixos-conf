@@ -36,6 +36,7 @@
     hdparm
     cmake
     pkg-config
+    libva-utils
   ];
 
   # ssh
