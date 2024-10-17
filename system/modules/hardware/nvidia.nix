@@ -3,10 +3,10 @@
 
 with builtins;
 with lib;
-let self = config.modules.service.nvidia;
+let self = config.modules.hardware.nvidia;
 in {
   imports = [];
-  options.modules.service.nvidia = {
+  options.modules.hardware.nvidia = {
     enable = mkEnableOption "nvidia";
   };
   config = mkIf self.enable {
@@ -17,7 +17,8 @@ in {
 
       # Enable power management (do not disable this unless you have a reason to).
       # Likely to cause problems on laptops and with screen tearing if disabled.
-      powerManagement.enable = true;
+      powerManagement.enable = false;
+      # powerManagement.finegrained = true;
 
       # Use the NVidia open source kernel module (which isn't “nouveau”).
       # Support is limited to the Turing and later architectures. Full list of 
@@ -33,7 +34,7 @@ in {
       # Optionally, you may need to select the appropriate driver version for your specific GPU.
       package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
-    hardware.opengl = {
+    hardware.graphics = {
       enable = true;
       extraPackages = with pkgs; [
         libvdpau-va-gl

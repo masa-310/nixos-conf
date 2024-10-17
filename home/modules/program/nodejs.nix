@@ -1,4 +1,4 @@
-{ lib, config, pkgs, dotfile, ... }:
+{ lib, config, pkgs, ... }:
 
 with builtins;
 with lib;
@@ -18,11 +18,13 @@ in {
       pkgs.${"nodejs-${toString self.version}_x"}
       typescript-language-server
       yarn
-      eslint
+      # eslint
       eslint_d
       vscode-langservers-extracted
       prettier
       nodePackages."@tailwindcss/language-server"
+      volta
+      pm2
     ];
     home.sessionPath = [ "$(${pkgs.yarn}/bin/yarn global bin)" ];
     home.file.".npmrc".text = ''

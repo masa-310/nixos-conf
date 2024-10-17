@@ -1,4 +1,4 @@
-{ config, pkgs, unstable, hostname, ...}:
+{ config, pkgs, extra, ...}:
 
 {
   # packages
@@ -28,10 +28,14 @@
     peek
     xfce.thunar
     imagemagick
-    gnupg
     dmidecode
     sysstat
     zip
+    lm_sensors
+    lshw
+    hdparm
+    cmake
+    pkg-config
   ];
 
   # ssh
@@ -44,7 +48,7 @@
 
   # network
   networking = {
-    hostName = hostname;
+    hostName = extra.hostname;
     wireless = {
       iwd = {
         enable = true;
@@ -68,7 +72,8 @@
    i18n = {
      defaultLocale = "en_US.UTF-8";
      inputMethod = {
-       enabled = "fcitx5";
+       enable = true;
+       type = "fcitx5";
        fcitx5.addons = with pkgs; [
          fcitx5-mozc
        ];
@@ -102,10 +107,10 @@
   ];
 
   # Enable sound.
-  sound.enable = true;
+  # sound.enable = true;
   # sound
   hardware.pulseaudio = {
-    enable = true;
+    enable = false;
     package = pkgs.pulseaudioFull;
   };
 
@@ -124,21 +129,30 @@
     permittedInsecurePackages = [ "electron-18.1.0" ];
   };
 
-  # nix settings 
+  # nix settings
   nix = {
     optimise = {
       automatic = true;
       dates = [ "03:45" ];
     };
-    settings.extra-experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
+    settings = {
+      substituters = [
+        "https://cache.nixos.org/"
+        "https://nix-community.cachix.org"
+      ];
+      trusted-public-keys = [
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      ];
+      extra-experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+    };
     nixPath = [
-      "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos"
+      "nixpkgs=${extra.pkg-path}"
+      "unstable=${extra.unstable-path}"
       "nixos-config=/etc/nixos/configuration.nix"
       "/nix/var/nix/profiles/per-user/root/channels"
-      "unstable=${unstable.outPath}"
     ];
     extraOptions = ''
       keep-outputs = true
@@ -150,5 +164,10 @@
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
   # should.
-  system.stateVersion = "23.05"; # Did you read the comment?
+  services.pcscd.enable = true;
+  programs.gnupg.agent = {
+   enable = true;
+   enableSSHSupport = true;
+};
+
 }

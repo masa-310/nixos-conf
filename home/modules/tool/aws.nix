@@ -2,16 +2,16 @@
 
 with builtins;
 with lib;
-let self = config.modules.tool._1password;
+let self = config.modules.tool.aws;
 in {
   imports = [];
-  options.modules.tool._1password = {
-    enable = mkEnableOption "_1password";
+  options.modules.tool.aws = {
+    enable = mkEnableOption "aws";
   };
   config = mkIf self.enable {
     home.packages = with pkgs; [
-      _1password
-      _1password-gui-beta
+      awscli2
+      ssm-session-manager-plugin
     ];
   };
 }

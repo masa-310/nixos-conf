@@ -1,4 +1,4 @@
-{ system, nixpkgs, pkgs, home-manager, dotfile, hostname, ... }:
+{ system, nixpkgs, pkgs, home-manager, hostname, ... }:
 
 {
   home.file.".Xmodmap" = {
@@ -9,4 +9,20 @@
   imports = [
     ../../templates/home/base.nix
   ];
+  modules = {
+    program = {
+      scala = {
+        enable = true;
+      };
+    };
+    tool = {
+      aws = {
+        enable = true;
+      };
+      xid-gen = {
+        enable = true;
+      };
+    };
+  };
+  home.stateVersion = "24.05";
 }

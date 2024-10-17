@@ -1,9 +1,9 @@
-{ lib, config, pkgs, dotfile, hostname, system, ... }:
+{ lib, config, pkgs, extra, ... }:
 
 with builtins;
 with lib;
 let self = config.modules.windowManager.xmonad;
-    xmonadCommand = pkgs.xmonad-config.defaultPackage.${system} + "/bin/xmonad-config";
+    xmonadCommand = extra.xmonad-config.defaultPackage.${extra.system} + "/bin/xmonad-config";
 in {
   imports = [];
   options.modules.windowManager.xmonad = {
@@ -26,9 +26,9 @@ in {
           export QT_QPA_PLATFORMTHEME=qt5ct
 
           # import user environment especially for picom
-          systemcl --user import-environment XAUTHORITY DISPLAY
+          systemctl --user import-environment XAUTHORITY DISPLAY
 
-          XMONAD_HOST=${hostname} ${xmonadCommand}
+          XMONAD_HOST=${extra.hostname} ${xmonadCommand}
         '';
       };
     };

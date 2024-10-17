@@ -1,4 +1,4 @@
-{ lib, config, pkgs, dotfile, ... }:
+{ lib, config, pkgs, ... }:
 
 with builtins;
 with lib;
@@ -13,7 +13,12 @@ in {
       go
       gopls
       air
+      go-migrate
       golangci-lint
+      gotools
+      wire
+      mockgen
+      gotestsum
     ];
   };
 }

@@ -1,10 +1,11 @@
-{ config, pkgs, hostname, ... }: 
+ { config, pkgs, ... }: 
 
 
 {
   imports = [
     ./modules/editor/nvim.nix
     ./modules/program/nodejs.nix
+    ./modules/program/scala.nix
     ./modules/program/elm.nix
     ./modules/program/haskell.nix
     ./modules/program/starship.nix
@@ -13,18 +14,21 @@
     ./modules/program/go.nix
     ./modules/program/c.nix
     ./modules/program/rust.nix
+    ./modules/program/sql.nix
     ./modules/program/texlive.nix
     ./modules/windowManager/xmonad.nix
     ./modules/terminal/alacritty.nix
     ./modules/terminal/wezterm.nix
     ./modules/shell/zsh.nix
     ./modules/tool/unixporn.nix
-    ./modules/tool/1password.nix
+    ./modules/tool/aws.nix
+    ./modules/tool/newsboat.nix
+    ./modules/tool/_3dprint.nix
+    ./modules/tool/xid-gen.nix
   ];
   # Let Home Manager install and manage itself.
   fonts.fontconfig.enable = true;
   home = {
-    stateVersion = "23.05";
     username = "masashi";
     homeDirectory = "/home/masashi";
     keyboard.layout = "us";
@@ -41,7 +45,7 @@
       # texlive.combined.scheme-full
       tree
       slack
-      obsidian
+      # obsidian
       # nodejs-10_x
       pciutils
       wmname
@@ -63,9 +67,14 @@
       # hacksaw
       # strongswan
       # xl2tpd
-      # xmobar
-      # yarn
-      # zsh
+      ngrok
+      dnsutils
+      gh
+      tomato-c
+      tenv
+      fd
+      aichat
+      # slack-cli
     ];
     pointerCursor = {
       #package = pkgs.redglass;
@@ -80,10 +89,10 @@
       la = "ls -a";
       ll = "ls -l";
       lla = "ls -la";
-      flake-pull = "pushd $HOME/nixos-conf; just update; popd";
-      flake-pull-dotfile = "pushd $HOME/nixos-conf; just update-dotfile; popd";
-      home-switch = "pushd $HOME/nixos-conf; just home; popd";
-      nixos-switch = "pushd $HOME/nixos-conf; just system; popd";
+      nixconf-home = "pushd $HOME/nixos-conf; just update home; popd";
+      nixconf-system = "pushd $HOME/nixos-conf; just update system; popd";
+      nixconf-dotfiles = "pushd $HOME/nixos-conf; just update-dotfile home; popd";
+      hey = "aichat";
     };
   };
 

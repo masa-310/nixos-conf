@@ -11,12 +11,10 @@ in {
   config = mkIf self.enable {
     services.xserver = {
       enable = true;
-      layout = "us";
-      xkbOptions = "ctrl:nocaps";
-
-      # Enable touchpad support.
-      libinput.enable = true;
-
+      xkb = {
+        options = "ctrl:nocaps";
+        layout = "us";
+      };
       displayManager = {
         startx.enable = true;
       };
@@ -24,6 +22,8 @@ in {
     services.autorandr = {
       enable = true;
     };
+    # Enable touchpad support.
+    services.libinput.enable = true;
   };
 }
 

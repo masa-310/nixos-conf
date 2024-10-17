@@ -1,53 +1,23 @@
-{ system, nixpkgs, pkgs, home-manager, dotfile, hostname, ... }:
+{ ... }:
 
 {
-  home.packages = with pkgs; [
-    weston
+  imports = [
+    ../../templates/home/base.nix
   ];
   modules = {
-    editor.neovim = {
-      enable = true;
+    program = {
+      scala = {
+        enable = true;
+      };
     };
-    program.nodejs = {
-      enable = true;
-      version = 18;
-    };
-    program.starship = {
-      enable = true;
-      shell = "zsh";
-    };
-    program.rofi = {
-      enable = true;
-    };
-    program.polybar = {
-      enable = true;
-    };
-    windowManager.xmonad = {
-      enable = true;
-    };
-    terminal.wezterm = {
-      enable = true;
-    };
-    shell.zsh = {
-      enable = true;
-    };
-    program.elm = {
-      enable = true;
-    };
-    program.go = {
-      enable = true;
-    };
-    program.c = {
-      enable = true;
-    };
-    program.rust = {
-      enable = true;
-    };
-    tool.unixporn = {
-      enable = true;
-    };
-    tool._1password = {
-      enable = true;
+    tool = {
+      _3dprint = {
+        enable = true;
+      };
+      xid-gen = {
+        enable = true;
+      };
     };
   };
+  home.stateVersion = "23.05";
 }

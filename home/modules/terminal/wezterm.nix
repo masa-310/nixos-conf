@@ -1,4 +1,4 @@
-{ lib, config, pkgs, dotfile, ... }:
+{ lib, config, pkgs, extra, ... }:
 
 with builtins;
 with lib;
@@ -13,7 +13,7 @@ in {
       pkgs.wezterm
     ];
     home.file.".wezterm.lua" = {
-      source = "${dotfile}/.wezterm.lua";
+      source = "${extra.dotfile}/.wezterm.lua";
     };
   };
 }
