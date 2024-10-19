@@ -26,7 +26,7 @@ in {
           export QT_QPA_PLATFORMTHEME=qt5ct
 
           # import user environment especially for picom
-          systemcl --user import-environment XAUTHORITY DISPLAY
+          systemctl --user import-environment XAUTHORITY DISPLAY
 
           XMONAD_HOST=${extra.hostname} ${xmonadCommand}
         '';
