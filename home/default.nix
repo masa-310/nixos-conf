@@ -74,7 +74,7 @@
       tenv
       fd
       aichat
-      exa
+      eza
       # slack-cli
     ];
     pointerCursor = {
