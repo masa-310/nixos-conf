@@ -4,7 +4,7 @@ host := `hostname`
 default: update system home
 
 update:
-  nix flake update '.' --extra-experimental-features 'nix-command flakes'
+  nix flake update --flake '.' --extra-experimental-features 'nix-command flakes'
 
 update-dotfile:
   nix flake lock --update-input dotfile

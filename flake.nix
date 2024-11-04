@@ -6,6 +6,10 @@
     home-manager = {
       url = "github:nix-community/home-manager";
     };
+    wezterm-flake = {
+      url = "github:wez/wezterm/main?dir=nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     dotfile = {
       url = "github:masa-310/dotfiles";
       flake = false;
@@ -17,7 +21,7 @@
     xmonad-config.url = "github:masa-310/xmonad-conf";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
-  outputs = {self, nixpkgs, nixpkgs-unstable, home-manager, dotfile, xid-gen, nixos-hardware, xmonad-config, ... }: 
+  outputs = {self, nixpkgs, nixpkgs-unstable, home-manager, dotfile, xid-gen, nixos-hardware, xmonad-config, wezterm-flake, ... }: 
     let
       overlay = final: prev: {};
       overlays = [overlay];
@@ -29,7 +33,7 @@
       };
       pkgs = import nixpkgs { inherit system overlays config; } // { outPath = nixpkgs.outPath; lib = nixpkgs.lib;};
       unstable = import nixpkgs-unstable { inherit system overlays config; } // { outPath = nixpkgs-unstable.outPath; lib = nixpkgs-unstable.lib;};
-      extra = { inherit dotfile nixos-hardware xmonad-config xid-gen; };
+      extra = { inherit dotfile nixos-hardware xmonad-config xid-gen wezterm-flake; };
       confByHost = import ./hosts { inherit system home-manager pkgs unstable extra; };
       nixosConfigurations = builtins.mapAttrs (_: conf: conf.nixosConfigurations) confByHost;
       homeConfigurations = builtins.mapAttrs (_: conf: conf.homeConfigurations) confByHost;

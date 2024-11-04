@@ -19,6 +19,8 @@ in {
       wire
       mockgen
       gotestsum
+      impl
+      protolint
     ];
   };
 }

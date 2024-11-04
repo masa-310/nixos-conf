@@ -54,7 +54,6 @@
       rbw
       bat
       drawing
-      wezterm
       nodePackages.cspell
       nil
       ripgrep
