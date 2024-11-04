@@ -9,9 +9,6 @@
       picom = {
         enable = true;
       };
-      printer = {
-        enable = true;
-      };
       greetd = {
         enable = true;
       };
