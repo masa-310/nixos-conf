@@ -9,9 +9,21 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   networking.firewall.allowedTCPPorts = [ 3000 3001 ];
-  hardware.opengl = {
-    enable = true;
+
+  services.thermald.enable = true;
+  services.auto-cpufreq.enable = true;
+  services.auto-cpufreq.settings = {
+    battery = {
+       governor = "powersave";
+       turbo = "never";
+    };
+    charger = {
+       governor = "performance";
+       turbo = "never";
+    };
   };
+
+
   modules = {
     service.picom = {
       enable = true;

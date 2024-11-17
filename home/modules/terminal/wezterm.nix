@@ -10,7 +10,8 @@ in {
   };
   config = mkIf self.enable {
     home.packages = [
-      extra.wezterm-flake.packages."${pkgs.system}".default
+      # extra.wezterm-flake.packages."${pkgs.system}".default
+      pkgs.wezterm
     ];
     home.file.".wezterm.lua" = {
       source = "${extra.dotfile}/.wezterm.lua";
