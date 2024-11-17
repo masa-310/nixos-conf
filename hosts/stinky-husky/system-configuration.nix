@@ -12,6 +12,10 @@
 
   modules = {
     hardware.nvidia.enable = true;
+    service.printer = {
+      enable = true;
+      places = "home";
+    };
   };
 
   system.stateVersion = "24.05"; # Did you read the comment?
