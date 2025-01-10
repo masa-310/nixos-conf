@@ -42,5 +42,5 @@
   hardware.ipu6.platform = "ipu6ep";
 
   powerManagement.enable = true;
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
 }
