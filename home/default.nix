@@ -4,6 +4,7 @@
 {
   imports = [
     ./modules/editor/nvim.nix
+    ./modules/editor/helix.nix
     ./modules/program/nodejs.nix
     ./modules/program/scala.nix
     ./modules/program/elm.nix
@@ -75,6 +76,10 @@
       aichat
       eza
       # slack-cli
+      obsidian
+      anki
+      p7zip
+      devenv
     ];
     pointerCursor = {
       #package = pkgs.redglass;
