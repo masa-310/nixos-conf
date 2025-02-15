@@ -80,6 +80,7 @@
       anki
       p7zip
       devenv
+      remmina
     ];
     pointerCursor = {
       #package = pkgs.redglass;
