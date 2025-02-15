@@ -12,7 +12,8 @@ in {
     home.packages = with pkgs.elmPackages; [
       pkgs.watchman
       elm
-      elm-test
+      # package broken (2025-02-08)
+      #elm-test
       elm-language-server
       elm-format
       elm-analyse
