@@ -24,7 +24,7 @@ in {
       rofi-rbw
       rofi-emoji
       rofi-bluetooth
-      rofi-file-browser
+      # rofi-file-browser
       wtype
     ];
   };

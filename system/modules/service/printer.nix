@@ -16,7 +16,8 @@ in {
   config = mkIf self.enable {
     services.printing = {
       enable = true;
-      drivers = if self.places == "home" then [ pkgs.epson-escpr pkgs.epson-escpr2 ] else [];
+      # broken
+      # drivers = if self.places == "home" then [ pkgs.epson-escpr pkgs.epson-escpr2 ] else [];
     };
     services.avahi = {
       enable = true;

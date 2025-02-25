@@ -5,6 +5,11 @@
     ../../templates/home/base.nix
   ];
   modules = {
+    editor = {
+      helix = {
+        enable = true;
+      };
+    };
     program = {
       scala = {
         enable = true;

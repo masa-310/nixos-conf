@@ -4,6 +4,7 @@
 {
   imports = [
     ./modules/editor/nvim.nix
+    ./modules/editor/helix.nix
     ./modules/program/nodejs.nix
     ./modules/program/scala.nix
     ./modules/program/elm.nix
@@ -75,6 +76,11 @@
       aichat
       eza
       # slack-cli
+      obsidian
+      anki
+      p7zip
+      devenv
+      remmina
     ];
     pointerCursor = {
       #package = pkgs.redglass;
@@ -85,10 +91,16 @@
     };
     shellAliases = {
       g = "git";
-      l = "ls";
-      la = "ls -a";
-      ll = "ls -l";
-      lla = "ls -la";
+      l = "eza";
+      la = "eza -a";
+      ll = "eza -l";
+      lla = "eza -la";
+      cat = "bat";
+      gch = "git checkout";
+      gl = "git log";
+      gb = "git branch --sort=-committerdate  --format='%(color:red)%(objectname:short)%(color:reset) %(HEAD) %(align:30)%(color:yellow)%(refname:short)%(color:reset)%(end) %(align:28)%(color:green)%(committerdate:relative)%(color:reset)%(end) %(align:25)%(color:magenta)%(authorname)%(color:reset)%(end) %(color:blue)%(contents:subject)%(color:reset)'";
+      gp = "g push";
+      gcm = "git commit";
       nixconf-home = "pushd $HOME/nixos-conf; just update home; popd";
       nixconf-system = "pushd $HOME/nixos-conf; just update system; popd";
       nixconf-dotfiles = "pushd $HOME/nixos-conf; just update-dotfile home; popd";
