@@ -12,4 +12,14 @@
     ../../templates/home/base.nix
   ];
   home.stateVersion = "24.05";
+  modules = {
+    tool = {
+      aws = {
+        enable = true;
+      };
+      xid-gen = {
+        enable = true;
+      };
+    };
+  };
 }
