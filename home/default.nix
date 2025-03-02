@@ -99,7 +99,10 @@
       gch = "git checkout";
       gl = "git log";
       gb = "git branch --sort=-committerdate  --format='%(color:red)%(objectname:short)%(color:reset) %(HEAD) %(align:30)%(color:yellow)%(refname:short)%(color:reset)%(end) %(align:28)%(color:green)%(committerdate:relative)%(color:reset)%(end) %(align:25)%(color:magenta)%(authorname)%(color:reset)%(end) %(color:blue)%(contents:subject)%(color:reset)'";
-      gp = "g push";
+      gps = "git push";
+      gpl = "git pull";
+      gf = "git fetch";
+      gr = "git reset";
       gcm = "git commit";
       nixconf-home = "pushd $HOME/nixos-conf; just update home; popd";
       nixconf-system = "pushd $HOME/nixos-conf; just update system; popd";
@@ -218,6 +221,7 @@
 
   xsession = {
     enable = true;
+    initExtra = "xset r rate 200 150";
     # profileExtra = builtins.readFile("${homedir}/home-manager/.dotfiles/.xprofile");
     # windowManager = {
     #   xmonad = {
