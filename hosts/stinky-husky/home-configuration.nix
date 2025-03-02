@@ -10,6 +10,11 @@
     ../../templates/home/base.nix
   ];
   modules = {
+    editor = {
+      helix = {
+        enable = true;
+      };
+    };
     program = {
       scala = {
         enable = true;
@@ -25,4 +30,7 @@
     };
   };
   home.stateVersion = "24.05";
+  home.packages = [
+    pkgs.remmina
+  ];
 }
