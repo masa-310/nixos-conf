@@ -91,6 +91,10 @@ in {
                 };
               }
             ];
+            completion = {
+              model = "gemini";
+              parameters = [];
+            };
           };
         };
         language = [
@@ -101,6 +105,14 @@ in {
           {
             name = "typescript";
             language-servers = ["typescript-language-server" "lsp-ai"];
+          }
+          {
+            name = "tsx";
+            language-servers = ["typescript-language-server" "lsp-ai"];
+          }
+          {
+            name = "elm";
+            language-servers = ["elm-language-server" "lsp-ai"];
           }
         ];
       };

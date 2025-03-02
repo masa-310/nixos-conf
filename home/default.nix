@@ -78,6 +78,9 @@
       # slack-cli
       devenv
       remmina
+      xan
+      fd
+      broot
     ];
     pointerCursor = {
       #package = pkgs.redglass;
