@@ -171,7 +171,12 @@ in {
         language = [
           {
             name = "go";
+            auto-format = true;
             language-servers = ["gopls" "golangci-lint-lsp" "lsp-ai"];
+            indent = {
+              tab-width = 2;
+              unit = " ";
+            };
           }
           {
             name = "typescript";
@@ -180,6 +185,10 @@ in {
             formatter = {
               command = "prettier";
               args = [ "--parser" "typescript"];
+            };
+            indent = {
+              tab-width = 2;
+              unit = " ";
             };
           }
           {
@@ -191,14 +200,26 @@ in {
               command = "prettier";
               args = [ "--parser" "typescript"];
             };
+            indent = {
+              tab-width = 2;
+              unit = " ";
+            };
           }
           {
             name = "tsx";
             language-servers = ["typescript-language-server" "lsp-ai"];
+            indent = {
+              tab-width = 2;
+              unit = " ";
+            };
           }
           {
             name = "elm";
             language-servers = ["elm-language-server" "lsp-ai"];
+            indent = {
+              tab-width = 2;
+              unit = " ";
+            };
           }
         ];
       };
