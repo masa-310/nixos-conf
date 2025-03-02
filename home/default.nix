@@ -81,6 +81,9 @@
       p7zip
       devenv
       remmina
+      xan
+      fd
+      broot
     ];
     pointerCursor = {
       #package = pkgs.redglass;
