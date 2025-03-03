@@ -26,6 +26,9 @@ in {
             command = "${pkgs.eslint_d}/bin/eslint_d";
             args = ["--stdin"];
           };
+          helix-gpt = {
+            command = "${helix-gpt}/bin/helix-gpt";
+          };
           lsp-ai = {
             command = "${lsp-ai}/bin/lsp-ai";
             config = {
@@ -39,6 +42,12 @@ in {
                   chat_endpoint = "https://generativelanguage.googleapis.com/v1beta/models/";
                   model = "gemini-1.5-flash";
                   auth_token_env_var_name = "GEMINI_API_KEY";
+                };
+                mistral = {
+                  type = "mistral_fim";
+                  fim_endpoint = "https://api.mistral.ai/v1/fim/completions";
+                  model = "codestral-latest";
+                  auth_token_env_var_name = "MISTRAL_API_KEY";
                 };
               };
               chat= [
@@ -131,13 +140,18 @@ in {
                 parameters = {
                   max_context = 4096;
                   max_tokens = 4096;
-                  system = "You are an AI coding assistant. Your task is to complete code snippets. The user's cursor position is marked by \"<CURSOR>\". Follow these steps:\n\n1. Analyze the code context and the cursor position.\n2. Provide your chain of thought reasoning, wrapped in <reasoning> tags. Include thoughts about the cursor position, what needs to be completed, and any necessary formatting.\n3. Determine the appropriate code to complete the current thought, including finishing partial words or lines.\n4. Replace \"<CURSOR>\" with the necessary code, ensuring proper formatting and line breaks.\n5. Wrap your code solution in <answer> tags.\n\nYour response should always include both the reasoning and the answer. Pay special attention to completing partial words or lines before adding new lines of code.\n\n<examples>\n<example>\nUser input:\n--main.py--\n# A function that reads in user inpu<CURSOR>\n\nResponse:\n<reasoning>\n1. The cursor is positioned after \"inpu\" in a comment describing a function that reads user input.\n2. We need to complete the word \"input\" in the comment first.\n3. After completing the comment, we should add a new line before defining the function.\n4. The function should use Python's built-in `input()` function to read user input.\n5. We'll name the function descriptively and include a return statement.\n</reasoning>\n\n<answer>t\ndef read_user_input():\n    user_input = input(\"Enter your input: \")\n    return user_input\n</answer>\n</example>\n\n<example>\nUser input:\n--main.py--\ndef fibonacci(n):\n    if n <= 1:\n        return n\n    else:\n        re<CURSOR>\n\n\nResponse:\n<reasoning>\n1. The cursor is positioned after \"re\" in the 'else' clause of a recursive Fibonacci function.\n2. We need to complete the return statement for the recursive case.\n3. The \"re\" already present likely stands for \"return\", so we'll continue from there.\n4. The Fibonacci sequence is the sum of the two preceding numbers.\n5. We should return the sum of fibonacci(n-1) and fibonacci(n-2).\n</reasoning>\n\n<answer>turn fibonacci(n-1) + fibonacci(n-2)</answer>\n</example>\n</examples>";
-                  messages = [
-                    {
-                      role =  "user";
-                      content = "{CODE}";
-                    }
-                  ];
+                  contents = [{
+                    role = "user";
+                    parts = [{
+                      text = "{CONTEXT} and {CODE[]}";
+                    }];
+                    systemInstruction = [{
+                      role = "system";
+                      parts = [{
+                        text = "You are an AI coding assistant. Your task is to complete code snippets. The user's cursor position is marked by \"<CURSOR>\". Follow these steps:\n\n1. Analyze the code context and the cursor position.\n2. Provide your chain of thought reasoning, wrapped in <reasoning> tags. Include thoughts about the cursor position, what needs to be completed, and any necessary formatting.\n3. Determine the appropriate code to complete the current thought, including finishing partial words or lines.\n4. Replace \"<CURSOR>\" with the necessary code, ensuring proper formatting and line breaks.\n5. Wrap your code solution in <answer> tags.\n\nYour response should always include both the reasoning and the answer. Pay special attention to completing partial words or lines before adding new lines of code.\n\n<examples>\n<example>\nUser input:\n--main.py--\n# A function that reads in user inpu<CURSOR>\n\nResponse:\n<reasoning>\n1. The cursor is positioned after \"inpu\" in a comment describing a function that reads user input.\n2. We need to complete the word \"input\" in the comment first.\n3. After completing the comment, we should add a new line before defining the function.\n4. The function should use Python's built-in `input()` function to read user input.\n5. We'll name the function descriptively and include a return statement.\n</reasoning>\n\n<answer>t\ndef read_user_input():\n    user_input = input(\"Enter your input: \")\n    return user_input\n</answer>\n</example>\n\n<example>\nUser input:\n--main.py--\ndef fibonacci(n):\n    if n <= 1:\n        return n\n    else:\n        re<CURSOR>\n\n\nResponse:\n<reasoning>\n1. The cursor is positioned after \"re\" in the 'else' clause of a recursive Fibonacci function.\n2. We need to complete the return statement for the recursive case.\n3. The \"re\" already present likely stands for \"return\", so we'll continue from there.\n4. The Fibonacci sequence is the sum of the two preceding numbers.\n5. We should return the sum of fibonacci(n-1) and fibonacci(n-2).\n</reasoning>\n\n<answer>turn fibonacci(n-1) + fibonacci(n-2)</answer>\n</example>\n</examples>";
+                      }];
+                    }];
+                  }];
                 };
                 post_process = {
                   extractor = "(?s)<answer>(.*?)</answer>";
@@ -163,8 +177,11 @@ in {
               }
             ];
             completion = {
-              model = "gemini";
-              parameters = [];
+              model = "mistral";
+              parameters = [{
+                max_tokens = 64;
+                max_context = 1024;
+              }];
             };
           };
         };
@@ -172,7 +189,7 @@ in {
           {
             name = "go";
             auto-format = true;
-            language-servers = ["gopls" "golangci-lint-lsp" "lsp-ai"];
+            language-servers = ["gopls" "golangci-lint-lsp" "helix-gpt"];
             indent = {
               tab-width = 2;
               unit = " ";
@@ -181,7 +198,7 @@ in {
           {
             name = "typescript";
             auto-format = true;
-            language-servers = ["typescript-language-server" "lsp-ai" "tailwindcss-language-server" "eslint_d"];
+            language-servers = ["typescript-language-server" "helix-gpt" "tailwindcss-language-server" "eslint_d"];
             formatter = {
               command = "prettier";
               args = [ "--parser" "typescript"];
@@ -194,7 +211,7 @@ in {
           {
             name = "tsx";
             auto-format = true;
-            language-servers = ["typescript-language-server" "lsp-ai" "tailwindcss-language-server" "eslint_d"];
+            language-servers = ["typescript-language-server" "helix-gpt" "tailwindcss-language-server" "eslint_d"];
             file-types = ["tsx"];
             formatter = {
               command = "prettier";
@@ -207,7 +224,7 @@ in {
           }
           {
             name = "tsx";
-            language-servers = ["typescript-language-server" "lsp-ai"];
+            language-servers = ["typescript-language-server" "helix-gpt"];
             indent = {
               tab-width = 2;
               unit = " ";
@@ -215,7 +232,7 @@ in {
           }
           {
             name = "elm";
-            language-servers = ["elm-language-server" "lsp-ai"];
+            language-servers = ["elm-language-server" "helix-gpt"];
             indent = {
               tab-width = 2;
               unit = " ";
@@ -225,8 +242,8 @@ in {
       };
     };
     home.packages = with pkgs; [
-      helix-gpt
       lsp-ai
+      helix-gpt
     ];
   };
 }
