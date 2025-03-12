@@ -84,6 +84,7 @@
       xan
       fd
       broot
+      serpl
     ];
     pointerCursor = {
       #package = pkgs.redglass;

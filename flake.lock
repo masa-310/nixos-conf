@@ -86,11 +86,11 @@
     "dotfile": {
       "flake": false,
       "locked": {
-        "lastModified": 1737183548,
-        "narHash": "sha256-3oSTuOpuR4JzGqHAWxUqbF1FcMrJbCAEep/maH+0O8A=",
+        "lastModified": 1741366710,
+        "narHash": "sha256-a9aGhcVxR7FSVhzG4iTVaH+EmF4YE9aBaEnof1zqq+s=",
         "owner": "masa-310",
         "repo": "dotfiles",
-        "rev": "2cd0e7f6f8d15653013968be3169b872e711149c",
+        "rev": "a27ab80583265872effd33f1b7f5c9bc403a0f81",
         "type": "github"
       },
       "original": {

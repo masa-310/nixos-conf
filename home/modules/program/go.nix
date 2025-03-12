@@ -21,6 +21,7 @@ in {
       gotestsum
       impl
       protolint
+      buf
     ];
   };
 }
