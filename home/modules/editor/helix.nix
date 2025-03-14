@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, pkgs, extra, ... }:
 
 with builtins;
 with lib;
@@ -44,6 +44,10 @@ in {
           };
           helix-gpt = {
             command = "${helix-gpt}/bin/helix-gpt";
+          };
+          codebook = {
+            command = "${extra.codebook}/bin/codebook";
+            args = ["serve"];
           };
           lsp-ai = {
             command = "${lsp-ai}/bin/lsp-ai";
@@ -375,7 +379,7 @@ Response:
           {
             name = "go";
             auto-format = true;
-            language-servers = ["gopls" "golangci-lint-lsp" "helix-gpt"];
+            language-servers = ["gopls" "golangci-lint-lsp" "helix-gpt" "codebook"];
             indent = {
               tab-width = 2;
               unit = " ";
@@ -384,7 +388,7 @@ Response:
           {
             name = "typescript";
             auto-format = true;
-            language-servers = ["typescript-language-server" "helix-gpt" "tailwindcss-language-server" "eslint_d"];
+            language-servers = ["typescript-language-server" "helix-gpt" "tailwindcss-language-server" "eslint_d" "codebook"];
             formatter = {
               command = "prettier";
               args = [ "--parser" "typescript"];
@@ -397,7 +401,7 @@ Response:
           {
             name = "tsx";
             auto-format = true;
-            language-servers = ["typescript-language-server" "helix-gpt" "tailwindcss-language-server" "eslint_d"];
+            language-servers = ["typescript-language-server" "helix-gpt" "tailwindcss-language-server" "eslint_d" "codebook"];
             file-types = ["tsx"];
             formatter = {
               command = "prettier";
@@ -408,17 +412,10 @@ Response:
               unit = " ";
             };
           }
-          {
-            name = "tsx";
-            language-servers = ["typescript-language-server" "helix-gpt"];
-            indent = {
-              tab-width = 2;
-              unit = " ";
-            };
-          }
+          
           {
             name = "elm";
-            language-servers = ["elm-language-server" "helix-gpt"];
+            language-servers = ["elm-language-server" "helix-gpt" "codebook"];
             indent = {
               tab-width = 2;
               unit = " ";
@@ -426,7 +423,14 @@ Response:
           }
           {
             name = "protobuf";
-            language-servers = ["buf" "helix-gpt"];
+            language-servers = ["buf" "helix-gpt" "codebook"];
+            indent = {
+              tab-width = 2;
+              unit = " ";
+            };
+          }{
+            name = "sql";
+            language-servers = ["helix-gpt" "codebook"];
             indent = {
               tab-width = 2;
               unit = " ";

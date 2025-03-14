@@ -23,6 +23,8 @@
   };
   outputs = {self, nixpkgs, nixpkgs-unstable, home-manager, dotfile, xid-gen, nixos-hardware, xmonad-config, wezterm-flake, ... }: 
     let
+      codebook = pkgs.callPackage ./pkgs/codebook.nix {};
+
       overlay = final: prev: {};
       overlays = [overlay];
       system = "x86_64-linux";
@@ -33,7 +35,7 @@
       };
       pkgs = import nixpkgs { inherit system overlays config; } // { outPath = nixpkgs.outPath; lib = nixpkgs.lib;};
       unstable = import nixpkgs-unstable { inherit system overlays config; } // { outPath = nixpkgs-unstable.outPath; lib = nixpkgs-unstable.lib;};
-      extra = { inherit dotfile nixos-hardware xmonad-config xid-gen wezterm-flake; };
+      extra = { inherit dotfile nixos-hardware xmonad-config xid-gen wezterm-flake codebook; };
       confByHost = import ./hosts { inherit system home-manager pkgs unstable extra; };
       nixosConfigurations = builtins.mapAttrs (_: conf: conf.nixosConfigurations) confByHost;
       homeConfigurations = builtins.mapAttrs (_: conf: conf.homeConfigurations) confByHost;

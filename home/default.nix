@@ -22,6 +22,7 @@
     ./modules/terminal/wezterm.nix
     ./modules/shell/zsh.nix
     ./modules/tool/unixporn.nix
+    ./modules/tool/codebook.nix
     ./modules/tool/aws.nix
     ./modules/tool/newsboat.nix
     ./modules/tool/_3dprint.nix
@@ -85,6 +86,7 @@
       fd
       broot
       serpl
+      pdfcpu
     ];
     pointerCursor = {
       #package = pkgs.redglass;
