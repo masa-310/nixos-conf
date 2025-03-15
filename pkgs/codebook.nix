@@ -1,10 +1,33 @@
-{ pkgs }:pkgs.stdenv.mkDerivation {
+{ pkgs }:
+
+pkgs.rustPlatform.buildRustPackage rec {
   name = "codebook";
-  src = fetchTarball {
-    name = "codebook";
-    url  = "https://github.com/blopker/codebook/releases/download/v0.2.4/codebook-lsp-x86_64-unknown-linux-gnu.tar.gz";
-    sha256 = "sha256:08j96ybjlx90kfz5fk23lmgg1ww2bz38kmnjvav35mrx50z7dx1j";
+  pname = "codebook";
+  version = "0.2.4";
+  cargoSha256 = "";
+  src = pkgs.fetchFromGitHub {
+    owner= "blopker";
+    repo = "codebook";
+    rev = "v${version}";
+    sha256 = "sha256-My22vLhPN5oPKQxWGYrEtODveGnDJ+8CdI2jQ2X5XOU=";
   };
-  phases = ["installPhase"];
-  installPhase = "mkdir -p $out/bin; cp -r $src $out/bin";
+  nativeBuildInputs = with pkgs; [
+    perl
+    bun
+  ];
+  buildInput = with pkgs; [
+    cargo
+    rustc
+  ];
+  buildPhase = ''
+    make build-release
+  '';
+  buildType = "release";
+  cargoHash = "sha256-DBYlBsyokbgUaTfk8t2yE6qgnAHRXeNEOxYwywzsbo8=";
+  checkType = "debug";
+  doCheck = false;
+  installPhase = ''
+    mkdir -p $out/bin
+    cp ./target/release/codebook-lsp $out/bin
+  '';
 }

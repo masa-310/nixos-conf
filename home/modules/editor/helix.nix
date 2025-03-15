@@ -46,7 +46,7 @@ in {
             command = "${helix-gpt}/bin/helix-gpt";
           };
           codebook = {
-            command = "${extra.codebook}/bin/codebook";
+            command = "${extra.codebook}/bin/codebook-lsp";
             args = ["serve"];
           };
           lsp-ai = {
