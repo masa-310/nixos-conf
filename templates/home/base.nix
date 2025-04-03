@@ -55,6 +55,12 @@
     tool.unixporn = {
       enable = true;
     };
+    tool.codebook = {
+      enable = true;
+    };
+    tool.broot = {
+      enable = true;
+    };
     #program.texlive = {
     #  enable = true;
     #  scheme = "japanese";
