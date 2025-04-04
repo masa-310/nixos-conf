@@ -33,7 +33,10 @@
       };
       pkgs = import nixpkgs { inherit system overlays config; } // { outPath = nixpkgs.outPath; lib = nixpkgs.lib;};
       unstable = import nixpkgs-unstable { inherit system overlays config; } // { outPath = nixpkgs-unstable.outPath; lib = nixpkgs-unstable.lib;};
-      extra = { inherit dotfile nixos-hardware xmonad-config xid-gen wezterm-flake; };
+
+      codebook = import ./pkgs/codebook.nix { pkgs = unstable; };
+      extra = { inherit dotfile nixos-hardware xmonad-config xid-gen wezterm-flake codebook; };
+
       confByHost = import ./hosts { inherit system home-manager pkgs unstable extra; };
       nixosConfigurations = builtins.mapAttrs (_: conf: conf.nixosConfigurations) confByHost;
       homeConfigurations = builtins.mapAttrs (_: conf: conf.homeConfigurations) confByHost;

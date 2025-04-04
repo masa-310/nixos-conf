@@ -22,10 +22,12 @@
     ./modules/terminal/wezterm.nix
     ./modules/shell/zsh.nix
     ./modules/tool/unixporn.nix
+    ./modules/tool/codebook.nix
     ./modules/tool/aws.nix
     ./modules/tool/newsboat.nix
     ./modules/tool/_3dprint.nix
     ./modules/tool/xid-gen.nix
+    ./modules/tool/broot.nix
   ];
   # Let Home Manager install and manage itself.
   fonts.fontconfig.enable = true;
@@ -83,7 +85,8 @@
       remmina
       xan
       fd
-      broot
+      serpl
+      pdfcpu
     ];
     pointerCursor = {
       #package = pkgs.redglass;
@@ -110,6 +113,7 @@
       gd = "git diff";
       gst = "git status";
       ga = "git add";
+      br = "broot";
       nixconf-home = "pushd $HOME/nixos-conf; just update home; popd";
       nixconf-system = "pushd $HOME/nixos-conf; just update system; popd";
       nixconf-dotfiles = "pushd $HOME/nixos-conf; just update-dotfile home; popd";

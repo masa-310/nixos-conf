@@ -15,12 +15,15 @@ in {
       air
       go-migrate
       golangci-lint
+      golangci-lint-langserver
       gotools
+      delve
       wire
       mockgen
       gotestsum
       impl
       protolint
+      buf
     ];
   };
 }
