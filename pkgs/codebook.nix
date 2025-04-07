@@ -23,7 +23,7 @@ pkgs.rustPlatform.buildRustPackage rec {
     make build-release
   '';
   buildType = "release";
-  cargoHash = "sha256-DBYlBsyokbgUaTfk8t2yE6qgnAHRXeNEOxYwywzsbo8=";
+  cargoHash = "sha256-3yd0P9OWvmeYgrujsXQ5kEEdsDyomOKd0Ylj7OY4ZRU=";
   checkType = "debug";
   doCheck = false;
   installPhase = ''

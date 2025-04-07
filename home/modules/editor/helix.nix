@@ -87,6 +87,16 @@ in {
             command = "${extra.codebook}/bin/codebook-lsp";
             args = ["serve"];
           };
+          emmet-language-server = {
+            command = "${emmet-language-server}/bin/emmet-language-server";
+            args =  ["--stdio"];
+          };
+          golangci-lint-lsp = {
+            command = "${golangci-lint-langserver}/bin/golangci-lint-langserver";
+            config = {
+              command = "${golangci-lint}/bin/golangci-lint run --output.json.path stdout --show-stats=false --issues-exit-code=1";
+            };
+          };
           lsp-ai = {
             command = "${lsp-ai}/bin/lsp-ai";
             config = {
@@ -421,6 +431,24 @@ Response:
         };
         language = [
           {
+            name = "cpp";
+            auto-format = true;
+            language-servers = ["ccls" "helix-gpt" "codebook"];
+            indent = {
+              tab-width = 2;
+              unit = " ";
+            };
+          }
+          {
+            name = "python";
+            auto-format = true;
+            language-servers = ["pyright" "helix-gpt" "codebook"];
+            indent = {
+              tab-width = 2;
+              unit = " ";
+            };
+          }
+          {
             name = "go";
             auto-format = true;
             language-servers = ["gopls" "golangci-lint-lsp" "helix-gpt" "codebook"];
@@ -446,7 +474,7 @@ Response:
             name = "tsx";
             auto-format = true;
             file-types = ["tsx"];
-            language-servers = ["typescript-language-server" "helix-gpt" "tailwindcss-language-server" "eslint" "codebook"];
+            language-servers = ["typescript-language-server" "helix-gpt" "emmet-language-server" "tailwindcss-language-server" "eslint" "codebook"];
             formatter = {
               command = "prettier";
               args = [ "--parser" "typescript"];
