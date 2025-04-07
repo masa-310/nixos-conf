@@ -13,6 +13,11 @@
   ];
   home.stateVersion = "24.05";
   modules = {
+    editor = {
+      helix = {
+        enable = true;
+      };
+    };
     tool = {
       aws = {
         enable = true;
