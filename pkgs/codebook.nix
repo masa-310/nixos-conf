@@ -11,6 +11,7 @@ pkgs.rustPlatform.buildRustPackage rec {
     rev = "v${version}";
     sha256 = "sha256-My22vLhPN5oPKQxWGYrEtODveGnDJ+8CdI2jQ2X5XOU=";
   };
+  useFetchCargoVendor = true;
   nativeBuildInputs = with pkgs; [
     perl
     bun
@@ -23,7 +24,7 @@ pkgs.rustPlatform.buildRustPackage rec {
     make build-release
   '';
   buildType = "release";
-  cargoHash = "sha256-DBYlBsyokbgUaTfk8t2yE6qgnAHRXeNEOxYwywzsbo8=";
+  cargoHash = "sha256-3yd0P9OWvmeYgrujsXQ5kEEdsDyomOKd0Ylj7OY4ZRU=";
   checkType = "debug";
   doCheck = false;
   installPhase = ''
