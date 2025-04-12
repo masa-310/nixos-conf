@@ -22,6 +22,9 @@ in {
           completion-timeout = 5;
           completion-trigger-len = 1;
           end-of-line-diagnostics = "hint";
+          soft-wrap = {
+            enable = true;
+          };
           inline-diagnostics = {
             cursor-line = "warning";
           };
@@ -38,6 +41,41 @@ in {
             command = "${pkgs.tailwindcss-language-server}/bin/tailwindcss-language-server";
             args = ["--stdio"];
           };
+          eslint = {
+            command = "${pkgs.vscode-langservers-extracted}/bin/vscode-eslint-language-server";
+            args = ["--stdin"];
+            config = {
+               validate = "on";
+               experimental = {
+                 useFlatConfig = false;
+               };
+               rulesCustomizations = [];
+               run = "onType";
+               problems = {
+                 shortenToSingleLine = false;
+               };
+               nodePath = "";
+
+               codeAction = {
+                 disableRuleComment = {
+                   enable = true;
+                   location = "separateLine";
+                 };
+                 showDocumentation = {
+                   enable = true;
+                 };
+               };
+
+               codeActionOnSave = {
+                 enable = true;
+                 mode = "fixAll";
+               };
+
+               workingDirectory = {
+                 mode = "location";
+               };
+            };
+          };
           eslint_d = {
             command = "${pkgs.eslint_d}/bin/eslint_d";
             args = ["--stdin"];
@@ -48,6 +86,16 @@ in {
           codebook = {
             command = "${extra.codebook}/bin/codebook-lsp";
             args = ["serve"];
+          };
+          emmet-language-server = {
+            command = "${emmet-language-server}/bin/emmet-language-server";
+            args =  ["--stdio"];
+          };
+          golangci-lint-lsp = {
+            command = "${golangci-lint-langserver}/bin/golangci-lint-langserver";
+            config = {
+              command = "${golangci-lint}/bin/golangci-lint run --output.json.path stdout --show-stats=false --issues-exit-code=1";
+            };
           };
           lsp-ai = {
             command = "${lsp-ai}/bin/lsp-ai";
@@ -75,6 +123,12 @@ in {
                   model =  "gpt-3.5-turbo";
                   auth_token_env_var_name = "OPENAI_API_KEY";
                 };
+                copilot = {
+                  type = "open_ai";
+                  chat_endpoint = "https://api.githubcopilot.com/chat/completions";
+                  model =  "";
+                  auth_token_env_var_name = "COPILOT_API_KEY";
+                };
               };
               chat= [
                 {
@@ -101,7 +155,7 @@ in {
               actions = [
                 {
                   action_display_name = "lsp-ai:complete";
-                  model = "openai";
+                  model = "copilot";
                   parameters = {
                     max_context = 4096;
                     max_tokens = 4096;
@@ -179,7 +233,7 @@ Response:
                 }
                 {
                   action_display_name = "lsp-ai:refactor";
-                  model = "openai";
+                  model = "copilot";
                   parameters = {
                     max_context = 4096;
                     max_tokens = 4096;
@@ -197,7 +251,7 @@ Response:
                 }
               ];
               # completion = {
-              #   model = "openai";
+              #   model = "copilot";
               #   parameters = {
               #     max_tokens = 64;
               #     max_context = 1024;
@@ -377,6 +431,24 @@ Response:
         };
         language = [
           {
+            name = "cpp";
+            auto-format = true;
+            language-servers = ["ccls" "helix-gpt" "codebook"];
+            indent = {
+              tab-width = 2;
+              unit = " ";
+            };
+          }
+          {
+            name = "python";
+            auto-format = true;
+            language-servers = ["pyright" "helix-gpt" "codebook"];
+            indent = {
+              tab-width = 2;
+              unit = " ";
+            };
+          }
+          {
             name = "go";
             auto-format = true;
             language-servers = ["gopls" "golangci-lint-lsp" "helix-gpt" "codebook"];
@@ -388,7 +460,7 @@ Response:
           {
             name = "typescript";
             auto-format = true;
-            language-servers = ["typescript-language-server" "helix-gpt" "tailwindcss-language-server" "eslint_d" "codebook"];
+            language-servers = ["typescript-language-server" "helix-gpt" "tailwindcss-language-server" "eslint" "codebook"];
             formatter = {
               command = "prettier";
               args = [ "--parser" "typescript"];
@@ -401,8 +473,8 @@ Response:
           {
             name = "tsx";
             auto-format = true;
-            language-servers = ["typescript-language-server" "helix-gpt" "tailwindcss-language-server" "eslint_d" "codebook"];
             file-types = ["tsx"];
+            language-servers = ["typescript-language-server" "helix-gpt" "emmet-language-server" "tailwindcss-language-server" "eslint" "codebook"];
             formatter = {
               command = "prettier";
               args = [ "--parser" "typescript"];
@@ -412,7 +484,6 @@ Response:
               unit = " ";
             };
           }
-          
           {
             name = "elm";
             language-servers = ["elm-language-server" "helix-gpt" "codebook"];

@@ -27,6 +27,7 @@
     ./modules/tool/newsboat.nix
     ./modules/tool/_3dprint.nix
     ./modules/tool/xid-gen.nix
+    ./modules/tool/broot.nix
   ];
   # Let Home Manager install and manage itself.
   fonts.fontconfig.enable = true;
@@ -84,9 +85,9 @@
       remmina
       xan
       fd
-      broot
       serpl
       pdfcpu
+      arduino-ide
     ];
     pointerCursor = {
       #package = pkgs.redglass;
