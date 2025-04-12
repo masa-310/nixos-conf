@@ -97,6 +97,10 @@ in {
               command = "${golangci-lint}/bin/golangci-lint run --output.json.path stdout --show-stats=false --issues-exit-code=1";
             };
           };
+          sqls = {
+            command = "${sqls}/bin/sqls";
+            # args = ["-config $HOME/.config/sqls/config.yml"];
+          };
           lsp-ai = {
             command = "${lsp-ai}/bin/lsp-ai";
             config = {
@@ -433,7 +437,7 @@ Response:
           {
             name = "cpp";
             auto-format = true;
-            language-servers = ["ccls" "helix-gpt" "codebook"];
+            language-servers = ["ccls" "lsp-ai" "codebook"];
             indent = {
               tab-width = 2;
               unit = " ";
@@ -442,7 +446,7 @@ Response:
           {
             name = "python";
             auto-format = true;
-            language-servers = ["pyright" "helix-gpt" "codebook"];
+            language-servers = ["pyright" "lsp-ai" "codebook"];
             indent = {
               tab-width = 2;
               unit = " ";
@@ -451,7 +455,7 @@ Response:
           {
             name = "go";
             auto-format = true;
-            language-servers = ["gopls" "golangci-lint-lsp" "helix-gpt" "codebook"];
+            language-servers = ["gopls" "golangci-lint-lsp" "lsp-ai" "codebook"];
             indent = {
               tab-width = 2;
               unit = " ";
@@ -460,7 +464,7 @@ Response:
           {
             name = "typescript";
             auto-format = true;
-            language-servers = ["typescript-language-server" "helix-gpt" "tailwindcss-language-server" "eslint" "codebook"];
+            language-servers = ["typescript-language-server" "lsp-ai" "tailwindcss-language-server" "eslint" "codebook"];
             formatter = {
               command = "prettier";
               args = [ "--parser" "typescript"];
@@ -474,7 +478,7 @@ Response:
             name = "tsx";
             auto-format = true;
             file-types = ["tsx"];
-            language-servers = ["typescript-language-server" "helix-gpt" "emmet-language-server" "tailwindcss-language-server" "eslint" "codebook"];
+            language-servers = ["typescript-language-server" "lsp-ai" "emmet-language-server" "tailwindcss-language-server" "eslint" "codebook"];
             formatter = {
               command = "prettier";
               args = [ "--parser" "typescript"];
@@ -486,7 +490,7 @@ Response:
           }
           {
             name = "elm";
-            language-servers = ["elm-language-server" "helix-gpt" "codebook"];
+            language-servers = ["elm-language-server" "lsp-ai" "codebook"];
             indent = {
               tab-width = 2;
               unit = " ";
@@ -494,14 +498,14 @@ Response:
           }
           {
             name = "protobuf";
-            language-servers = ["buf" "helix-gpt" "codebook"];
+            language-servers = ["buf" "lsp-ai" "codebook"];
             indent = {
               tab-width = 2;
               unit = " ";
             };
           }{
             name = "sql";
-            language-servers = ["helix-gpt" "codebook"];
+            language-servers = ["sqls" "lsp-ai" "codebook"];
             indent = {
               tab-width = 2;
               unit = " ";
@@ -514,5 +518,36 @@ Response:
       lsp-ai
       helix-gpt
     ];
+    xdg.configFile = {
+      "sqls/config.yml" = {
+        enable = true;
+        text = ''
+lowercaseKeywords: false
+connections:
+  - alias: id_local
+    driver: mysql
+    proto: tcp
+    user: root
+    passwd: root
+    host: 127.0.0.1
+    port: 3306
+    dbName: id_local
+    params:
+      autocommit: "true"
+      tls: skip-verify
+  - alias: release_local
+    driver: mysql
+    proto: tcp
+    user: root
+    passwd: root
+    host: 127.0.0.1
+    port: 3306
+    dbName: release_local
+    params:
+      autocommit: "true"
+      tls: skip-verify
+'';
+      };
+    };
   };
 }
