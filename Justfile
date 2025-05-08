@@ -1,6 +1,6 @@
 # https://nixos-and-flakes.thiscute.world/best-practices/simplify-nixos-related-commands
 
-host := "flatten-collie"
+host := `hostname`
 
 default: update system home
 

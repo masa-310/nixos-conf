@@ -88,6 +88,7 @@
       serpl
       pdfcpu
       arduino-ide
+      typos-lsp
     ];
     pointerCursor = {
       #package = pkgs.redglass;

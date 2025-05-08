@@ -9,13 +9,13 @@ in {
     enable = mkEnableOption "nodejs";
     version = mkOption {
       type = types.number;
-      default = 18;
+      default = 20;
       description = "Nodejs version. Should be eigther of 14, 16, or 18";
     };
   };
   config = mkIf self.enable {
     home.packages = with pkgs; with nodePackages; [
-      pkgs.${"nodejs-${toString self.version}_x"}
+      pkgs.${"nodejs_${toString self.version}"}
       typescript-language-server
       yarn
       # eslint

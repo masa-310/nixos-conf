@@ -21,11 +21,9 @@ in {
       vimAlias = true;
       withNodeJs = true;
       withPython3 = true;
-      extraConfig = ''
-        set runtimepath+=${extra.dotfile}/nvim
-        runtime! init.vim
-        source ${config.home.homeDirectory}/.nvimrc
-      '';
     };
+    home.file.".config/nvim".source =
+      config.lib.file.mkOutOfStoreSymlink
+      "${extra.dotfile}/nvim";
   };
 }
