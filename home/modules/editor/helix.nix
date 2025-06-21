@@ -80,9 +80,6 @@ in {
             command = "${pkgs.eslint_d}/bin/eslint_d";
             args = ["--stdin"];
           };
-          helix-gpt = {
-            command = "${helix-gpt}/bin/helix-gpt";
-          };
           codebook = {
             command = "${extra.codebook}/bin/codebook-lsp";
             args = ["serve"];
@@ -100,6 +97,9 @@ in {
           sqls = {
             command = "${sqls}/bin/sqls";
             # args = ["-config $HOME/.config/sqls/config.yml"];
+          };
+          hcl = {
+            command = "${terraform-ls}/bin/terraform-ls";
           };
           lsp-ai = {
             command = "${lsp-ai}/bin/lsp-ai";
@@ -574,9 +574,18 @@ Response:
               tab-width = 2;
               unit = " ";
             };
-          }{
+          }
+          {
             name = "sql";
             language-servers = ["sqls" "lsp-ai" "codebook"];
+            indent = {
+              tab-width = 2;
+              unit = " ";
+            };
+          }
+          {
+            name = "hcl";
+            language-servers = ["terraform-ls"];
             indent = {
               tab-width = 2;
               unit = " ";
@@ -587,7 +596,6 @@ Response:
     };
     home.packages = with pkgs; [
       lsp-ai
-      helix-gpt
     ];
     xdg.configFile = {
       "sqls/config.yml" = {
