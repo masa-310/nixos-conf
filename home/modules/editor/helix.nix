@@ -80,9 +80,6 @@ in {
             command = "${pkgs.eslint_d}/bin/eslint_d";
             args = ["--stdin"];
           };
-          helix-gpt = {
-            command = "${helix-gpt}/bin/helix-gpt";
-          };
           codebook = {
             command = "${extra.codebook}/bin/codebook-lsp";
             args = ["serve"];
@@ -587,7 +584,6 @@ Response:
     };
     home.packages = with pkgs; [
       lsp-ai
-      helix-gpt
     ];
     xdg.configFile = {
       "sqls/config.yml" = {
