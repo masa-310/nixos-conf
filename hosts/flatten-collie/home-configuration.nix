@@ -15,6 +15,14 @@
       helix = {
         enable = true;
       };
+      neovim = {
+        enable = true;
+      };
+    };
+    program = {
+      terraform = {
+        enable = true;
+      };
     };
     tool = {
       aws = {

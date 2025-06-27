@@ -98,6 +98,9 @@ in {
             command = "${sqls}/bin/sqls";
             # args = ["-config $HOME/.config/sqls/config.yml"];
           };
+          hcl = {
+            command = "${terraform-ls}/bin/terraform-ls";
+          };
           lsp-ai = {
             command = "${lsp-ai}/bin/lsp-ai";
             timeout = 60;
@@ -571,9 +574,18 @@ Response:
               tab-width = 2;
               unit = " ";
             };
-          }{
+          }
+          {
             name = "sql";
             language-servers = ["sqls" "lsp-ai" "codebook"];
+            indent = {
+              tab-width = 2;
+              unit = " ";
+            };
+          }
+          {
+            name = "hcl";
+            language-servers = ["terraform-ls"];
             indent = {
               tab-width = 2;
               unit = " ";

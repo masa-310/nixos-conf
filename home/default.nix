@@ -17,6 +17,7 @@
     ./modules/program/rust.nix
     ./modules/program/sql.nix
     ./modules/program/texlive.nix
+    ./modules/program/terraform.nix
     ./modules/windowManager/xmonad.nix
     ./modules/terminal/alacritty.nix
     ./modules/terminal/wezterm.nix
@@ -73,7 +74,6 @@
       dnsutils
       gh
       tomato-c
-      tenv
       fd
       aichat
       eza
