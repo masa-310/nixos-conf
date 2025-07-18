@@ -89,6 +89,8 @@
       pdfcpu
       arduino-ide
       typos-lsp
+      gemini-cli
+      github-mcp-server
     ];
     pointerCursor = {
       #package = pkgs.redglass;
