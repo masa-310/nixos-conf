@@ -123,7 +123,8 @@
       # geminicommit
       gmc = "geminicommit";
       gmca = "geminicommit --all";
-      gmcp = "geminicommit pr";
+      gmcp = "geminicommit --push";
+      gmcap = "geminicommit --all --push";
       nixconf-home = "pushd $HOME/nixos-conf; just update home; popd";
       nixconf-system = "pushd $HOME/nixos-conf; just update system; popd";
       nixconf-dotfiles = "pushd $HOME/nixos-conf; just update-dotfile home; popd";
