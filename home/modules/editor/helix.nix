@@ -101,6 +101,10 @@ in {
           hcl = {
             command = "${terraform-ls}/bin/terraform-ls";
           };
+          tabby = {
+            command = "${pkgs.tabby-agent}/bin/tabby-agent";
+            args = ["--stdio"];
+          };
           lsp-ai = {
             command = "${lsp-ai}/bin/lsp-ai";
             timeout = 60;
@@ -526,7 +530,7 @@ Response:
           {
             name = "go";
             auto-format = true;
-            language-servers = ["gopls" "golangci-lint-lsp" "lsp-ai" "codebook"];
+            language-servers = ["gopls" "golangci-lint-lsp" "lsp-ai" "codebook" "tabby"];
             indent = {
               tab-width = 2;
               unit = " ";
@@ -535,7 +539,7 @@ Response:
           {
             name = "typescript";
             auto-format = true;
-            language-servers = ["typescript-language-server" "lsp-ai" "tailwindcss-language-server" "eslint" "codebook"];
+            language-servers = ["typescript-language-server" "lsp-ai" "tailwindcss-language-server" "eslint" "codebook" "tabby"];
             formatter = {
               command = "prettier";
               args = [ "--parser" "typescript"];
@@ -549,7 +553,7 @@ Response:
             name = "tsx";
             auto-format = true;
             file-types = ["tsx"];
-            language-servers = ["typescript-language-server" "lsp-ai" "emmet-language-server" "tailwindcss-language-server" "eslint" "codebook"];
+            language-servers = ["typescript-language-server" "lsp-ai" "emmet-language-server" "tailwindcss-language-server" "eslint" "codebook" "tabby"];
             formatter = {
               command = "prettier";
               args = [ "--parser" "typescript"];
@@ -596,6 +600,7 @@ Response:
     };
     home.packages = with pkgs; [
       lsp-ai
+      tabby
     ];
     xdg.configFile = {
       "sqls/config.yml" = {
