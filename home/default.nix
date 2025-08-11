@@ -91,6 +91,7 @@
       typos-lsp
       gemini-cli
       geminicommit
+      github-mcp-server
     ];
     pointerCursor = {
       #package = pkgs.redglass;

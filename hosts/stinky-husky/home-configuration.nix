@@ -27,6 +27,9 @@
       scala = {
         enable = true;
       };
+      terraform = {
+        enable = true;
+      };
     };
     tool = {
       aws = {
