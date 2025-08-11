@@ -1,8 +1,14 @@
-{ lib, config, ... }:
+{ lib, pkgs, config, ... }:
 
 with builtins;
 with lib;
 let self = config.modules.tool.geminicommit;
+    geminiCommitConf = builtins.fromTOML (builtins.readFile ./geminicommit.toml);
+    keyReplacedConf = geminiCommitConf // {
+      api = geminiCommitConf.api // {
+        key = "$(cat ${config.sops.secrets.geminiApiKey.path})";
+      };
+    };
 in {
   imports = [];
   options.modules.tool.geminicommit = {
@@ -11,13 +17,10 @@ in {
   config =
     mkIf self.enable {
       home.packages = [
-        geminicommit
+        pkgs.geminicommit
       ];
       xdg.configFile = {
-        "geminicommit/config.toml" = {
-          source = ./geminicommit.toml;
-          enable = true;
-        };
+        "geminicommit/config.toml".text = keyReplacedConf;
       };
     };
 }
