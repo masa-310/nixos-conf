@@ -117,10 +117,13 @@
       gpl = "git pull";
       gf = "git fetch";
       gr = "git reset";
-      gcm = "git commit";
       gd = "git diff";
       gst = "git status";
       ga = "git add";
+      # geminicommit
+      gmc = "geminicommit";
+      gmca = "geminicommit --all";
+      gmcp = "geminicommit pr";
       nixconf-home = "pushd $HOME/nixos-conf; just update home; popd";
       nixconf-system = "pushd $HOME/nixos-conf; just update system; popd";
       nixconf-dotfiles = "pushd $HOME/nixos-conf; just update-dotfile home; popd";
