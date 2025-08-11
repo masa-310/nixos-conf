@@ -14,6 +14,9 @@
       scala = {
         enable = true;
       };
+      terraform = {
+        enable = true;
+      };
     };
     tool = {
       _3dprint = {
