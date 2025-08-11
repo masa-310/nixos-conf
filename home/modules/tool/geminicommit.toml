@@ -1,0 +1,91 @@
+[api]
+model = "gemini-2.5-flash"
+userContext = """
+# AI Commit Message Guidelines
+
+These guidelines are designed to enable AI to generate clear, consistent commit messages with Gitmoji conventions. The aim is to clearly communicate changes and make project history easy to read.
+
+### 1. Basic Commit Message Structure
+
+A commit message should follow this format:
+
+```
+<emoji> <type>(<scope>): <subject>
+
+[Optional body]
+
+[Optional footer]
+```
+
+*   **`<emoji>`**: A Gitmoji emoji indicating the intent of the change.
+*   **`<type>`**: An English verb describing the type of change. This should align with the emoji's meaning. If the branch name forms like `<type>(<scope>)`, pick the <type>, otherwise guess from the code change. 
+*   **`(<scope>)`**: (Optional) Describes the specific area, module, or feature affected by the change. If the branch name forms like `<type>(<scope>)`, pick the <type>, otherwise guess from the code change. E.g., `(auth)`, `(UI)`, `(api)`.
+*   **`<subject>`**: A concise summary of the change (recommended 50 characters max).
+    *   Use the imperative mood (e.g., "Add", "Fix", "Refactor").
+    *   Avoid punctuation at the end.
+    *   Example: `Add user registration feature`, `Fix login error`.
+*   **`[Optional body]`**: (Optional) Provides more detailed information about the change's motivation, context, or implementation details that couldn't fit in the subject.
+    *   Use bullet points (`- ` or `* `) or multiple paragraphs.
+    *   Explain *why* the change was made, *what* it resolves, and *what* its impact is.
+*   **`[Optional footer]`**: (Optional) For related issue numbers, breaking changes, or references.
+    *   E.g., `Fixes #123`, `Closes #456`, `BREAKING CHANGE: ...`
+
+### 2. Commit Emojis (Gitmoji) and Usage Rules
+
+Select the most appropriate emoji based on the type of change:
+
+| Emoji | Type       | Meaning / Use Case                                                              | Example                                                            |
+| :---- | :--------- | :------------------------------------------------------------------------------ | :----------------------------------------------------------------- |
+| `✨`   | `feat`     | **New feature**. Adds new functionality that delivers user value.               | `✨ feat(user): Add user registration feature`                     |
+| `🐛`   | `fix`      | **Bug fix**. Corrects an error or unexpected behavior.                          | `🐛 fix(login): Fix login validation error`                        |
+| `📝`   | `docs`     | **Documentation**. Adds, updates, or corrects documentation (e.g., README, JSDoc, Wiki). | `📝 docs: Update README with installation steps`                   |
+| `🎨`   | `style`    | **Code formatting**. Changes to whitespace, indentation, formatting, etc., that do not affect code logic. | `🎨 style(css): Adjust button styling`                             |
+| `♻️`   | `refactor` | **Refactoring**. Improves existing code (readability, structure, etc.) without adding features or fixing bugs. | `♻️ refactor(auth): Refactor authentication process`                |
+| `🚀`   | `perf`     | **Performance**. Improves application speed or efficiency.                      | `🚀 perf(api): Improve API response speed`                         |
+| `🧪`   | `test`     | **Tests**. Adds, modifies, or deletes test code.                                | `🧪 test(user): Add user registration tests`                       |
+| `⚙️`   | `chore`    | **Chore**. Miscellaneous changes not related to features, fixes, or docs (e.g., build process, tooling, dependency management). | `⚙️ chore: Update ESLint configuration`                            |
+| `🔥`   | `remove`   | **Removal**. Deletes code or files (e.g., deprecated features, unused files).   | `🔥 remove(legacy): Remove old utility functions`                  |
+| `⬆️`   | `deps`     | **Dependencies**. Updates library or package versions.                          | `⬆️ deps: Update React to v18`                                     |
+| `🩹`   | `hotfix`   | **Hotfix**. Immediate fix for critical issues, especially in production.        | `🩹 hotfix: Fix critical payment processing bug`                   |
+| `🚨`   | `lint`     | **Lint**. Fixes linting issues or updates linting rules.                        | `🚨 lint: Remove unused console.log statements`                    |
+| `✅`   | `ci`       | **CI/CD**. Changes to CI/CD configuration files or scripts.                     | `✅ ci: Add GitHub Actions workflow`                               |
+| `🔒`   | `security` | **Security**. Addresses security vulnerabilities or improves security.          | `🔒 security: Address XSS vulnerability`                           |
+| `📦`   | `build`    | **Build**. Changes related to the build system, external dependencies, or packaging. | `📦 build: Optimize Webpack configuration`                         |
+| `👷`   | `infra`    | **Infrastructure**. Changes to infrastructure (e.g., deployment, server config). | `👷 infra: Change S3 bucket permissions`                           |
+| `🌐`   | `i18n`     | **Internationalization**. Changes related to i18n or l10n, including translation files. | `🌐 i18n: Add Japanese translations for error messages`            |
+| `⏪`   | `revert`   | **Revert**. Reverts a previous commit.                                          | `⏪ revert: Revert accidental test code addition (#abcde12)`       |
+
+### 3. AI Commit Message Generation Process and Considerations
+
+AI should follow these steps and considerations when creating a commit message:
+
+1.  **Analyze Change Content**: Detailly analyze the Git diff and any provided context (purpose, background of the change) to accurately understand what the change entails.
+2.  **Select Appropriate Emoji and Type (`type`)**:
+    *   Based on the analysis, select the most appropriate and accurate emoji and `type`.
+    *   If multiple types of changes are mixed, prioritize the **main change**. Committing in separate, focused chunks is highly recommended if possible.
+3.  **Identify Scope (`scope`)**:
+    *   If the change is limited to a specific area of the project (e.g., `user`, `auth`, `UI`, `API`, `database`), specify that scope concretely.
+    *   Omit the scope if it's a general change or difficult to pinpoint.
+4.  **Create Subject Line (`subject`)**:
+    *   Summarize the change concisely and specifically (recommended max 50 characters).
+    *   Use the imperative mood (e.g., "Add...", "Fix...") and avoid punctuation.
+    *   Capture the core of the change so its content is clear at a glance.
+5.  **Write Body (`body`) (if needed)**:
+    *   Describe complex changes, design decisions, considerations, or the *why* behind the change if the subject alone is insufficient.
+    *   Utilize bullet points (`- ` or `* `) for readability.
+    *   Explain *what* was changed, *why* it was changed, and *how* it was changed in detail.
+6.  **Write Footer (`footer`) (if needed)**:
+    *   Reference any related issues or tasks using `Fixes #XXX` or `Closes #XXX`.
+    *   If there are backward-incompatible changes (Breaking Changes) to existing APIs or features, describe their details and impact after `BREAKING CHANGE:`.
+7.  **Ensure Consistency and Accuracy**:
+    *   Verify that the selected emoji, type, scope, subject, and body content are consistent with each other.
+    *   Only include accurate, factual information; avoid vague expressions or speculation.
+    *   Ensure natural language use and no typos or grammatical errors.
+
+### 4. Prohibited Actions
+
+*   **Vague Commit Messages**: E.g., only "Update", "Fix", "Change". Always clearly state what was updated.
+*   **Personal Feelings or Irrelevant Information**: Do not include personal comments or information unrelated to the commit content.
+*   **Overly Long Subjects**: Keep subjects concise; detailed information belongs in the body.
+*   **Mixing Multiple Types in a Single Commit**: Avoid combining different types of changes (e.g., a new feature and a bug fix) in one commit as much as possible. If unavoidable, prioritize the main change type and mention other changes in the body.
+"""

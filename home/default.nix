@@ -29,6 +29,7 @@
     ./modules/tool/_3dprint.nix
     ./modules/tool/xid-gen.nix
     ./modules/tool/broot.nix
+    ./modules/tool/geminicommit.nix
   ];
   # Let Home Manager install and manage itself.
   fonts.fontconfig.enable = true;
@@ -251,6 +252,18 @@
     #     #config = "${homedir}/home-manager/.dotfiles/xmonad.hs";
     #   };
     # };
+  };
+
+  sops = {
+    defaultSopsFile = ../secrets/shared.yaml;
+    defaultSymlinkPath = "/run/user/1000/secrets";
+    age = {
+      keyFile = "${config.xdg.configHome}/sops/age/keys.txt";
+      generateKey = true;
+    };
+    secrets = {
+      geminiApiKey.path = "${config.sops.defaultSymlinkPath}/geminiApiKey";
+    };
   };
 }
  

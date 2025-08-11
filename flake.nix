@@ -20,8 +20,12 @@
     };
     xmonad-config.url = "github:masa-310/xmonad-conf";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
-  outputs = {self, nixpkgs, nixpkgs-unstable, home-manager, dotfile, xid-gen, nixos-hardware, xmonad-config, wezterm-flake, ... }: 
+  outputs = {self, nixpkgs, nixpkgs-unstable, home-manager, dotfile, xid-gen, nixos-hardware, xmonad-config, wezterm-flake, sops-nix, ... }: 
     let
       overlay = final: prev: {};
       overlays = [overlay];
@@ -35,7 +39,7 @@
       unstable = import nixpkgs-unstable { inherit system overlays config; } // { outPath = nixpkgs-unstable.outPath; lib = nixpkgs-unstable.lib;};
 
       codebook = import ./pkgs/codebook.nix { pkgs = unstable; };
-      extra = { inherit dotfile nixos-hardware xmonad-config xid-gen wezterm-flake codebook; };
+      extra = { inherit dotfile nixos-hardware xmonad-config xid-gen wezterm-flake codebook sops-nix; };
 
       confByHost = import ./hosts { inherit system home-manager pkgs unstable extra; };
       nixosConfigurations = builtins.mapAttrs (_: conf: conf.nixosConfigurations) confByHost;

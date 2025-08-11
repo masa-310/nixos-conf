@@ -35,6 +35,7 @@ in builtins.listToAttrs (builtins.map (hostname: {
                 modules = [
                   ../home
                   homeConfigPath
+                  extra.sops-nix.homeManagerModules.sops
                 ];
               };
           };

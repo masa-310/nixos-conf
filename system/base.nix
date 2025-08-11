@@ -39,6 +39,8 @@
     libva-utils
     git-credential-manager
     pstree
+    age
+    sops
   ];
 
   # ssh
