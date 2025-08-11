@@ -4,12 +4,18 @@
 # for a more complex example.
 keys:
   - &fishy-retriever age18ev7rfr2lqf7jm3vt028jctjjw6962gzsnmj90wmglc7mews39vq6uwlje
+  - &stinky-husky age1fu5x8gl2j9kre4sk9nwaw6ajytl7egvqwhujqdzgwqwehcy0ayhsmk3u6m
 creation_rules:
   - path_regex: secrets/shared.yaml$
     key_groups:
     - age:
       - *fishy-retriever
+      - *stinky-husky
   - path_regex: secrets/hosts/fishy-retriever.yaml
     key_groups:
     - age:
       - *fishy-retriever
+  - path_regex: secrets/hosts/stinky-husky.yaml
+    key_groups:
+    - age:
+      - *stinky-husky

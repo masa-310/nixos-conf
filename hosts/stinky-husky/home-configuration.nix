@@ -38,6 +38,9 @@
       xid-gen = {
         enable = true;
       };
+      geminicommit = {
+        enable = true;
+      };
     };
   };
   home.stateVersion = "24.05";

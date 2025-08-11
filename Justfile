@@ -10,6 +10,9 @@ update:
 update-dotfile:
     nix flake lock --update-input dotfile
 
+update-shared-sops:
+    sops updatekeys secrets/shared.yaml
+
 home:
     nix build ".?submodule=1#homeConfigurations.{{ host }}.activationPackage" --extra-experimental-features 'nix-command flakes' --show-trace && result/activate
 

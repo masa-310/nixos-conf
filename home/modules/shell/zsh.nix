@@ -47,6 +47,9 @@ in {
         searchDownKey = "^N";
         searchUpKey = "^P";
       };
+      initContent = ''
+export GEMINI_API_KEY=$(cat ${config.sops.secrets.geminiApiKey.path})
+      '';
       plugins = [
         {
           name = "zsh-autosuggestions";

@@ -91,7 +91,6 @@
       arduino-ide
       typos-lsp
       gemini-cli
-      geminicommit
       github-mcp-server
       ghostscript
       riffdiff
