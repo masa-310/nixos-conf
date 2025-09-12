@@ -9,6 +9,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   networking.firewall.allowedTCPPorts = [ 3000 3001 ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.supportedFilesystems = [ "ntfs" ];
 
   modules = {
     hardware.nvidia.enable = true;

@@ -54,7 +54,6 @@
       # nodejs-10_x
       pciutils
       wmname
-      zeal
       # qt6.full
       rbw
       bat
@@ -95,6 +94,8 @@
       ghostscript
       riffdiff
       delta
+      crush
+      aider-chat
     ];
     pointerCursor = {
       #package = pkgs.redglass;
@@ -266,6 +267,7 @@
     };
     secrets = {
       geminiApiKey.path = "${config.sops.defaultSymlinkPath}/geminiApiKey";
+      githubToken.path = "${config.sops.defaultSymlinkPath}/githubToken";
     };
   };
 }

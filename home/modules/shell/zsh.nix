@@ -49,6 +49,7 @@ in {
       };
       initContent = ''
 export GEMINI_API_KEY=$(cat ${config.sops.secrets.geminiApiKey.path})
+export GITHUB_TOKEN=$(cat ${config.sops.secrets.githubToken.path})
       '';
       plugins = [
         {
