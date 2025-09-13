@@ -31,6 +31,9 @@
       xid-gen = {
         enable = true;
       };
+      geminicommit = {
+        enable = true;
+      };
     };
   };
 }
