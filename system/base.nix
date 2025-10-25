@@ -41,6 +41,8 @@
     pstree
     age
     sops
+    ddrescue
+    ntfs3g
   ];
 
   # ssh

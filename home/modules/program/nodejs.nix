@@ -3,6 +3,7 @@
 with builtins;
 with lib;
 let self = config.modules.program.nodejs;
+    nodejsPkg = pkgs."nodejs_${toString self.version}";
 in {
   imports = [];
   options.modules.program.nodejs = {
@@ -15,20 +16,22 @@ in {
   };
   config = mkIf self.enable {
     home.packages = with pkgs; with nodePackages; [
-      pkgs.${"nodejs_${toString self.version}"}
+      nodejsPkg
       typescript-language-server
-      yarn
+      #yarn
       # eslint
       eslint_d
       vscode-langservers-extracted
       prettier
+      prettierd
       nodePackages."@tailwindcss/language-server"
       volta
       pm2
     ];
-    home.sessionPath = [ "$(${pkgs.yarn}/bin/yarn global bin)" ];
+    #home.sessionPath = [ "$(${pkgs.yarn}/bin/yarn global bin)" ];
+    home.sessionPath = [ "$(${nodejsPkg}/bin/npm config get prefix)/bin" ];
     home.file.".npmrc".text = ''
-      prefix=$XDG_DATA_HOME/npm
+      prefix=${config.home.homeDirectory}/npm
     '';
   };
 }

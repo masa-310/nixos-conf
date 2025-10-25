@@ -18,11 +18,19 @@
         enable = true;
       };
     };
+    program = {
+      terraform = {
+        enable = true;
+      };
+    };
     tool = {
       aws = {
         enable = true;
       };
       xid-gen = {
+        enable = true;
+      };
+      geminicommit = {
         enable = true;
       };
     };
