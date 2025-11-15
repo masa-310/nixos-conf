@@ -43,7 +43,8 @@
       unstable = import nixpkgs-unstable { inherit system overlays config; } // { outPath = nixpkgs-unstable.outPath; lib = nixpkgs-unstable.lib;};
 
       codebook = import ./pkgs/codebook.nix { pkgs = unstable; };
-      extra = { inherit dotfile nixos-hardware xmonad-config xid-gen wezterm-flake codebook sops-nix geminicommit-custom; };
+      coderabbit = pkgs.callPackage ./pkgs/coderabbit.nix { };
+      extra = { inherit dotfile nixos-hardware xmonad-config xid-gen wezterm-flake codebook coderabbit sops-nix geminicommit-custom; };
 
       confByHost = import ./hosts { inherit system home-manager pkgs unstable extra; };
       nixosConfigurations = builtins.mapAttrs (_: conf: conf.nixosConfigurations) confByHost;

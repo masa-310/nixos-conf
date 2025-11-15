@@ -24,6 +24,7 @@
     ./modules/shell/zsh.nix
     ./modules/tool/unixporn.nix
     ./modules/tool/codebook.nix
+    ./modules/tool/coderabbit.nix
     ./modules/tool/aws.nix
     ./modules/tool/newsboat.nix
     ./modules/tool/_3dprint.nix
@@ -96,6 +97,10 @@
       delta
       crush
       aider-chat
+      uv
+      google-cloud-sdk
+      glow
+      dive
     ];
     pointerCursor = {
       #package = pkgs.redglass;

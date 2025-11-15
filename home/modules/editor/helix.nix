@@ -28,6 +28,9 @@ in {
           inline-diagnostics = {
             cursor-line = "warning";
           };
+          file-picker = {
+            hidden = false;
+          };
         };
       };
       languages = {
@@ -42,8 +45,11 @@ in {
             args = ["--stdio"];
           };
           eslint = {
-            command = "${pkgs.vscode-langservers-extracted}/bin/vscode-eslint-language-server";
-            args = ["--stdin"];
+            # NOTE: v4.10.0 is not working on helix.
+            #command = "${pkgs.vscode-langservers-extracted}/bin/vscode-eslint-language-server";
+            # NOTE: Assuing vscode-eslint-language-server@v4.8.0 is installed via npm
+            command = "vscode-eslint-language-server";
+            args = ["--stdio"];
             config = {
                validate = "on";
                experimental = {
@@ -72,7 +78,7 @@ in {
                };
 
                workingDirectory = {
-                 mode = "location";
+                 mode = "auto";
                };
             };
           };
@@ -104,6 +110,9 @@ in {
           tabby = {
             command = "${pkgs.tabby-agent}/bin/tabby-agent";
             args = ["--lsp" "--stdio"];
+          };
+          markdown-oxide = {
+            command = "${pkgs.markdown-oxide}/bin/markdown-oxide";
           };
           lsp-ai = {
             command = "${lsp-ai}/bin/lsp-ai";
@@ -600,6 +609,14 @@ Response:
               unit = " ";
             };
           }
+          {
+            name = "markdown";
+            language-servers = ["markdown-oxide" "lsp-ai" "codebook"];
+            indent = {
+              tab-width = 2;
+              unit = " ";
+            };
+          }
         ];
       };
     };
@@ -608,6 +625,14 @@ Response:
       tabby
     ];
     xdg.configFile = {
+      "helix/ignore" = {
+        enable = true;
+        text = ''
+.cursor/
+.devin/
+.kiro/
+'';
+      };
       "sqls/config.yml" = {
         enable = true;
         text = ''

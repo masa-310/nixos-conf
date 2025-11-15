@@ -43,6 +43,7 @@
     sops
     ddrescue
     ntfs3g
+    openvpn
   ];
 
   # ssh
@@ -83,6 +84,8 @@
        type = "fcitx5";
        fcitx5.addons = with pkgs; [
          fcitx5-mozc
+         fcitx5-qt
+         fcitx5-gtk
        ];
      };
    };
@@ -177,6 +180,7 @@
   programs.gnupg.agent = {
    enable = true;
    enableSSHSupport = true;
-};
+  };
+  programs.nix-ld.enable = true;
 
 }

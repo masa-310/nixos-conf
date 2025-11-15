@@ -58,6 +58,9 @@
     tool.codebook = {
       enable = true;
     };
+    tool.coderabbit = {
+      enable = true;
+    };
     tool.broot = {
       enable = true;
     };
