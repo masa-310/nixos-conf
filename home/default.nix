@@ -188,9 +188,9 @@
     #  enable = true;
     #};
     ssh = {
-      enable = true;
-      controlMaster = "auto";
-      controlPersist = "60m";
+       #enable = true;
+       #controlMaster = "auto";
+       #controlPersist = "60m";
       serverAliveInterval = 60;
     };
     # taskwarrior = {
