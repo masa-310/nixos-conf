@@ -11,6 +11,14 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.supportedFilesystems = [ "ntfs" ];
 
+  services.xserver.config = ''
+    Section "Device"
+      Identifier "Device0"
+      Driver "nvidia"
+      VendorName  "NVIDIA Corporation"
+    EndSection
+'';
+
   modules = {
     hardware.nvidia.enable = true;
     service.printer = {

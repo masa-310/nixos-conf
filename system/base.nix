@@ -18,6 +18,7 @@
     openssl
     xorg.xev
     xorg.xmodmap
+    xorg.xdpyinfo
     nix-prefetch
     nix-prefetch-git
     gnumeric
@@ -84,7 +85,6 @@
        type = "fcitx5";
        fcitx5.addons = with pkgs; [
          fcitx5-mozc
-         fcitx5-qt
          fcitx5-gtk
        ];
      };
