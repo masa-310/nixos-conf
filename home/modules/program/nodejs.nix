@@ -10,8 +10,8 @@ in {
     enable = mkEnableOption "nodejs";
     version = mkOption {
       type = types.number;
-      default = 20;
-      description = "Nodejs version. Should be eigther of 14, 16, or 18";
+      default = 22;
+      description = "Nodejs version.";
     };
   };
   config = mkIf self.enable {

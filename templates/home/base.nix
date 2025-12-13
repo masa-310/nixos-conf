@@ -5,7 +5,7 @@
     program = {
       nodejs = {
         enable = true;
-        version = 20;
+        version = 22;
       };
       starship = {
         enable = true;
