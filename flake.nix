@@ -10,6 +10,10 @@
       url = "github:wez/wezterm/main?dir=nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    helix-flake = {
+      url = "github:devmanuelli/helix/textDocument/inlineCompletion";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
     dotfile = {
       url = "github:masa-310/dotfiles";
       flake = false;
@@ -29,7 +33,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = {self, nixpkgs, nixpkgs-unstable, home-manager, dotfile, xid-gen, nixos-hardware, xmonad-config, wezterm-flake, sops-nix, geminicommit-custom, ... }: 
+  outputs = {self, nixpkgs, nixpkgs-unstable, home-manager, dotfile, xid-gen, nixos-hardware, xmonad-config, wezterm-flake, helix-flake, sops-nix, geminicommit-custom, ... }: 
     let
       overlay = final: prev: {};
       overlays = [overlay];
@@ -44,7 +48,7 @@
 
       codebook = import ./pkgs/codebook.nix { pkgs = unstable; };
       coderabbit = pkgs.callPackage ./pkgs/coderabbit.nix { };
-      extra = { inherit dotfile nixos-hardware xmonad-config xid-gen wezterm-flake codebook coderabbit sops-nix geminicommit-custom; };
+      extra = { inherit dotfile nixos-hardware xmonad-config xid-gen wezterm-flake helix-flake codebook coderabbit sops-nix geminicommit-custom; };
 
       confByHost = import ./hosts { inherit system home-manager pkgs unstable extra; };
       nixosConfigurations = builtins.mapAttrs (_: conf: conf.nixosConfigurations) confByHost;

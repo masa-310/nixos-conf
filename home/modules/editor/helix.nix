@@ -11,6 +11,7 @@ in {
   config = mkIf self.enable {
     programs.helix = {
       enable = true;
+      package = extra.helix-flake.packages."${pkgs.system}".default;
       defaultEditor = true;
       settings = {
         theme = "monokai";
@@ -30,6 +31,13 @@ in {
           };
           file-picker = {
             hidden = false;
+          };
+          inline-completion-timeout = 150;
+        };
+        keys = {
+          insert = {
+            tab = "inline_completion_accept";  
+            C-e = "inline_completion_dismiss";  
           };
         };
       };
@@ -80,6 +88,20 @@ in {
                workingDirectory = {
                  mode = "auto";
                };
+            };
+          };
+          copilot-language-server = {
+            command = "${pkgs.copilot-language-server}/bin/copilot-language-server";
+            args = ["--stdio"];
+            config = {
+              editorInfo = {
+                name = "Helix";
+                version = "25.01";
+              };
+              editorPluginInfo = {
+                name = "helix-copilot";
+                version = "0.1.0";
+              };
             };
           };
           eslint_d = {
@@ -526,7 +548,7 @@ Response:
           {
             name = "cpp";
             auto-format = true;
-            language-servers = ["ccls" "lsp-ai" "codebook"];
+            language-servers = ["ccls" "lsp-ai" "codebook" "copilot-language-server"];
             indent = {
               tab-width = 2;
               unit = " ";
@@ -535,7 +557,7 @@ Response:
           {
             name = "python";
             auto-format = true;
-            language-servers = ["pyright" "lsp-ai" "codebook"];
+            language-servers = ["pyright" "lsp-ai" "codebook" "copilot-language-server"];
             indent = {
               tab-width = 2;
               unit = " ";
@@ -544,7 +566,7 @@ Response:
           {
             name = "go";
             auto-format = true;
-            language-servers = ["gopls" "golangci-lint-lsp" "lsp-ai" "codebook" "tabby"];
+            language-servers = ["gopls" "golangci-lint-lsp" "lsp-ai" "codebook" "tabby" "copilot-language-server"];
             indent = {
               tab-width = 2;
               unit = " ";
@@ -553,7 +575,7 @@ Response:
           {
             name = "typescript";
             auto-format = true;
-            language-servers = ["typescript-language-server" "lsp-ai" "tailwindcss-language-server" "eslint" "codebook" "tabby"];
+            language-servers = ["typescript-language-server" "lsp-ai" "tailwindcss-language-server" "eslint" "codebook" "tabby" "copilot-language-server"];
             formatter = {
               command = "prettier";
               args = [ "--parser" "typescript"];
@@ -567,7 +589,7 @@ Response:
             name = "tsx";
             auto-format = true;
             file-types = ["tsx"];
-            language-servers = ["typescript-language-server" "lsp-ai" "emmet-language-server" "tailwindcss-language-server" "eslint" "codebook" "tabby"];
+            language-servers = ["typescript-language-server" "lsp-ai" "emmet-language-server" "tailwindcss-language-server" "eslint" "codebook" "tabby" "copilot-language-server"];
             formatter = {
               command = "prettier";
               args = [ "--parser" "typescript"];
@@ -579,7 +601,7 @@ Response:
           }
           {
             name = "elm";
-            language-servers = ["elm-language-server" "lsp-ai" "codebook"];
+            language-servers = ["elm-language-server" "lsp-ai" "codebook" "copilot-language-server"];
             indent = {
               tab-width = 2;
               unit = " ";
@@ -587,7 +609,7 @@ Response:
           }
           {
             name = "protobuf";
-            language-servers = ["buf" "lsp-ai" "codebook"];
+            language-servers = ["buf" "lsp-ai" "codebook" "copilot-language-server"];
             indent = {
               tab-width = 2;
               unit = " ";
@@ -595,7 +617,7 @@ Response:
           }
           {
             name = "sql";
-            language-servers = ["sqls" "lsp-ai" "codebook"];
+            language-servers = ["sqls" "lsp-ai" "codebook" "copilot-language-server"];
             indent = {
               tab-width = 2;
               unit = " ";
@@ -603,7 +625,7 @@ Response:
           }
           {
             name = "hcl";
-            language-servers = ["terraform-ls"];
+            language-servers = ["terraform-ls" "copilot-language-server"];
             indent = {
               tab-width = 2;
               unit = " ";
@@ -611,7 +633,7 @@ Response:
           }
           {
             name = "markdown";
-            language-servers = ["markdown-oxide" "lsp-ai" "codebook"];
+            language-servers = ["markdown-oxide" "lsp-ai" "codebook" "copilot-language-server"];
             indent = {
               tab-width = 2;
               unit = " ";
