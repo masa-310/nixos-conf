@@ -36,7 +36,7 @@ in {
         };
         keys = {
           insert = {
-            tab = "inline_completion_accept";  
+            C-o = "inline_completion_accept";  
             C-e = "inline_completion_dismiss";  
           };
         };
