@@ -24,6 +24,7 @@ in {
       impl
       protolint
       buf
+      gci
     ];
   };
 }

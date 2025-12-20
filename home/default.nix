@@ -96,6 +96,9 @@
       riffdiff
       delta
       crush
+      opencode
+      ghostty
+      zellij
       aider-chat
       uv
       google-cloud-sdk
