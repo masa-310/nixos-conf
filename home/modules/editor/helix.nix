@@ -109,7 +109,7 @@ in {
             args = ["--stdin"];
           };
           codebook = {
-            command = "${extra.codebook}/bin/codebook-lsp";
+            command = "${pkgs.codebook}/bin/codebook-lsp";
             args = ["serve"];
           };
           emmet-language-server = {

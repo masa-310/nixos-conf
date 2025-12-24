@@ -31,6 +31,7 @@
     ./modules/tool/xid-gen.nix
     ./modules/tool/broot.nix
     ./modules/tool/geminicommit.nix
+    ./modules/ai/opencode
   ];
   # Let Home Manager install and manage itself.
   fonts.fontconfig.enable = true;
@@ -96,14 +97,12 @@
       riffdiff
       delta
       crush
-      opencode
-      ghostty
-      zellij
       aider-chat
       uv
       google-cloud-sdk
       glow
       dive
+      wmctrl
     ];
     pointerCursor = {
       #package = pkgs.redglass;
@@ -276,6 +275,7 @@
     secrets = {
       geminiApiKey.path = "${config.sops.defaultSymlinkPath}/geminiApiKey";
       githubToken.path = "${config.sops.defaultSymlinkPath}/githubToken";
+      ggnGithubToken.path = "${config.sops.defaultSymlinkPath}/ggnGithubToken";
     };
   };
 }

@@ -64,6 +64,7 @@
     tool.broot = {
       enable = true;
     };
+    ai.opencode.enable = true;
     #program.texlive = {
     #  enable = true;
     #  scheme = "japanese";

@@ -1,4 +1,4 @@
-{ lib, config, pkgs, extra, ... }:
+{ lib, config, pkgs, ... }:
 
 with builtins;
 with lib;
@@ -13,7 +13,7 @@ in {
       pkgs.ghostty
     ];
     home.file."ghostty/config" = {
-      source = "${extra.dotfile}/.ghostty.lua";
+      text = "";
     };
   };
 }
