@@ -87,7 +87,7 @@
       remmina
       xan
       fd
-      serpl
+      scooter
       pdfcpu
       arduino-ide
       typos-lsp
