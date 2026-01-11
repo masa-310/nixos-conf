@@ -1,12 +1,24 @@
-{ lib, config, pkgs, extra, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  extra,
+  ...
+}:
 
 with builtins;
 with lib;
-let self = config.modules.editor.helix;
-in {
-  imports = [];
+let
+  self = config.modules.editor.helix;
+in
+{
+  imports = [ ];
   options.modules.editor.helix = {
     enable = mkEnableOption "helix";
+    use-yazi = mkOption {
+      type = types.bool;
+      default = true;
+    };
   };
   config = mkIf self.enable {
     programs.helix = {
@@ -36,8 +48,20 @@ in {
         };
         keys = {
           insert = {
-            C-o = "inline_completion_accept";  
-            C-e = "inline_completion_dismiss";  
+            C-o = "inline_completion_accept";
+            C-e = "inline_completion_dismiss";
+            C-a = {
+              a = ""#add this file to context AI!
+            };
+          };
+          normal = {
+            ${if self.use-yazi then "C-e" else null} = [
+              '':sh rm -f /tmp/unique-file''
+              '':insert-output yazi "%{buffer_name}" --chooser-file=/tmp/unique-file''
+              '':sh printf "\x1b[?1049h\x1b[?2004h" > /dev/tty''
+              '':open %sh{cat /tmp/unique-file}''
+              '':redraw''
+            ];
           };
         };
       };
@@ -46,53 +70,56 @@ in {
         language-server = with pkgs; {
           buf = {
             command = "${pkgs.buf}/bin/buf";
-            args = ["beta" "lsp"];
+            args = [
+              "lsp"
+              "serve"
+            ];
           };
           tailwindcss-language-server = {
             command = "${pkgs.tailwindcss-language-server}/bin/tailwindcss-language-server";
-            args = ["--stdio"];
+            args = [ "--stdio" ];
           };
           eslint = {
             # NOTE: v4.10.0 is not working on helix.
             #command = "${pkgs.vscode-langservers-extracted}/bin/vscode-eslint-language-server";
             # NOTE: Assuing vscode-eslint-language-server@v4.8.0 is installed via npm
             command = "vscode-eslint-language-server";
-            args = ["--stdio"];
+            args = [ "--stdio" ];
             config = {
-               validate = "on";
-               experimental = {
-                 useFlatConfig = false;
-               };
-               rulesCustomizations = [];
-               run = "onType";
-               problems = {
-                 shortenToSingleLine = false;
-               };
-               nodePath = "";
+              validate = "on";
+              experimental = {
+                useFlatConfig = false;
+              };
+              rulesCustomizations = [ ];
+              run = "onType";
+              problems = {
+                shortenToSingleLine = false;
+              };
+              nodePath = "";
 
-               codeAction = {
-                 disableRuleComment = {
-                   enable = true;
-                   location = "separateLine";
-                 };
-                 showDocumentation = {
-                   enable = true;
-                 };
-               };
+              codeAction = {
+                disableRuleComment = {
+                  enable = true;
+                  location = "separateLine";
+                };
+                showDocumentation = {
+                  enable = true;
+                };
+              };
 
-               codeActionOnSave = {
-                 enable = true;
-                 mode = "fixAll";
-               };
+              codeActionOnSave = {
+                enable = true;
+                mode = "fixAll";
+              };
 
-               workingDirectory = {
-                 mode = "auto";
-               };
+              workingDirectory = {
+                mode = "auto";
+              };
             };
           };
           copilot-language-server = {
             command = "${pkgs.copilot-language-server}/bin/copilot-language-server";
-            args = ["--stdio"];
+            args = [ "--stdio" ];
             config = {
               editorInfo = {
                 name = "Helix";
@@ -106,15 +133,15 @@ in {
           };
           eslint_d = {
             command = "${pkgs.eslint_d}/bin/eslint_d";
-            args = ["--stdin"];
+            args = [ "--stdin" ];
           };
           codebook = {
             command = "${pkgs.codebook}/bin/codebook-lsp";
-            args = ["serve"];
+            args = [ "serve" ];
           };
           emmet-language-server = {
             command = "${emmet-language-server}/bin/emmet-language-server";
-            args =  ["--stdio"];
+            args = [ "--stdio" ];
           };
           golangci-lint-lsp = {
             command = "${golangci-lint-langserver}/bin/golangci-lint-langserver";
@@ -137,7 +164,11 @@ in {
           {
             name = "cpp";
             auto-format = true;
-            language-servers = ["ccls" "codebook" "copilot-language-server"];
+            language-servers = [
+              "ccls"
+              "codebook"
+              "copilot-language-server"
+            ];
             indent = {
               tab-width = 2;
               unit = " ";
@@ -146,7 +177,11 @@ in {
           {
             name = "python";
             auto-format = true;
-            language-servers = ["pyright" "codebook" "copilot-language-server"];
+            language-servers = [
+              "pyright"
+              "codebook"
+              "copilot-language-server"
+            ];
             indent = {
               tab-width = 2;
               unit = " ";
@@ -155,7 +190,12 @@ in {
           {
             name = "go";
             auto-format = true;
-            language-servers = ["gopls" "golangci-lint-lsp" "codebook" "copilot-language-server"];
+            language-servers = [
+              "gopls"
+              "golangci-lint-lsp"
+              "codebook"
+              "copilot-language-server"
+            ];
             indent = {
               tab-width = 2;
               unit = " ";
@@ -164,10 +204,19 @@ in {
           {
             name = "typescript";
             auto-format = true;
-            language-servers = ["typescript-language-server" "tailwindcss-language-server" "eslint" "codebook" "copilot-language-server"];
+            language-servers = [
+              "typescript-language-server"
+              "tailwindcss-language-server"
+              "eslint"
+              "codebook"
+              "copilot-language-server"
+            ];
             formatter = {
               command = "prettier";
-              args = [ "--parser" "typescript"];
+              args = [
+                "--parser"
+                "typescript"
+              ];
             };
             indent = {
               tab-width = 2;
@@ -177,11 +226,21 @@ in {
           {
             name = "tsx";
             auto-format = true;
-            file-types = ["tsx"];
-            language-servers = ["typescript-language-server" "emmet-language-server" "tailwindcss-language-server" "eslint" "codebook" "copilot-language-server"];
+            file-types = [ "tsx" ];
+            language-servers = [
+              "typescript-language-server"
+              "emmet-language-server"
+              "tailwindcss-language-server"
+              "eslint"
+              "codebook"
+              "copilot-language-server"
+            ];
             formatter = {
               command = "prettier";
-              args = [ "--parser" "typescript"];
+              args = [
+                "--parser"
+                "typescript"
+              ];
             };
             indent = {
               tab-width = 2;
@@ -190,7 +249,11 @@ in {
           }
           {
             name = "elm";
-            language-servers = ["elm-language-server" "codebook" "copilot-language-server"];
+            language-servers = [
+              "elm-language-server"
+              "codebook"
+              "copilot-language-server"
+            ];
             indent = {
               tab-width = 2;
               unit = " ";
@@ -198,7 +261,11 @@ in {
           }
           {
             name = "protobuf";
-            language-servers = ["buf" "codebook" "copilot-language-server"];
+            language-servers = [
+              "buf"
+              "codebook"
+              "copilot-language-server"
+            ];
             indent = {
               tab-width = 2;
               unit = " ";
@@ -206,7 +273,11 @@ in {
           }
           {
             name = "sql";
-            language-servers = ["sqls" "codebook" "copilot-language-server"];
+            language-servers = [
+              "sqls"
+              "codebook"
+              "copilot-language-server"
+            ];
             indent = {
               tab-width = 2;
               unit = " ";
@@ -214,7 +285,10 @@ in {
           }
           {
             name = "hcl";
-            language-servers = ["terraform-ls" "copilot-language-server"];
+            language-servers = [
+              "terraform-ls"
+              "copilot-language-server"
+            ];
             indent = {
               tab-width = 2;
               unit = " ";
@@ -222,7 +296,11 @@ in {
           }
           {
             name = "markdown";
-            language-servers = ["markdown-oxide" "codebook" "copilot-language-server"];
+            language-servers = [
+              "markdown-oxide"
+              "codebook"
+              "copilot-language-server"
+            ];
             indent = {
               tab-width = 2;
               unit = " ";
@@ -235,39 +313,39 @@ in {
       "helix/ignore" = {
         enable = true;
         text = ''
-.cursor/
-.devin/
-.kiro/
-'';
+          .cursor/
+          .devin/
+          .kiro/
+        '';
       };
       "sqls/config.yml" = {
         enable = true;
         text = ''
-lowercaseKeywords: false
-connections:
-  - alias: id_local
-    driver: mysql
-    proto: tcp
-    user: root
-    passwd: root
-    host: 127.0.0.1
-    port: 3306
-    dbName: id_local
-    params:
-      autocommit: "true"
-      tls: skip-verify
-  - alias: release_local
-    driver: mysql
-    proto: tcp
-    user: root
-    passwd: root
-    host: 127.0.0.1
-    port: 3306
-    dbName: release_local
-    params:
-      autocommit: "true"
-      tls: skip-verify
-'';
+          lowercaseKeywords: false
+          connections:
+            - alias: id_local
+              driver: mysql
+              proto: tcp
+              user: root
+              passwd: root
+              host: 127.0.0.1
+              port: 3306
+              dbName: id_local
+              params:
+                autocommit: "true"
+                tls: skip-verify
+            - alias: release_local
+              driver: mysql
+              proto: tcp
+              user: root
+              passwd: root
+              host: 127.0.0.1
+              port: 3306
+              dbName: release_local
+              params:
+                autocommit: "true"
+                tls: skip-verify
+        '';
       };
     };
   };
