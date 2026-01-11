@@ -26,5 +26,8 @@ in {
       buf
       gci
     ];
+    home.sessionPath = [
+      "~/go/bin"
+    ];
   };
 }

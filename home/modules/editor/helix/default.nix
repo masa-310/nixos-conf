@@ -19,6 +19,10 @@ in
       type = types.bool;
       default = true;
     };
+    use-aider = mkOption {
+      type = types.bool;
+      default = true;
+    };
   };
   config = mkIf self.enable {
     programs.helix = {
@@ -50,9 +54,6 @@ in
           insert = {
             C-o = "inline_completion_accept";
             C-e = "inline_completion_dismiss";
-            C-a = {
-              a = ""#add this file to context AI!
-            };
           };
           normal = {
             ${if self.use-yazi then "C-e" else null} = [
@@ -62,6 +63,16 @@ in
               '':open %sh{cat /tmp/unique-file}''
               '':redraw''
             ];
+            # <C-a>: pass buffer files to aider
+            ${if self.use-aider then "C-p" else null} = {
+              "a" = ":sh ~/.config/helix/scripts/aider-add-files.sh %{all_buffer_paths}"; 
+              "s" = ":sh ~/.config/helix/scripts/aider-send-selection.sh '%{selection}'";
+              "c" = ":sh ~/.config/helix/scripts/aider-commit.sh";
+              "v" = {
+                "b" = ":sh ~/.config/helix/scripts/aider-begin-voice.sh";
+                "c" = ":sh ~/.config/helix/scripts/aider-commit-voice.sh";
+              };
+            };
           };
         };
       };
@@ -317,6 +328,10 @@ in
           .devin/
           .kiro/
         '';
+      };
+      "helix/scripts" = {
+        source = ./scripts;
+        enable = true;
       };
       "sqls/config.yml" = {
         enable = true;

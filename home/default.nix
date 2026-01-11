@@ -4,7 +4,7 @@
 {
   imports = [
     ./modules/editor/nvim.nix
-    ./modules/editor/helix.nix
+    ./modules/editor/helix
     ./modules/program/nodejs.nix
     ./modules/program/scala.nix
     ./modules/program/elm.nix
@@ -31,6 +31,7 @@
     ./modules/tool/xid-gen.nix
     ./modules/tool/broot.nix
     ./modules/tool/geminicommit.nix
+    ./modules/tool/yazi.nix
     ./modules/ai/opencode
   ];
   # Let Home Manager install and manage itself.
@@ -98,7 +99,6 @@
       delta
       crush
       aider-chat
-      uv
       google-cloud-sdk
       glow
       dive

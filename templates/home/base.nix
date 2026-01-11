@@ -38,7 +38,7 @@
     windowManager.xmonad = {
       enable = true;
     };
-    editor.neovim = {
+    editor.helix = {
       enable = true;
     };
     terminal.wezterm = {
@@ -61,7 +61,7 @@
     tool.coderabbit = {
       enable = true;
     };
-    tool.broot = {
+    tool.yazi = {
       enable = true;
     };
     ai.opencode.enable = true;

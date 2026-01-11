@@ -151,10 +151,12 @@
         "https://nix-community.cachix.org"
         "https://cache.iog.io"
       ];
+      extra-substituters = [ "https://yazi.cachix.org" ];
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
       ];
+      extra-trusted-public-keys = [ "yazi.cachix.org-1:Dcdz63NZKfvUCbDGngQDAZq6kOroIrFoyO064uvLh8k=" ];
       extra-experimental-features = [
         "nix-command"
         "flakes"

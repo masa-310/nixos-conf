@@ -1,7 +1,7 @@
 {
   description = "NixOS config";
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-23.11";
+    nixpkgs.url = "nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -11,7 +11,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     helix-flake = {
-      url = "github:devmanuelli/helix/textDocument/inlineCompletion";
+      url = "github:masa-310/helix/personal";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     dotfile = {
