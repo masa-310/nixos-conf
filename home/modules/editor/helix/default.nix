@@ -56,16 +56,18 @@ in
             C-e = "inline_completion_dismiss";
           };
           normal = {
-            ${if self.use-yazi then "C-e" else null} = [
-              '':sh rm -f /tmp/unique-file''
-              '':insert-output yazi "%{buffer_name}" --chooser-file=/tmp/unique-file''
-              '':sh printf "\x1b[?1049h\x1b[?2004h" > /dev/tty''
-              '':open %sh{cat /tmp/unique-file}''
-              '':redraw''
-            ];
+            ${if self.use-yazi then "space" else null} = {
+              "e" = [
+                '':sh rm -f /tmp/unique-file''
+                '':insert-output yazi "%{buffer_name}" --chooser-file=/tmp/unique-file''
+                '':sh printf "\x1b[?1049h\x1b[?2004h" > /dev/tty''
+                '':open %sh{cat /tmp/unique-file}''
+                '':redraw''
+              ];
+            };
             # <C-a>: pass buffer files to aider
             ${if self.use-aider then "C-p" else null} = {
-              "a" = ":sh ~/.config/helix/scripts/aider-add-files.sh %{all_buffer_paths}"; 
+              "a" = ":sh ~/.config/helix/scripts/aider-add-files.sh %{all_buffer_paths}";
               "s" = ":sh ~/.config/helix/scripts/aider-send-selection.sh '%{selection}'";
               "c" = ":sh ~/.config/helix/scripts/aider-commit.sh";
               "v" = {

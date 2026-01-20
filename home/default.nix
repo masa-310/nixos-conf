@@ -103,6 +103,7 @@
       glow
       dive
       wmctrl
+      ffmpeg
     ];
     pointerCursor = {
       #package = pkgs.redglass;
