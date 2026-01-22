@@ -33,6 +33,7 @@
     ./modules/tool/geminicommit.nix
     ./modules/tool/yazi.nix
     ./modules/ai/opencode
+    ./modules/ai/crush
   ];
   # Let Home Manager install and manage itself.
   fonts.fontconfig.enable = true;
@@ -97,7 +98,6 @@
       ghostscript
       riffdiff
       delta
-      crush
       aider-chat
       google-cloud-sdk
       glow
