@@ -27,7 +27,7 @@ in {
       gci
     ];
     home.sessionPath = [
-      "~/go/bin"
+      "$HOME/go/bin"
     ];
   };
 }
