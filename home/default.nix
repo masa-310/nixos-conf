@@ -4,7 +4,7 @@
 {
   imports = [
     ./modules/editor/nvim.nix
-    ./modules/editor/helix.nix
+    ./modules/editor/helix
     ./modules/program/nodejs.nix
     ./modules/program/scala.nix
     ./modules/program/elm.nix
@@ -30,8 +30,11 @@
     ./modules/tool/_3dprint.nix
     ./modules/tool/xid-gen.nix
     ./modules/tool/broot.nix
+    ./modules/tool/moor.nix
     ./modules/tool/geminicommit.nix
+    ./modules/tool/yazi.nix
     ./modules/ai/opencode
+    ./modules/ai/crush
   ];
   # Let Home Manager install and manage itself.
   fonts.fontconfig.enable = true;
@@ -96,13 +99,12 @@
       ghostscript
       riffdiff
       delta
-      crush
       aider-chat
-      uv
       google-cloud-sdk
       glow
       dive
       wmctrl
+      ffmpeg
     ];
     pointerCursor = {
       #package = pkgs.redglass;
@@ -161,6 +163,10 @@
     fzf = { 
       enable = true;
       enableZshIntegration = true;
+    };
+    diff-highlight = {
+      enable = true;
+      enableGitIntegration = true;
     };
     git = {
       enable = true;

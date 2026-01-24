@@ -38,7 +38,7 @@
     windowManager.xmonad = {
       enable = true;
     };
-    editor.neovim = {
+    editor.helix = {
       enable = true;
     };
     terminal.wezterm = {
@@ -61,10 +61,14 @@
     tool.coderabbit = {
       enable = true;
     };
-    tool.broot = {
+    tool.moor = {
+      enable = true;
+    };
+    tool.yazi = {
       enable = true;
     };
     ai.opencode.enable = true;
+    ai.crush.enable = true;
     #program.texlive = {
     #  enable = true;
     #  scheme = "japanese";

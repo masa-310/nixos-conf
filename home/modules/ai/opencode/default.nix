@@ -13,8 +13,8 @@ in {
       pkgs.opencode
     ];
     xdg.configFile = {
-      "opencode" = {
-        source = ./config;
+      "opencode/opencode.json" = {
+        source = ./config/opencode.json;
         enable = true;
       };
     };
