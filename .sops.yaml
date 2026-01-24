@@ -7,6 +7,7 @@ keys:
   - &stinky-husky age1fu5x8gl2j9kre4sk9nwaw6ajytl7egvqwhujqdzgwqwehcy0ayhsmk3u6m
   - &flatten-collie age14vwc6swaz72uasvmt99ae5h22zxd2pjfk56jf3nzcr76cg3e5fgstdx8m6
   - &kusumoto-sigma age14zpusuuzd2ktxr0jaeynq0kshqkxd6kgge98jr8usjksmff7nyfqrxvkdl
+  - &dorky-beagle age1jy35nwwcqayclw7cqrspcmp0t8zc23wk5heug8j0fawcgg7yg46s8wjkhp
 creation_rules:
   - path_regex: secrets/shared.yaml$
     key_groups:
@@ -15,6 +16,7 @@ creation_rules:
       - *stinky-husky
       - *flatten-collie
       - *kusumoto-sigma
+      - *dorky-beagle
   - path_regex: secrets/hosts/fishy-retriever.yaml
     key_groups:
     - age:
@@ -31,3 +33,7 @@ creation_rules:
     key_groups:
     - age:
       - *kusumoto-sigma
+  - path_regex: secrets/hosts/dorky-beagle
+    key_groups:
+    - age:
+      - *dorky-beagle
