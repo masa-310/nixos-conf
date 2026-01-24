@@ -18,7 +18,7 @@
 ## Manage secrets using sops-nix
 Please refer to [Mic92/sops-nix](https://github.com/Mic92/sops-nix) or [Managing secrets in NixOS & Home-Manager with sops-nix](https://zohaib.me/managing-secrets-in-nixos-home-manager-with-sops/).
 
-### Setup
+### Setup for the new host
 1.  **Generate age public/secret keys**
     ```sh
     mkdir -p ~/.config/sops/age
@@ -28,6 +28,10 @@ Please refer to [Mic92/sops-nix](https://github.com/Mic92/sops-nix) or [Managing
     2.1. Add your public key, paired with your hostname, to the `keys` entry.
     2.2. Add your hostname's key group to the `creation_rules[path_regex="secrets/shared.yaml"].key_groups.age` entry.
     2.3. For host-specific secrets, add the same key group to `creation_rules[path_regex="secrets/hosts/${YOUR_HOSTNAME}.yaml"]`.
+    2.4. With another machine which already has access to the secrets, run:
+    ```sh
+    sops updatekeys ./secrets/shared.yaml
+    ``` 
 
 3.  **Edit secrets**
     3.1. `sops secrets/shared.yaml` for shared secrets.
