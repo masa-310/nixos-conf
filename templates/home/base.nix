@@ -65,6 +65,7 @@
       enable = true;
     };
     ai.opencode.enable = true;
+    ai.crush.enable = true;
     #program.texlive = {
     #  enable = true;
     #  scheme = "japanese";

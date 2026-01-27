@@ -36,6 +36,7 @@ in builtins.listToAttrs (builtins.map (hostname: {
                   ../home
                   homeConfigPath
                   extra.sops-nix.homeManagerModules.sops
+                  extra.nur.homeModules.crush
                 ];
               };
           };

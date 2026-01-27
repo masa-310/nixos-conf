@@ -56,13 +56,21 @@ in
             C-e = "inline_completion_dismiss";
           };
           normal = {
-            ${if self.use-yazi then "space" else null} = {
-              "e" = [
-                '':sh rm -f /tmp/unique-file''
+            space = {
+              x = {
+                a = [
+                  ":append-output xid-gen"
+                ];
+                i = [
+                  ":insert-output xid-gen"
+                ];
+              };
+              ${if self.use-yazi then "e" else null} = [
+                ":sh rm -f /tmp/unique-file"
                 '':insert-output yazi "%{buffer_name}" --chooser-file=/tmp/unique-file''
                 '':sh printf "\x1b[?1049h\x1b[?2004h" > /dev/tty''
-                '':open %sh{cat /tmp/unique-file}''
-                '':redraw''
+                ":open %sh{cat /tmp/unique-file}"
+                ":redraw"
               ];
             };
             # <C-a>: pass buffer files to aider
