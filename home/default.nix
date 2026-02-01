@@ -35,6 +35,7 @@
     ./modules/tool/yazi.nix
     ./modules/ai/opencode
     ./modules/ai/crush
+    ./modules/ai/claude-code
   ];
   # Let Home Manager install and manage itself.
   fonts.fontconfig.enable = true;
@@ -95,6 +96,8 @@
       arduino-ide
       typos-lsp
       gemini-cli
+      claude-code
+      ollama
       github-mcp-server
       ghostscript
       riffdiff

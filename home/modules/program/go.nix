@@ -16,7 +16,6 @@ in {
       go-migrate
       golangci-lint
       golangci-lint-langserver
-      gotools
       delve
       wire
       mockgen
