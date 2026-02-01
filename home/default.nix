@@ -30,6 +30,7 @@
     ./modules/tool/_3dprint.nix
     ./modules/tool/xid-gen.nix
     ./modules/tool/broot.nix
+    ./modules/tool/moor.nix
     ./modules/tool/geminicommit.nix
     ./modules/tool/yazi.nix
     ./modules/ai/opencode
@@ -162,6 +163,10 @@
     fzf = { 
       enable = true;
       enableZshIntegration = true;
+    };
+    diff-highlight = {
+      enable = true;
+      enableGitIntegration = true;
     };
     git = {
       enable = true;

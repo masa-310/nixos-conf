@@ -61,6 +61,9 @@
     tool.coderabbit = {
       enable = true;
     };
+    tool.moor = {
+      enable = true;
+    };
     tool.yazi = {
       enable = true;
     };

@@ -40,6 +40,7 @@ in {
       history.ignorePatterns = [
         "rm *"
         "mv *"
+        "export *"
       ];
       history.ignoreSpace = true;
       historySubstringSearch = {

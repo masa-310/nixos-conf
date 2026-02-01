@@ -167,7 +167,7 @@ in
           golangci-lint-lsp = {
             command = "${golangci-lint-langserver}/bin/golangci-lint-langserver";
             config = {
-              command = "${golangci-lint}/bin/golangci-lint run --output.json.path stdout --show-stats=false --issues-exit-code=1";
+              command = ["${pkgs.golangci-lint}/bin/golangci-lint" "run" "--output.text.path" "/dev/null" "--output.json.path" "stdout" "--show-stats=false" "--issues-exit-code=1"];
             };
           };
           sqls = {
