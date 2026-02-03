@@ -108,6 +108,7 @@
       dive
       wmctrl
       ffmpeg
+      uv
     ];
     pointerCursor = {
       #package = pkgs.redglass;
@@ -285,6 +286,7 @@
       geminiApiKey.path = "${config.sops.defaultSymlinkPath}/geminiApiKey";
       githubToken.path = "${config.sops.defaultSymlinkPath}/githubToken";
       ggnGithubToken.path = "${config.sops.defaultSymlinkPath}/ggnGithubToken";
+      openApiKey.path = "${config.sops.defaultSymlinkPath}/openApiKey";
     };
   };
 }
