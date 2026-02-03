@@ -6,7 +6,7 @@ keys:
   - &fishy-retriever age18ev7rfr2lqf7jm3vt028jctjjw6962gzsnmj90wmglc7mews39vq6uwlje
   - &stinky-husky age1fu5x8gl2j9kre4sk9nwaw6ajytl7egvqwhujqdzgwqwehcy0ayhsmk3u6m
   - &flatten-collie age14vwc6swaz72uasvmt99ae5h22zxd2pjfk56jf3nzcr76cg3e5fgstdx8m6
-  - &kusumoto-sigma age14zpusuuzd2ktxr0jaeynq0kshqkxd6kgge98jr8usjksmff7nyfqrxvkdl
+  - &kusumoto-sigma age156ecdyrt7vdkudkfrd76yuh33nlnct0lcwnsj9egsswukseztg8s4jxkan
   - &dorky-beagle age1jy35nwwcqayclw7cqrspcmp0t8zc23wk5heug8j0fawcgg7yg46s8wjkhp
 creation_rules:
   - path_regex: secrets/shared.yaml$
