@@ -1,10 +1,12 @@
 #!/usr/bin/env sh
 
+AIDER_BIN=~/.local/bin/cecli
+
 right_pane_id=$(wezterm cli get-pane-direction right)
 is_spawned=false
 
 if [ -z "${right_pane_id}" ]; then
- right_pane_id=$(wezterm cli split-pane --right --percent 40 -- aider --watch-files --no-gitignore "$@")
+ right_pane_id=$(wezterm cli split-pane --right --percent 40 -- $AIDER_BIN --watch-files --no-gitignore "$@")
  is_spawned=true
 fi
 

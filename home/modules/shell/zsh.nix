@@ -53,6 +53,7 @@ export GEMINI_API_KEY=$(cat ${config.sops.secrets.geminiApiKey.path})
 export GOOGLE_GENERATIVE_AI_API_KEY=$(cat ${config.sops.secrets.geminiApiKey.path})
 export GITHUB_TOKEN=$(cat ${config.sops.secrets.githubToken.path})
 export GGN_GITHUB_TOKEN=$(cat ${config.sops.secrets.ggnGithubToken.path})
+export OPENAI_API_KEY=$(cat ${config.sops.secrets.openApiKey.path})
       '';
       plugins = [
         {

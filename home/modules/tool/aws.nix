@@ -11,7 +11,7 @@ in {
   config = mkIf self.enable {
     home.packages = with pkgs; [
       awscli2
-      ssm-session-manager-plugin
+      # ssm-session-manager-plugin
     ];
   };
 }
