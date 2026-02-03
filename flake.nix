@@ -34,7 +34,7 @@
     };
     nur = {
       url = "github:charmbracelet/nur";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
   outputs =

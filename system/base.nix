@@ -184,6 +184,7 @@
    enable = true;
    enableSSHSupport = true;
   };
+  programs.zsh.enable = true;
   programs.nix-ld.enable = true;
 
 }
