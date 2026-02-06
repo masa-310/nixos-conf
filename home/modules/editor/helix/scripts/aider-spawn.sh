@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 
-AIDER_BIN=~/.local/bin/cecli
+#AIDER_BIN=~/.local/bin/cecli
+AIDER_BIN=aider
 
 right_pane_id=$(wezterm cli get-pane-direction right)
 is_spawned=false
