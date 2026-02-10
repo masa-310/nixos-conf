@@ -195,7 +195,6 @@
         ".envrc"
         ".direnv"
         ".vim"
-        "shell.nix"
       ];
     };
     htop = {

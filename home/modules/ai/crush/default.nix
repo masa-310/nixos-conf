@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  extra,
   ...
 }:
 
@@ -9,6 +10,7 @@ with builtins;
 with lib;
 let
   self = config.modules.ai.crush;
+  xid-mcp-server = extra.xid-mcp-server.packages.${extra.system}.default;
 in
 {
   imports = [ ];
@@ -27,7 +29,7 @@ in
             reasoning_effort = "high";
           };
           small = {
-            model = "gemini-3-flash-preview";
+            model = "gemini-2.5-flash";
             provider = "gemini";
             max_tokens = 128000;
             reasoning_effort = "medium";
@@ -58,6 +60,10 @@ in
               OBSIDIAN_PORT = "27124";
               PYTHONUTF8 = "1";
             };
+          };
+          xid-mcp-server = {
+            type = "stdio";
+            command = "${xid-mcp-server}/bin/xid-mcp-server";
           };
         };
         providers = {
