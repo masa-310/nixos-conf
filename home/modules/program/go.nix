@@ -16,7 +16,6 @@ in {
       go-migrate
       golangci-lint
       golangci-lint-langserver
-      gotools
       delve
       wire
       mockgen
@@ -27,7 +26,7 @@ in {
       gci
     ];
     home.sessionPath = [
-      "~/go/bin"
+      "$HOME/go/bin"
     ];
   };
 }

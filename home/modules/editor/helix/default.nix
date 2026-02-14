@@ -180,6 +180,10 @@ in
           markdown-oxide = {
             command = "${pkgs.markdown-oxide}/bin/markdown-oxide";
           };
+          hls = {
+            # should be installed in the local project
+            command = "haskell-language-server-wrapper";
+          };
         };
         language = [
           {
@@ -272,6 +276,17 @@ in
             name = "elm";
             language-servers = [
               "elm-language-server"
+              "codebook"
+              "copilot-language-server"
+            ];
+            indent = {
+              tab-width = 2;
+              unit = " ";
+            };
+          }{
+            name = "haskell";
+            language-servers = [
+              "hls"
               "codebook"
               "copilot-language-server"
             ];

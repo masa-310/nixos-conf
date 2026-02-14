@@ -35,6 +35,7 @@
     ./modules/tool/yazi.nix
     ./modules/ai/opencode
     ./modules/ai/crush
+    ./modules/ai/claude-code
   ];
   # Let Home Manager install and manage itself.
   fonts.fontconfig.enable = true;
@@ -95,6 +96,8 @@
       arduino-ide
       typos-lsp
       gemini-cli
+      claude-code
+      ollama
       github-mcp-server
       ghostscript
       riffdiff
@@ -105,6 +108,10 @@
       dive
       wmctrl
       ffmpeg
+      uv
+      playwright
+      playwright-driver.browsers
+      playwright-mcp
     ];
     pointerCursor = {
       #package = pkgs.redglass;
@@ -191,7 +198,6 @@
         ".envrc"
         ".direnv"
         ".vim"
-        "shell.nix"
       ];
     };
     htop = {
@@ -282,6 +288,7 @@
       geminiApiKey.path = "${config.sops.defaultSymlinkPath}/geminiApiKey";
       githubToken.path = "${config.sops.defaultSymlinkPath}/githubToken";
       ggnGithubToken.path = "${config.sops.defaultSymlinkPath}/ggnGithubToken";
+      openApiKey.path = "${config.sops.defaultSymlinkPath}/openApiKey";
     };
   };
 }

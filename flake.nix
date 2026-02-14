@@ -22,6 +22,10 @@
       url = "github:masa-310/xid-gen";
       flake = true;
     };
+    xid-mcp-server = {
+      url = "github:masa-310/xid-mcp-server";
+      flake = true;
+    };
     geminicommit-custom = {
       url = "github:masa-310/geminicommit";
       flake = true;
@@ -34,7 +38,7 @@
     };
     nur = {
       url = "github:charmbracelet/nur";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
   outputs =
@@ -45,6 +49,7 @@
       home-manager,
       dotfile,
       xid-gen,
+      xid-mcp-server,
       nixos-hardware,
       xmonad-config,
       wezterm-flake,
@@ -80,6 +85,7 @@
           nixos-hardware
           xmonad-config
           xid-gen
+          xid-mcp-server
           wezterm-flake
           helix-flake
           codebook

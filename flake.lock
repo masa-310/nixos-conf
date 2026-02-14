@@ -175,6 +175,24 @@
         "systems": "systems_4"
       },
       "locked": {
+        "lastModified": 1731533236,
+        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "flake-utils_5": {
+      "inputs": {
+        "systems": "systems_5"
+      },
+      "locked": {
         "lastModified": 1726560853,
         "narHash": "sha256-X6rJYSESBVr3hBoH0WbKE5KvhPU5bloyZ2L4K60/fPQ=",
         "owner": "numtide",
@@ -284,6 +302,31 @@
         "owner": "nix-community",
         "repo": "gomod2nix",
         "rev": "4e08ca09253ef996bd4c03afa383b23e35fe28a1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "gomod2nix",
+        "type": "github"
+      }
+    },
+    "gomod2nix_3": {
+      "inputs": {
+        "flake-utils": [
+          "xid-mcp-server",
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "xid-mcp-server",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1770313987,
+        "narHash": "sha256-81QP51jUEgp2sOkGEXZ2TDsfbls98/A9aQTu7PAyP30=",
+        "owner": "nix-community",
+        "repo": "gomod2nix",
+        "rev": "75c2866d585a75a1b30c634dbd7c2dcce5a6c3a7",
         "type": "github"
       },
       "original": {
@@ -682,7 +725,7 @@
     "nix": {
       "inputs": {
         "lowdown-src": "lowdown-src",
-        "nixpkgs": "nixpkgs_5",
+        "nixpkgs": "nixpkgs_6",
         "nixpkgs-regression": "nixpkgs-regression"
       },
       "locked": {
@@ -956,6 +999,22 @@
     },
     "nixpkgs_5": {
       "locked": {
+        "lastModified": 1770197578,
+        "narHash": "sha256-AYqlWrX09+HvGs8zM6ebZ1pwUqjkfpnv8mewYwAo+iM=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "00c21e4c93d963c50d4c0c89bfa84ed6e0694df2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_6": {
+      "locked": {
         "lastModified": 1657693803,
         "narHash": "sha256-G++2CJ9u0E7NNTAi9n5G8TdDmGJXcIjkJ3NF8cetQB8=",
         "owner": "NixOS",
@@ -973,7 +1032,7 @@
     "nur": {
       "inputs": {
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-unstable"
         ]
       },
       "locked": {
@@ -1020,6 +1079,7 @@
         "sops-nix": "sops-nix",
         "wezterm-flake": "wezterm-flake",
         "xid-gen": "xid-gen",
+        "xid-mcp-server": "xid-mcp-server",
         "xmonad-config": "xmonad-config"
       }
     },
@@ -1161,6 +1221,21 @@
         "type": "github"
       }
     },
+    "systems_5": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
     "wezterm-flake": {
       "inputs": {
         "flake-utils": "flake-utils_2",
@@ -1210,9 +1285,29 @@
         "type": "github"
       }
     },
-    "xmonad-config": {
+    "xid-mcp-server": {
       "inputs": {
         "flake-utils": "flake-utils_4",
+        "gomod2nix": "gomod2nix_3",
+        "nixpkgs": "nixpkgs_5"
+      },
+      "locked": {
+        "lastModified": 1770448131,
+        "narHash": "sha256-VfQGmvnKHgU+InlnQlTvNr5/wKTORPMWYbWHWb6RwpA=",
+        "owner": "masa-310",
+        "repo": "xid-mcp-server",
+        "rev": "e8a8b708711ccc03b188c5f58d524b64f4882087",
+        "type": "github"
+      },
+      "original": {
+        "owner": "masa-310",
+        "repo": "xid-mcp-server",
+        "type": "github"
+      }
+    },
+    "xmonad-config": {
+      "inputs": {
+        "flake-utils": "flake-utils_5",
         "haskellNix": "haskellNix",
         "nixpkgs": [
           "xmonad-config",

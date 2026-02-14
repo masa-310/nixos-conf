@@ -3,4 +3,4 @@
 DIR="$(cd "$(dirname "$0")" && pwd)"
 source $DIR/aider-spawn.sh
 
-echo "/voice" | wezterm cli send-text --pane-id $right_pane_id --no-paste
+echo "/voice\n" | wezterm cli send-text --pane-id $right_pane_id --no-paste

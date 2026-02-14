@@ -67,8 +67,11 @@
     tool.yazi = {
       enable = true;
     };
-    ai.opencode.enable = true;
-    ai.crush.enable = true;
+    ai = {
+      opencode.enable = true;
+      crush.enable = true;
+      claude-code.enable = true;
+    };
     #program.texlive = {
     #  enable = true;
     #  scheme = "japanese";
