@@ -45,6 +45,7 @@
     ddrescue
     ntfs3g
     openvpn
+    brightnessctl
   ];
 
   # ssh
