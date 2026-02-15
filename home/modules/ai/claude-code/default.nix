@@ -17,7 +17,6 @@ in
   options.modules.ai.claude-code = {
     enable = mkEnableOption "claude-code";
   };
-
   config = mkIf self.enable {
     home.packages = with pkgs; [
       claude-code
@@ -42,37 +41,49 @@ in
     # HACK: MCPサーバーをユーザーレベルで指定する方法がまともに無い
     # https://github.com/anthropics/claude-code/issues/3321
     home.shellAliases = {
-      "cl" = "claude --mcp-config ~/.claude/.mcp.json";
+      "cl" = "claude --mcp-config ~/.config/claude/mcp.json";
     };
-    home.file.".claude/.mcp.json" = {
-      text = builtins.toJSON {
-        "mcpServers" = {
-          "xid-mcp-server" = {
-            "command" = "${xid-mcp-server}/bin/xid-mcp-server";
-          };
-          slack = {
-            command = "npx";
-            args = [
-              "-y"
-              "@modelcontextprotocol/server-slack"
-            ];
-            env = {
-              SLACK_BOT_TOKEN = "\${SLACK_BOT_TOKEN}";
-              SLACK_TEAM_ID = "\${SLACK_TEAM_ID}";
-              SLACK_CHANNEL_IDS = "\${SLACK_CHANNEL_IDS}";
+    xdg.configFile = {
+      "claude/mcp.json" = {
+        text = builtins.toJSON {
+          mcpServers = {
+            "xid-mcp-server" = {
+              "command" = "${xid-mcp-server}/bin/xid-mcp-server";
+            };
+            slack = {
+              command = "npx";
+              args = [
+                "-y"
+                "@modelcontextprotocol/server-slack"
+              ];
+              env = {
+                SLACK_BOT_TOKEN = "\${SLACK_BOT_TOKEN}";
+                SLACK_TEAM_ID = "\${SLACK_TEAM_ID}";
+                SLACK_CHANNEL_IDS = "\${SLACK_CHANNEL_IDS}";
+              };
+            };
+            playwright = {
+              command = "mcp-server-playwright";
+              args = [
+                "--browser"
+                "chromium"
+              ];
+            };
+            "ggn-github" = {
+              type = "http";
+              url = "https://api.githubcopilot.com/mcp";
+              headers = {
+                Authorization = "Bearer \${GGN_GITHUB_TOKEN}";
+              };
+            };
+            notion = {
+              type = "http";
+              url = "https://mcp.notion.com/mcp";
             };
           };
-
-          playwright = {
-            command = "mcp-server-playwright";
-            args = [
-              "--browser"
-              "chromium"
-            ];
-          };
         };
+        enable = true;
       };
-      enable = true;
     };
   };
 }

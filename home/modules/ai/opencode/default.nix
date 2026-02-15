@@ -68,6 +68,8 @@ in
         };
         enable = true;
       };
+      "opencode/skills".source = ./config/skills;
+      "opencode/agent".source = ./config/agent;
     };
   };
 }

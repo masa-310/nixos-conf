@@ -183,6 +183,7 @@ in
           hls = {
             # should be installed in the local project
             command = "haskell-language-server-wrapper";
+            args = ["--lsp"];
           };
         };
         language = [
