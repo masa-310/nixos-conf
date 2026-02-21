@@ -64,6 +64,34 @@ in
               type = "local";
               command = [ "${xid-mcp-server}/bin/xid-mcp-server" ];
             };
+            slack = {
+              enabled = true;
+              type = "local";
+              command = [
+                "npx"
+                "-y"
+                "@modelcontextprotocol/server-slack"
+              ];
+              environment = {
+                SLACK_BOT_TOKEN = "{env:SLACK_BOT_TOKEN}";
+                SLACK_TEAM_ID = "{env:SLACK_TEAM_ID}";
+                SLACK_CHANNEL_IDS = "{env:SLACK_CHANNEL_IDS}";
+              };
+            };
+            playwright = {
+              enabled = true;
+              type = "local";
+              command = [
+                "mcp-server-playwright"
+                "--browser"
+                "chromium"
+              ];
+            };
+            notion = {
+              enabled = true;
+              type = "remote";
+              url = "https://mcp.notion.com/mcp";
+            };
           };
         };
         enable = true;
