@@ -112,6 +112,7 @@
       playwright
       playwright-driver.browsers
       playwright-mcp
+      actionlint
     ];
     pointerCursor = {
       #package = pkgs.redglass;
