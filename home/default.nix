@@ -36,6 +36,7 @@
     ./modules/ai/opencode
     ./modules/ai/crush
     ./modules/ai/claude-code
+    ./modules/ai/codex
   ];
   # Let Home Manager install and manage itself.
   fonts.fontconfig.enable = true;
@@ -85,7 +86,6 @@
       eza
       # slack-cli
       obsidian
-      anki
       p7zip
       devenv
       remmina

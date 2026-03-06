@@ -71,6 +71,7 @@
       opencode.enable = true;
       crush.enable = true;
       claude-code.enable = true;
+      codex.enable = true;
     };
     #program.texlive = {
     #  enable = true;
