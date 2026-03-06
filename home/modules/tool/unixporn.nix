@@ -10,7 +10,7 @@ in {
   };
   config = mkIf self.enable {
     home.packages = with pkgs; [
-      neofetch
+      fastfetch
       btop
       pipes
     ];
