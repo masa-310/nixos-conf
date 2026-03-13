@@ -92,6 +92,24 @@ in
               type = "remote";
               url = "https://mcp.notion.com/mcp";
             };
+            mcp-gemini-cli = {
+              enabled = true;
+              type = "local";
+              command = [
+                "npx"
+                "-y"
+                "mcp-gemini-cli@0.3.1"
+                "--allow-npx"
+              ];
+            };
+            codex = {
+              enabled = true;
+              type = "local";
+              command = [
+                "codex"
+                "mcp-server"
+              ];
+            };
           };
         };
         enable = true;

@@ -65,6 +65,20 @@ in
             type = "stdio";
             command = "${xid-mcp-server}/bin/xid-mcp-server";
           };
+          mcp-gemini-cli = {
+            type = "stdio";
+            command = "npx";
+            args = [
+              "-y"
+              "mcp-gemini-cli@0.3.1"
+              "--allow-npx"
+            ];
+          };
+          codex = {
+            type = "stdio";
+            command = "codex";
+            args = [ "mcp-server" ];
+          };
         };
         providers = {
           ollama = {

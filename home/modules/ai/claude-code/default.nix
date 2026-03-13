@@ -80,6 +80,18 @@ in
               type = "http";
               url = "https://mcp.notion.com/mcp";
             };
+            mcp-gemini-cli = {
+              command = "npx";
+              args = [
+                "-y"
+                "mcp-gemini-cli@0.3.1"
+                "--allow-npx"
+              ];
+            };
+            codex = {
+              command = "codex";
+              args = [ "mcp-server" ];
+            };
           };
         };
         enable = true;
