@@ -92,6 +92,11 @@ in
               type = "remote";
               url = "https://mcp.notion.com/mcp";
             };
+            linear = {
+              enabled = true;
+              type = "remote";
+              url = "https://mcp.linear.app/mcp";
+            };
             mcp-gemini-cli = {
               enabled = true;
               type = "local";
