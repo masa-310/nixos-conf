@@ -18,6 +18,9 @@
       _1password = {
         enable = true;
       };
+      dnsmasq = {
+        enable = true;
+      };
     };
     display = {
       x = {

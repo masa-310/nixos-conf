@@ -8,6 +8,7 @@
     ./modules/service/picom.nix
     ./modules/service/printer.nix
     ./modules/service/_1password.nix
+    ./modules/service/dnsmasq.nix
     ./modules/display/x.nix
     ./modules/user/masashi.nix
     ./modules/hardware/touchpad.nix
