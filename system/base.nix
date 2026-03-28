@@ -181,6 +181,10 @@
   # servers. You should change this only after NixOS release notes say you
   # should.
   services.pcscd.enable = true;
+  services.earlyoom = {
+    enable = true;
+    enableNotifications = true;
+  };
   programs.gnupg.agent = {
    enable = true;
    enableSSHSupport = true;

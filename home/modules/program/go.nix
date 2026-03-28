@@ -23,7 +23,8 @@ in {
       impl
       protolint
       buf
-      gci
+      # ↓broken
+      # gci
     ];
     home.sessionPath = [
       "$HOME/go/bin"

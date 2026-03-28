@@ -21,6 +21,9 @@ in
     home.packages = [
       pkgs.opencode
     ];
+    home.shellAliases = {
+      "oc" = "opencode";
+    };
     xdg.configFile = {
       "opencode/opencode.json" = {
         text = builtins.toJSON {
