@@ -23,8 +23,8 @@ in
       settings = {
         models = {
           large = {
-            model = "gemini-3-flash-preview";
-            provider = "gemini";
+            model = "gpt-5.3-codex";
+            provider = "openai";
             max_tokens = 500000;
             reasoning_effort = "high";
           };

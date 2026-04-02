@@ -29,7 +29,7 @@ in
         text = builtins.toJSON {
           "$schema" = "https://opencode.ai/config.json";
           theme = "opencode";
-          model = "google/gemini-3-flash-preview";
+          model = "openai/gpt-5.3-codex";
           small_model = "google/gemin-2.5-flash";
           mcp = {
             mcp-obsidian = {
