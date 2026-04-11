@@ -46,22 +46,6 @@ in
                 PYTHONUTF8 = "1";
               };
             };
-            github = {
-              enabled = false;
-              type = "remote";
-              url = "https://api.githubcopilot.com/mcp/";
-              headers = {
-                Authorization = "Bearer {env:GITHUB_TOKEN}";
-              };
-            };
-            ggn-github = {
-              enabled = true;
-              type = "remote";
-              url = "https://api.githubcopilot.com/mcp/";
-              headers = {
-                Authorization = "Bearer {env:GGN_GITHUB_TOKEN}";
-              };
-            };
             xid-mcp-server = {
               enabled = true;
               type = "local";

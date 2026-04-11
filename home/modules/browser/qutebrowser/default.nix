@@ -22,7 +22,7 @@ in
     ];
     xdg.configFile = {
       "qutebrowser/config.py" = {
-        source = "./config.py"
+        source = ./config.py;
         enable = true;
       };
     };

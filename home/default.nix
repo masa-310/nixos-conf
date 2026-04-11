@@ -288,12 +288,9 @@
     };
     secrets = {
       geminiApiKey.path = "${config.sops.defaultSymlinkPath}/geminiApiKey";
-      githubToken.path = "${config.sops.defaultSymlinkPath}/githubToken";
-      ggnGithubToken.path = "${config.sops.defaultSymlinkPath}/ggnGithubToken";
       openApiKey.path = "${config.sops.defaultSymlinkPath}/openApiKey";
       linearApiKey.path = "${config.sops.defaultSymlinkPath}/linearApiKey";
     };
   };
 }
  
-

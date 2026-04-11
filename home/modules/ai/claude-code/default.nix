@@ -69,13 +69,6 @@ in
                 "chromium"
               ];
             };
-            "ggn-github" = {
-              type = "http";
-              url = "https://api.githubcopilot.com/mcp";
-              headers = {
-                Authorization = "Bearer \${GGN_GITHUB_TOKEN}";
-              };
-            };
             notion = {
               type = "http";
               url = "https://mcp.notion.com/mcp";
