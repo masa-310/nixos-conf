@@ -18,7 +18,7 @@ config.load_autoconfig(True)
 # set the flavor you'd like to use
 # valid options are 'mocha', 'macchiato', 'frappe', and 'latte'
 # last argument (optional, default is False): enable the plain look for the menu rows
-catppuccin.setup(config, 'mocha', False)
+catppuccin.setup(c, 'mocha', False)
 
 ## Aliases for commands. The keys of the given dictionary are the
 ## aliases, while the values are the commands they map to.

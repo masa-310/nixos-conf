@@ -25,8 +25,8 @@ in
         source = ./config.py;
         enable = true;
       };
-      "qutebrowser/catppuccin" = {
-        source = ./catppuccin;
+      "qutebrowser/catppuccin.py" = {
+        source = ./catppuccin.py;
       };
     };
   };
