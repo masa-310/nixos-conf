@@ -37,6 +37,7 @@
     ./modules/ai/crush
     ./modules/ai/claude-code
     ./modules/ai/codex
+    ./modules/browser/qutebrowser
   ];
   # Let Home Manager install and manage itself.
   fonts.fontconfig.enable = true;
@@ -65,7 +66,7 @@
       rbw
       bat
       drawing
-      nodePackages.cspell
+      cspell
       nil
       ripgrep
       maim

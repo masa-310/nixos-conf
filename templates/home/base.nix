@@ -73,6 +73,9 @@
       claude-code.enable = true;
       codex.enable = true;
     };
+    browser = {
+      qutebrowser.enable = true;
+    };
     #program.texlive = {
     #  enable = true;
     #  scheme = "japanese";

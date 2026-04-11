@@ -15,7 +15,7 @@ in {
     };
   };
   config = mkIf self.enable {
-    home.packages = with pkgs; with nodePackages; [
+    home.packages = with pkgs; [
       nodejsPkg
       typescript-language-server
       #yarn
@@ -24,7 +24,7 @@ in {
       vscode-langservers-extracted
       prettier
       prettierd
-      nodePackages."@tailwindcss/language-server"
+      tailwindcss-language-server
       volta
       pm2
     ];
