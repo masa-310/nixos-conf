@@ -1,0 +1,7 @@
+model: gemini-2.5-pro
+code-theme: monokai
+completion-menu-color: "#ffffff"
+completion-menu-bg-color: "#0c0c0c"
+completion-menu-current-color: "#ffffff"
+completion-menu-current-bg-color: "#000000"
+

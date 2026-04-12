@@ -10,7 +10,7 @@ in {
     enable = mkEnableOption "nodejs";
     version = mkOption {
       type = types.number;
-      default = 22;
+      default = 24;
       description = "Nodejs version.";
     };
   };

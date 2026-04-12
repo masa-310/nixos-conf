@@ -1,4 +1,4 @@
- { config, pkgs, ... }: 
+ { config, pkgs, extra, ... }: 
 
 
 {
@@ -33,10 +33,12 @@
     ./modules/tool/moor.nix
     ./modules/tool/geminicommit.nix
     ./modules/tool/yazi.nix
+    ./modules/tool/playwright.nix
     ./modules/ai/opencode
     ./modules/ai/crush
     ./modules/ai/claude-code
     ./modules/ai/codex
+    ./modules/ai/aider
     ./modules/browser/qutebrowser
   ];
   # Let Home Manager install and manage itself.
@@ -103,16 +105,12 @@
       ghostscript
       riffdiff
       delta
-      aider-chat
       google-cloud-sdk
       glow
       dive
       wmctrl
       ffmpeg
       uv
-      playwright
-      playwright-driver.browsers
-      playwright-mcp
       actionlint
     ];
     pointerCursor = {

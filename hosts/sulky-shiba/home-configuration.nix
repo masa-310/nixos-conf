@@ -10,10 +10,6 @@
     editor.neovim = {
       enable = true;
     };
-    program.nodejs = {
-      enable = true;
-      version = 18;
-    };
     program.starship = {
       enable = true;
       shell = "zsh";

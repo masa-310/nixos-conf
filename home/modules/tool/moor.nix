@@ -13,8 +13,8 @@ in {
       home.packages = [
         pkgs.moor
       ];
-      home.sessionVariables = {
-        PAGER = "moor";
-      };
+      # home.sessionVariables = {
+      #   PAGER = "moor";
+      # };
     };
 }

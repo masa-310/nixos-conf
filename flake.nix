@@ -40,6 +40,13 @@
       url = "github:charmbracelet/nur";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    uv2nix.url = "github:pyproject-nix/uv2nix";
+    pyproject-nix.url = "github:pyproject-nix/pyproject.nix";
+    pyproject-build-systems = {
+      url = "github:pyproject-nix/build-system-pkgs";
+      inputs.pyproject-nix.follows = "pyproject-nix";
+      inputs.uv2nix.follows = "uv2nix";
+    };
   };
   outputs =
     {
@@ -57,6 +64,9 @@
       sops-nix,
       geminicommit-custom,
       nur,
+      uv2nix,
+      pyproject-nix,
+      pyproject-build-systems,
       ...
     }:
     let
@@ -79,6 +89,12 @@
 
       codebook = import ./pkgs/codebook.nix { pkgs = unstable; };
       coderabbit = pkgs.callPackage ./pkgs/coderabbit.nix { };
+      aider = pkgs.callPackage ./pkgs/aider/default.nix {
+        inherit
+          uv2nix
+          pyproject-nix
+          pyproject-build-systems;
+      };
       extra = {
         inherit
           dotfile
@@ -90,6 +106,7 @@
           helix-flake
           codebook
           coderabbit
+          aider
           sops-nix
           geminicommit-custom
           nur

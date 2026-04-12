@@ -64,6 +64,9 @@
     tool.moor = {
       enable = true;
     };
+    tool.playwright = {
+      enable = true;
+    };
     tool.yazi = {
       enable = true;
     };
@@ -72,6 +75,7 @@
       crush.enable = true;
       claude-code.enable = true;
       codex.enable = true;
+      aider.enable = true;
     };
     browser = {
       qutebrowser.enable = true;
