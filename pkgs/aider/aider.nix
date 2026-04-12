@@ -40,5 +40,26 @@ let
       ]);
 
   deps = workspace.deps.default // (workspace.deps.playwright or { });
+
+  venv = pythonSet.mkVirtualEnv "aider" deps;
 in
-pythonSet.mkVirtualEnv "aider" deps
+pkgs.symlinkJoin {
+  name = "aider";
+  paths = [ venv ];
+  nativeBuildInputs = [ pkgs.makeWrapper ];
+  postBuild = ''
+    libPath="${pkgs.lib.makeLibraryPath [
+      pkgs.portaudio
+      pkgs.libsndfile
+      pkgs.alsa-lib
+      pkgs.libpulseaudio
+      pkgs.stdenv.cc.cc.lib
+    ]}"
+
+    for prog in "$out/bin/aider" "$out/bin/aider-chat"; do
+      if [ -x "$prog" ]; then
+        wrapProgram "$prog" --prefix LD_LIBRARY_PATH : "$libPath"
+      fi
+    done
+  '';
+}
