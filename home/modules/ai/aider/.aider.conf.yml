@@ -1,4 +1,5 @@
-model: gemini-2.5-pro
+model: "gpt-5.3-codex"
+weak-model: "gemini-3.0-flash"
 code-theme: monokai
 completion-menu-color: "#ffffff"
 completion-menu-bg-color: "#0c0c0c"
