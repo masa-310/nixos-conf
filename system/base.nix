@@ -1,4 +1,9 @@
-{ config, pkgs, extra, ...}:
+{
+  config,
+  pkgs,
+  extra,
+  ...
+}:
 
 {
   # packages
@@ -46,7 +51,13 @@
     ntfs3g
     openvpn
     brightnessctl
+    xrdb
   ];
+
+  services.logind.settings.Login = {
+    KillUserProcesses = false;
+    RemoveIPC="no";
+  };
 
   # ssh
   services = {
@@ -55,7 +66,6 @@
       settings.PasswordAuthentication = false;
     };
   };
-
 
   # network
   networking = {
@@ -67,7 +77,7 @@
       };
     };
     extraHosts = ''
-    127.0.0.1 ads.nicovideo.jp
+      127.0.0.1 ads.nicovideo.jp
     '';
     resolvconf.dnsExtensionMechanism = false;
   };
@@ -79,27 +89,27 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # networking.firewall.enable = false;
 
-   # i18n
-   i18n = {
-     defaultLocale = "en_US.UTF-8";
-     inputMethod = {
-       enable = true;
-       type = "fcitx5";
-       fcitx5.addons = with pkgs; [
-         fcitx5-mozc
-         fcitx5-gtk
-       ];
-     };
-   };
-   console.keyMap = "us";
-   environment.variables ={
-      GTK_IM_MODULE = "fcitx";
-      QT_IM_MODULE = "fcitx";
-      XMODIFIERS = "@im=fcitx";
-   };
-   console = {
-     font = "Lat2-Terminus16";
-   };
+  # i18n
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+    inputMethod = {
+      enable = true;
+      type = "fcitx5";
+      fcitx5.addons = with pkgs; [
+        fcitx5-mozc
+        fcitx5-gtk
+      ];
+    };
+  };
+  console.keyMap = "us";
+  environment.variables = {
+    GTK_IM_MODULE = "fcitx";
+    QT_IM_MODULE = "fcitx";
+    XMODIFIERS = "@im=fcitx";
+  };
+  console = {
+    font = "Lat2-Terminus16";
+  };
 
   # Set your time zone.
   time.timeZone = "Asia/Tokyo";
@@ -129,8 +139,7 @@
   # Enable bluetooth
   hardware.bluetooth.enable = true;
 
-
- # boot
+  # boot
   boot.plymouth = {
     enable = true;
   };
@@ -186,8 +195,8 @@
     enableNotifications = true;
   };
   programs.gnupg.agent = {
-   enable = true;
-   enableSSHSupport = true;
+    enable = true;
+    enableSSHSupport = true;
   };
   programs.zsh.enable = true;
   programs.nix-ld.enable = true;

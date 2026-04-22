@@ -523,7 +523,7 @@ c.colors.webpage.darkmode.contrast = 0.0
 ## `colors.webpage.darkmode.policy.images` to `never`.  - "With selective
 ## image inversion": qutebrowser default settings.
 ## Type: Bool
-c.colors.webpage.darkmode.enabled = True
+c.colors.webpage.darkmode.enabled = False
 
 ## Which images to apply dark mode to.
 ## Type: String

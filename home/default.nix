@@ -112,6 +112,7 @@
       ffmpeg
       uv
       actionlint
+      openai-whisper
     ];
     pointerCursor = {
       #package = pkgs.redglass;
