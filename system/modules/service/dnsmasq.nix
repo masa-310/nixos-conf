@@ -17,7 +17,6 @@ in {
     services.dnsmasq = {
       enable = true;
       settings = {
-        port = 5353;
         no-daemon = true;
         bind-interfaces = true;
         address = "/*.app.test/127.0.0.1";

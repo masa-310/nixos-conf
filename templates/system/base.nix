@@ -19,7 +19,7 @@
         enable = true;
       };
       dnsmasq = {
-        enable = false;
+        enable = true;
       };
     };
     display = {

@@ -52,6 +52,7 @@
     openvpn
     brightnessctl
     xrdb
+    usbutils
   ];
 
   services.logind.settings.Login = {
