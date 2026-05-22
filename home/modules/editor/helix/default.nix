@@ -49,6 +49,7 @@ in
             hidden = false;
           };
           inline-completion-timeout = 150;
+          insecure = true;
         };
         keys = {
           insert = {

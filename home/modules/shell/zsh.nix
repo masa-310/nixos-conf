@@ -49,6 +49,7 @@ in {
         searchUpKey = "^P";
       };
       initContent = ''
+eval "$(devenv hook zsh)"
 export GEMINI_API_KEY=$(cat ${config.sops.secrets.geminiApiKey.path})
 export GOOGLE_GENERATIVE_AI_API_KEY=$(cat ${config.sops.secrets.geminiApiKey.path})
 export OPENAI_API_KEY=$(cat ${config.sops.secrets.openApiKey.path})
