@@ -19,6 +19,9 @@ home:
 system:
     sudo nixos-rebuild switch --flake ".?submodules=1#{{ host }}" --show-trace
 
+rollback:
+    sudo nixos-rebuild switch --rollback --flake ".?submodules=1#{{ host }}" --show-trace
+
 fmt:
     nix fmt
 
