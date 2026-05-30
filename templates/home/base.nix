@@ -76,6 +76,7 @@
       claude-code.enable = true;
       codex.enable = true;
       aider.enable = true;
+      aichat.enable = true;
     };
     browser = {
       qutebrowser.enable = true;

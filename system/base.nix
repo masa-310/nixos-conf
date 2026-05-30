@@ -53,6 +53,8 @@
     brightnessctl
     xrdb
     usbutils
+    pamixer
+    libnotify
   ];
 
   services.logind.settings.Login = {

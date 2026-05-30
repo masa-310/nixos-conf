@@ -11,7 +11,7 @@
     ./modules/program/haskell.nix
     ./modules/program/starship.nix
     ./modules/program/polybar.nix
-    ./modules/program/rofi.nix
+    ./modules/program/rofi
     ./modules/program/go.nix
     ./modules/program/c.nix
     ./modules/program/rust.nix
@@ -39,6 +39,7 @@
     ./modules/ai/claude-code
     ./modules/ai/codex
     ./modules/ai/aider
+    ./modules/ai/aichat
     ./modules/browser/qutebrowser
   ];
   # Let Home Manager install and manage itself.
@@ -85,7 +86,6 @@
       gh
       tomato-c
       fd
-      aichat
       eza
       # slack-cli
       obsidian
@@ -113,6 +113,9 @@
       uv
       actionlint
       openai-whisper
+      zenity
+      dunst
+      eww
     ];
     pointerCursor = {
       #package = pkgs.redglass;

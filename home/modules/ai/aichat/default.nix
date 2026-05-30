@@ -9,21 +9,21 @@
 with builtins;
 with lib;
 let
-  self = config.modules.ai.opencode;
+  self = config.modules.ai.aichat;
   xid-mcp-server = extra.xid-mcp-server.packages.${extra.system}.default;
 in
 {
   imports = [ ];
-  options.modules.ai.opencode = {
-    enable = mkEnableOption "opencode";
+  options.modules.ai.aichat = {
+    enable = mkEnableOption "aichat";
   };
   config = mkIf self.enable {
     home.packages = [
-      pkgs.opencode
+      pkgs.aichat
     ];
     xdg.configFile = {
       "aichat/config.yaml" = {
-        source = ./config/config.yaml;
+        source = ./config.yaml;
         enable = true;
       };
     };

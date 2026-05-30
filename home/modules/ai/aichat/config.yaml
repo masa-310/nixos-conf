@@ -1,0 +1,6 @@
+model: gemini
+save_session: true
+clients:
+  - type: gemini
+    models:
+      - name: gemini-2.5-flash-lite

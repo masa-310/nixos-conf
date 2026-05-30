@@ -3,6 +3,9 @@
 with builtins;
 with lib;
 let self = config.modules.program.rofi;
+    rofi-1pass = (pkgs.writeShellScriptBin "rofi-1pass" ''
+        ${builtins.readFile ./scripts/1pass.sh}
+      '');
 in {
   imports = [];
   options.modules.program.rofi = {
@@ -16,8 +19,11 @@ in {
       # tbh not sure why this option exists
       configPath = ".config/rofi/config-generated.rasi";
     };
-    home.file.".config/rofi/config.rasi" = {
+    xdg.configFile."rofi/config.rasi" = {
       source = extra.dotfile + "/config.rasi";
+    };
+    xdg.configFile."rofi/scripts/1pass" = {
+      source = ./scripts/1pass.sh;
     };
     home.packages = with pkgs; [
       # https://github.com/NixOS/nixpkgs/issues/218311
@@ -26,6 +32,7 @@ in {
       rofi-bluetooth
       # rofi-file-browser
       wtype
+      rofi-1pass
     ];
   };
 }

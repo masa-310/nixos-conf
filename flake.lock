@@ -1459,11 +1459,11 @@
         "nixpkgs": "nixpkgs_10"
       },
       "locked": {
-        "lastModified": 1771124822,
-        "narHash": "sha256-4p1Hwo7hFeLUGfdKCwsKx82y3+yuRzsaZDQfoMYMyio=",
+        "lastModified": 1780155150,
+        "narHash": "sha256-t8FhwDEV3e8lzeNwo/pRiivNNXBmDTt7PHkMk3PERoM=",
         "owner": "masa-310",
         "repo": "xmonad-conf",
-        "rev": "dfdf2d7edecb25cbce5d9bddfb8870c758f1dc70",
+        "rev": "747b09bb566e65a19b8c9c2a3db9bd3ff357abf5",
         "type": "github"
       },
       "original": {

@@ -17,15 +17,31 @@ in
     enable = mkEnableOption "qutebrowser";
   };
   config = mkIf self.enable {
-    home.packages = with pkgs; [
-      qutebrowser
-    ];
-    xdg.configFile = {
-      "qutebrowser/config.py" = {
-        source = ./config.py;
-        enable = true;
+    programs.qutebrowser = {
+      enable = true;
+      keyBindings = {
+        normal = {
+          ",p" = "spawn --userscript 1pass";
+        };
       };
+      extraConfig = ''
+import catppuccin
+catppuccin.setup(c, 'mocha', False)
+'';
+    };
+    xdg.dataFile = {
+      "qutebrowser/userscripts/1pass" = {
+        enable = true;
+        source = ./userscripts/1pass.sh;
+      };
+    };
+    xdg.configFile = {
+    #   "qutebrowser/config.py" = {
+    #     enable = true;
+    #     source = ./config.py;
+    #   };
       "qutebrowser/catppuccin.py" = {
+        enable = true;
         source = ./catppuccin.py;
       };
     };
