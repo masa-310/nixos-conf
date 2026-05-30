@@ -43,11 +43,13 @@ in
               id = "git";
               url = "*";
               run = "git";
+              group = "git";
             }
             {
               id = "git";
               url = "*/";
               run = "git";
+              group = "git";
             }
           ];
         };
@@ -65,10 +67,10 @@ in
       };
 
       initLua = ''
-        			require("full-border"):setup()
-        			require("starship"):setup()
-        			require("git"):setup()
-        		'';
+  			require("full-border"):setup()
+  			require("starship"):setup()
+  			require("git"):setup()
+  		'';
 
       keymap = {
         mgr.prepend_keymap = [
