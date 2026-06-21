@@ -5,10 +5,10 @@ host := `hostname`
 default: update system home
 
 update:
-    nix flake update  --flake '.' --extra-experimental-features 'nix-command flakes'
+    NIX_CONFIG="access-tokens = github.com=$(gh auth token)" nix flake update  --flake '.' --extra-experimental-features 'nix-command flakes'
 
 update-dotfile:
-    nix flake lock --update-input dotfile
+    NIX_CONFIG="access-tokens = github.com=$(gh auth token)" nix flake lock --update-input dotfile
 
 update-shared-sops:
     sops updatekeys secrets/shared.yaml
