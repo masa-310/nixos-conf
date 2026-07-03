@@ -11,6 +11,34 @@ with lib;
 let
   self = config.modules.ai.claude-code;
   xid-mcp-server = extra.xid-mcp-server.packages.${extra.system}.default;
+  browsers =
+    (builtins.fromJSON (builtins.readFile "${pkgs.playwright-driver}/browsers.json")).browsers;
+  chromium-rev = (builtins.head (builtins.filter (x: x.name == "chromium") browsers)).revision;
+  chrome-exec-path="${pkgs.playwright.browsers}/chromium-${chromium-rev}/chrome-linux64/chrome";
+
+  # Stopフックは本文を直接渡してくれないので、transcript(JSONL)から
+  # 最後のassistantテキストを抜き出して通知bodyに載せる
+  stop-notify = pkgs.writeShellScript "claude-stop-notify" ''
+    input=$(cat)
+    transcript=$(${pkgs.jq}/bin/jq -r '.transcript_path // empty' <<<"$input")
+    body="タスクが完了しました"
+    if [ -n "$transcript" ] && [ -f "$transcript" ]; then
+      msg=$(${pkgs.jq}/bin/jq -rs '
+        [ .[]
+          | select(.type == "assistant")
+          | .message.content[]?
+          | select(.type == "text")
+          | .text
+        ] | last // empty
+      ' "$transcript")
+      if [ -n "$msg" ]; then
+        body=''${msg:0:200}
+        [ "''${#msg}" -gt 200 ] && body="$body…"
+      fi
+    fi
+    ${pkgs.libnotify}/bin/notify-send "Claude Code" "$body"
+  '';
+
 in
 {
   imports = [ ];
@@ -34,6 +62,18 @@ in
         };
         "enabledPlugins" = {
           "gopls-lsp@claude-plugins-official" = true;
+        };
+        "hooks" = {
+          "Stop" = [
+            {
+              "hooks" = [
+                {
+                  "type" = "command";
+                  "command" = "${stop-notify}";
+                }
+              ];
+            }
+          ];
         };
       };
       enable = true;
@@ -63,10 +103,14 @@ in
               };
             };
             playwright = {
-              command = "mcp-server-playwright";
+              command = "playwright-mcp";
               args = [
                 "--browser"
                 "chromium"
+                "--executable-path"
+                chrome-exec-path
+                "--user-data-dir"
+                "/tmp/pw-mcp"
               ];
             };
             notion = {

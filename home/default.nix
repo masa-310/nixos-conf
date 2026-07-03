@@ -114,7 +114,6 @@
       actionlint
       openai-whisper
       zenity
-      dunst
       eww
     ];
     pointerCursor = {
@@ -150,6 +149,42 @@
       nixconf-system = "pushd $HOME/nixos-conf; just update system; popd";
       nixconf-dotfiles = "pushd $HOME/nixos-conf; just update-dotfile home; popd";
       hey = "aichat";
+    };
+  };
+
+  services.dunst = {
+    enable = true;
+    settings = {
+      global = {
+        # 少し大きめに: 横幅とパディング・フォントサイズを拡大
+        width = 450;
+        height = 200;
+        offset = "15x50";
+        origin = "top-right";
+        padding = 16;
+        horizontal_padding = 16;
+        frame_width = 3;
+        corner_radius = 8;
+        font = "monospace 13";
+        line_height = 4;
+        markup = "full";
+      };
+      # Catppuccin Mocha ダーク + 水色アクセント
+      urgency_low = {
+        background = "#1e1e2e";
+        foreground = "#cdd6f4";
+        frame_color = "#89b4fa";
+      };
+      urgency_normal = {
+        background = "#1e1e2e";
+        foreground = "#cdd6f4";
+        frame_color = "#89b4fa";
+      };
+      urgency_critical = {
+        background = "#1e1e2e";
+        foreground = "#cdd6f4";
+        frame_color = "#89b4fa";
+      };
     };
   };
 
@@ -203,6 +238,10 @@
         ".direnv"
         ".vim"
       ];
+    };
+    lazygit = {
+      enable = true; 
+      enableZshIntegration = true;
     };
     htop = {
       enable = true;

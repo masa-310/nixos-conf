@@ -14,7 +14,7 @@ in {
       enable = true;
       settings = {
         default_session = {
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd startx";
+          command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd startx";
           user = "greeter";
         };
       };

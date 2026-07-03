@@ -41,6 +41,9 @@
       geminicommit = {
         enable = true;
       };
+      _3dprint = {
+        enable = true;
+      };
     };
   };
   home.stateVersion = "24.05";

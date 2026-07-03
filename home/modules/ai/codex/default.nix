@@ -68,8 +68,9 @@ in
             args = [ "mcp-server" ];
           };
         };
+        # projects."${config.home.homeDirectory}/project/*".trust_level = "trusted";
       };
-      enable = true;
+      enable = false;
     };
   };
 }
