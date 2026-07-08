@@ -10,6 +10,7 @@
     ./modules/service/_1password.nix
     ./modules/service/dnsmasq.nix
     ./modules/service/qmk.nix
+    ./modules/service/yubikey.nix
     ./modules/display/x.nix
     ./modules/user/masashi.nix
     ./modules/hardware/touchpad.nix

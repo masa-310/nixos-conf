@@ -28,6 +28,10 @@
     service.qmk = {
       enable = true;
     };
+    service.yubikey = {
+      enable = true;
+      pc = "desktop";
+    };
   };
 
   system.stateVersion = "24.05"; # Did you read the comment?
