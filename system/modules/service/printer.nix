@@ -8,7 +8,7 @@ in {
   options.modules.service.printer = {
     enable = mkEnableOption "printer";
     places = mkOption {
-      type = types.enum [ "home" ];
+      type = types.enum [ "home" "hplip" ];
       default = [];
       description = "Places where the printer is used. Should be either of home";
     };
@@ -17,7 +17,16 @@ in {
     services.printing = {
       enable = true;
       # broken
-      # drivers = if self.places == "home" then [ pkgs.epson-escpr pkgs.epson-escpr2 ] else [];
+      drivers =
+      if self.places == "home" then
+        [ pkgs.epson-escpr pkgs.epson-escpr2 ]
+      else
+        (
+        if self.places == "hplip" then
+          [ pkgs.hplip ]
+        else
+          []
+        );
     };
     services.avahi = {
       enable = true;
