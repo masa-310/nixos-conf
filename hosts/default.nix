@@ -24,6 +24,17 @@ in builtins.listToAttrs (builtins.map (hostname: {
                 ../system
                 systemConfigPath
                 hardwareConfigPath
+                home-manager.nixosModules.home-manager {
+                  home-manager.useGlobalPkgs = true;
+                  home-manager.useUserPackages = true;
+                  home-manager.extraSpecialArgs = { extra = extra // { inherit system unstable hostname; }; };
+                  # homeConfigurations 側と同じ外部 HM module を供給する。
+                  # 無いと registry 内の module が使う programs.* が未定義になる。
+                  home-manager.sharedModules = [
+                    extra.sops-nix.homeManagerModules.sops
+                    extra.nur.homeModules.crush
+                  ];
+                }
               ];
             };
             homeConfigurations =
