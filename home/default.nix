@@ -115,6 +115,8 @@
       openai-whisper
       zenity
       eww
+      yubikey-manager
+      yubioath-flutter
     ];
     pointerCursor = {
       #package = pkgs.redglass;
@@ -187,7 +189,6 @@
       };
     };
   };
-
   programs = {
     direnv = {
       enable = true;
