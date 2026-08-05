@@ -85,6 +85,9 @@ in
       tool.yazi = {
         enable = true;
       };
+      tool.geminicommit = {
+        enable = true;
+      };
       ai = {
         opencode.enable = true;
         crush.enable = true;

@@ -34,27 +34,30 @@ in
     };
     security.pam.u2f = {
       enable = true;
-      control = "required";
+      # NixOS は auth スタックの終端に `auth required pam_deny.so` を必ず置く。
+      # required は短絡しないため、pam_u2f が成功しても pam_deny が失敗を返して
+      # スタック全体が常に失敗する。鍵だけで通す構成には sufficient が必須。
+      control = "sufficient";
       settings = {
         cue = true;
       };
     };
     security.pam.services = {
-      greetd = {
-        u2fAuth = true;
-        unixAuth = self.pc == "laptop";
-        rules.auth.u2f.control =  lib.mkForce (if self.pc == "laptop" then "sufficient" else "required" );
-      };
+      # greetd は useDefaultRules = false で auth を `substack login` のみに固定して
+      # いるため、ここでの u2f 設定は一切効かない(指定すると modulePath 未定義で
+      # eval エラーになる)。greeter の認証は下の login のスタックが決める。
       login = {
-        u2fAuth = true;
+        u2f.enable = true;
+        # desktop は鍵のみ。laptop はパスワードへのフォールバックを許可。
         unixAuth = self.pc == "laptop";
-        rules.auth.u2f.control =  lib.mkForce (if self.pc == "laptop" then "sufficient" else "required" );
       };
       sudo = {
-        u2fAuth = true;
+        u2f.enable = true;
         unixAuth = false;
-        rules.auth.u2f.control =  lib.mkForce (if self.pc == "laptop" then "sufficient" else "required" );
       };
+      # SSH 越しにサーバ側の鍵をタッチすることはできないので無効化する。
+      # 公開鍵認証は PAM の auth スタックを通らないため影響しない。
+      sshd.u2f.enable = false;
       # security.pam.yubico = {
       #   enable = true;
       #   debug = true;

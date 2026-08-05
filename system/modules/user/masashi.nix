@@ -4,7 +4,9 @@ with builtins;
 with lib;
 let self = config.modules.user.masashi;
 in {
-  imports = [];
+  imports = [
+    ../service/yubikey.nix
+  ];
   options.modules.user.masashi = {
     enable = mkEnableOption "masashi";
   };
@@ -23,5 +25,11 @@ in {
     programs.zsh ={
       enable = true;
     };
+    modules = {
+    service.yubikey = {
+      enable = true;
+      pc = "desktop";
+    };
+};
   };
 }
