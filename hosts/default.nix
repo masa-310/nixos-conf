@@ -32,7 +32,6 @@ in builtins.listToAttrs (builtins.map (hostname: {
                   # 無いと registry 内の module が使う programs.* が未定義になる。
                   home-manager.sharedModules = [
                     extra.sops-nix.homeManagerModules.sops
-                    extra.nur.homeModules.crush
                   ];
                 }
               ];
@@ -47,7 +46,6 @@ in builtins.listToAttrs (builtins.map (hostname: {
                   ../home
                   homeConfigPath
                   extra.sops-nix.homeManagerModules.sops
-                  extra.nur.homeModules.crush
                 ];
               };
           };

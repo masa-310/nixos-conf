@@ -70,6 +70,9 @@ in
       tool.unixporn = {
         enable = true;
       };
+      tool.aws = {
+        enable = true;
+      };
       tool.codebook = {
         enable = true;
       };

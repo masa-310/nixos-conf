@@ -36,10 +36,6 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nur = {
-      url = "github:charmbracelet/nur";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
     uv2nix.url = "github:pyproject-nix/uv2nix";
     pyproject-nix.url = "github:pyproject-nix/pyproject.nix";
     pyproject-build-systems = {
@@ -63,7 +59,6 @@
       helix-flake,
       sops-nix,
       geminicommit-custom,
-      nur,
       uv2nix,
       pyproject-nix,
       pyproject-build-systems,
@@ -109,7 +104,6 @@
           aider
           sops-nix
           geminicommit-custom
-          nur
           ;
       };
 

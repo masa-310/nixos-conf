@@ -31,6 +31,9 @@
       Unit.Description = "AI review patroller";
       Service = {
         ExecStart = "/home/agent/ai-review-patroller/patrol.sh";
+        Environment = [
+          ''"ALLOWED_TOOLS_PREVIEW_RESPONSE=Bash(git push:*)"''
+        ];
       };
     };
   };
