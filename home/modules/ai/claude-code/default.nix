@@ -111,6 +111,7 @@ in
                 chrome-exec-path
                 "--user-data-dir"
                 "/tmp/pw-mcp"
+                "--ignore-https-errors"
               ];
             };
             notion = {

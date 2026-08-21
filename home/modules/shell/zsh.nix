@@ -50,10 +50,16 @@ in {
       };
       initContent = ''
 eval "$(devenv hook zsh)"
-export GEMINI_API_KEY=$(cat ${config.sops.secrets.geminiApiKey.path})
-export GOOGLE_GENERATIVE_AI_API_KEY=$(cat ${config.sops.secrets.geminiApiKey.path})
-export LINEAR_API_KEY=$(cat ${config.sops.secrets.linearApiKey.path})
-      '';
+${
+  if (hasAttr "geminiApiKey" config.sops.secrets) then  "export GEMINI_API_KEY=$(cat ${config.sops.secrets.geminiApiKey.path})" else ""
+}
+${
+if (hasAttr "" config.sops.secrets) then "export GOOGLE_GENERATIVE_AI_API_KEY=$(cat ${config.sops.secrets.geminiApiKey.path}" else ""
+}
+${
+if (hasAttr "" config.sops.secrets) then "export LINEAR_API_KEY=$(cat ${config.sops.secrets.linearApiKey.path}))" else ""
+}
+'';
       plugins = [
         {
           name = "zsh-autosuggestions";

@@ -10,6 +10,7 @@ in {
   };
   config = mkIf self.enable {
     users.users.masashi = {
+      uid = 1000;
       isNormalUser = true;
       shell = pkgs.zsh;
       extraGroups = [

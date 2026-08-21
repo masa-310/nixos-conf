@@ -1,4 +1,4 @@
-{ system, nixpkgs, pkgs, home-manager, dotfile, hostname, ... }:
+{...}:
 
 {
   home.file.".Xmodmap" = {
@@ -9,30 +9,11 @@
     '';
   };
   imports = [
-    ../../templates/home/base.nix
   ];
   home.stateVersion = "24.05";
   modules = {
-    editor = {
-      helix = {
-        enable = true;
-      };
-    };
-    program = {
-      terraform = {
-        enable = true;
-      };
-    };
-    tool = {
-      aws = {
-        enable = true;
-      };
-      xid-gen = {
-        enable = true;
-      };
-      geminicommit = {
-        enable = true;
-      };
+    user = {
+      masashi.enable = true;
     };
   };
 }
