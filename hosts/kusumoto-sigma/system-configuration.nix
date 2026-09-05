@@ -14,13 +14,32 @@
       agent = {
         enable = true;
       };
+      yubikey = {
+        enable = true;
+        pc = "desktop";
+      };
     };
   };
-  # `../../home` は module レジストリ(imports のみ)。これを読み込まないと
-  # modules.* のオプション定義自体が存在しないため agent 側で設定できない。
   home-manager.users.agent = {
     imports = [ ../../home ];
     modules.user.agent.enable = true;
+    systemd.user.timers."ai-review-patroller" = {
+      Unit.Description = "AI review patroller timer";
+      Timer = {
+        OnBootSec = "5m";
+        OnUnitActiveSec = "5m";
+      };
+      Install.WantedBy = [ "timers.target" ];
+    };
+    systemd.user.services."ai-review-patroller" = {
+      Unit.Description = "AI review patroller";
+      Service = {
+        ExecStart = "/home/agent/ai-review-patroller/patrol.sh";
+        Environment = [
+          ''"ALLOWED_TOOLS_PREVIEW_RESPONSE=Bash(git push:*)"''
+        ];
+      };
+    };
   };
 
 }

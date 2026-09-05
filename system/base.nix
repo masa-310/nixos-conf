@@ -203,6 +203,8 @@
   };
   services.tailscale = {
     enable = true;
+    useRoutingFeatures = "client";
+    extraSetFlags = [ "--accept-dns=false" ];
   };
   programs.zsh.enable = true;
   programs.nix-ld.enable = true;

@@ -5,6 +5,9 @@
     ../../templates/home/base.nix
   ];
   modules = {
+    user = {
+      masashi.enable = true;
+    };
     editor = {
       helix = {
         enable = true;
@@ -30,6 +33,5 @@
       };
     };
   };
-  home.stateVersion = "25.11";
   home.packages = [];
 }

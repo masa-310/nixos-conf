@@ -19,7 +19,16 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.supportedFilesystems = [ "ntfs" ];
   modules = {
+    user = {
+      masashi = {
+        enable = true;
+      };
+    };
     service = {
+      yubikey = {
+        enable = true;
+        pc = "laptop";
+      };
       printer = {
         enable = true;
         places = "hplip";

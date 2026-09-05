@@ -70,6 +70,9 @@ in
       tool.unixporn = {
         enable = true;
       };
+      tool.aws = {
+        enable = true;
+      };
       tool.codebook = {
         enable = true;
       };
@@ -83,6 +86,9 @@ in
         enable = true;
       };
       tool.yazi = {
+        enable = true;
+      };
+      tool.geminicommit = {
         enable = true;
       };
       ai = {

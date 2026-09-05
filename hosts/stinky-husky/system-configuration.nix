@@ -21,6 +21,11 @@
 
   modules = {
     hardware.nvidia.enable = true;
+    user = {
+      masashi = {
+        enable = true;
+      };
+    };
     service.printer = {
       enable = true;
       places = "home";

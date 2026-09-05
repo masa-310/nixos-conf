@@ -34,27 +34,29 @@ in
     };
     security.pam.u2f = {
       enable = true;
+      # 有効にした認証方式をデフォルトでandで要求
+      # sufficientにするとorになる
       control = "required";
       settings = {
         cue = true;
       };
     };
     security.pam.services = {
-      greetd = {
-        u2fAuth = true;
-        unixAuth = self.pc == "laptop";
-        rules.auth.u2f.control =  lib.mkForce (if self.pc == "laptop" then "sufficient" else "required" );
-      };
       login = {
         u2fAuth = true;
+        # laptopなら、ログインはu2f + password
         unixAuth = self.pc == "laptop";
+        # u2fAuth=true, unixAuth=falseの状態でrequiredにするとロックアウトされるので、laptopならsufficientで上書きする必要がある
         rules.auth.u2f.control =  lib.mkForce (if self.pc == "laptop" then "sufficient" else "required" );
       };
       sudo = {
         u2fAuth = true;
+        # sudoはlaptopで要求しない
         unixAuth = false;
-        rules.auth.u2f.control =  lib.mkForce (if self.pc == "laptop" then "sufficient" else "required" );
+        # u2fAuth=true, unixAuth=falseの状態でrequiredにするとロックアウトされるので、laptopならsufficientで上書きする必要がある
+        rules.auth.u2f.control =  lib.mkForce "sufficient";
       };
+      sshd.u2f.enable = false;
       # security.pam.yubico = {
       #   enable = true;
       #   debug = true;

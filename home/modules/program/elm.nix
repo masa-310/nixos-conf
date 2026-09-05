@@ -16,7 +16,6 @@ in {
       #elm-test
       elm-language-server
       elm-format
-      elm-analyse
       elm-spa
       elm-review
     ];
