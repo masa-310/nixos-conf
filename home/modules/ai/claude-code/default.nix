@@ -50,6 +50,10 @@ in
       claude-code
       claude-code-router
     ];
+    home.file.".claude/skills" = {
+      source = ../skills;
+      enable = true;
+    };
     home.file.".claude-code-router/config.json" = {
       source = ./router-config.json;
       enable = true;
