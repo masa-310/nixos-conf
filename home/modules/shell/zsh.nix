@@ -49,6 +49,7 @@ in {
         searchUpKey = "^P";
       };
       initContent = ''
+export DEVENV_TUI=false
 eval "$(devenv hook zsh)"
 ${
   if (hasAttr "geminiApiKey" config.sops.secrets) then  "export GEMINI_API_KEY=$(cat ${config.sops.secrets.geminiApiKey.path})" else ""

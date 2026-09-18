@@ -25,6 +25,9 @@
       aws = {
         enable = true;
       };
+      _3dprint = {
+        enable = true;
+      };
       xid-gen = {
         enable = true;
       };

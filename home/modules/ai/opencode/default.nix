@@ -32,20 +32,20 @@ in
           model = "openai/gpt-5.3-codex";
           small_model = "google/gemin-2.5-flash";
           mcp = {
-            mcp-obsidian = {
-              enabled = true;
-              type = "local";
-              command = [
-                "uvx"
-                "mcp-obsidian"
-              ];
-              environment = {
-                OBSIDIAN_API_KEY = "1a429cf6a4911b1d478b9964f1b8c3d684c1af81ad96494b0867e6834b47df97";
-                OBSIDIAN_HOST = "127.0.0.1";
-                OBSIDIAN_PORT = "27124";
-                PYTHONUTF8 = "1";
-              };
-            };
+            # mcp-obsidian = {
+            #   enabled = true;
+            #   type = "local";
+            #   command = [
+            #     "uvx"
+            #     "mcp-obsidian"
+            #   ];
+            #   environment = {
+            #     OBSIDIAN_API_KEY = "1a429cf6a4911b1d478b9964f1b8c3d684c1af81ad96494b0867e6834b47df97";
+            #     OBSIDIAN_HOST = "127.0.0.1";
+            #     OBSIDIAN_PORT = "27124";
+            #     PYTHONUTF8 = "1";
+            #   };
+            # };
             xid-mcp-server = {
               enabled = true;
               type = "local";
@@ -97,7 +97,7 @@ in
         };
         enable = true;
       };
-      "opencode/skills".source = ./config/skills;
+      "opencode/skills".source = ../skills;
       "opencode/agent".source = ./config/agent;
     };
   };
