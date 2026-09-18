@@ -1,23 +1,26 @@
 { system, nixpkgs, pkgs, home-manager, hostname, ... }:
 
 {
-  home.file.".Xmodmap" = {
-    text = ''
-    !remove mod1 = Alt_L
-    !remove mod4 = Super_L
-    clear mod1
-    clear mod4
-    keycode 133 = Alt_L
-    keycode 64 = Super_L
-    keycode 102 = Super_L
-    add mod1 = Alt_L 
-    add mod4 = Super_L
-    '';
-  };
+  # home.file.".Xmodmap" = {
+  #   text = ''
+  #   !remove mod1 = Alt_L
+  #   !remove mod4 = Super_L
+  #   clear mod1
+  #   clear mod4
+  #   keycode 133 = Alt_L
+  #   keycode 64 = Super_L
+  #   keycode 102 = Super_L
+  #   add mod1 = Alt_L 
+  #   add mod4 = Super_L
+  #   '';
+  # };
   imports = [
     ../../templates/home/base.nix
   ];
   modules = {
+    user = {
+      masashi.enable = true;
+    };
     editor = {
       helix = {
         enable = true;

@@ -27,10 +27,5 @@
         enable =true;
       };
     };
-    user = {
-      masashi = {
-        enable = true;
-      };
-    };
   };
 }

@@ -47,7 +47,14 @@ in
         # laptopなら、ログインはu2f + password
         unixAuth = self.pc == "laptop";
         # u2fAuth=true, unixAuth=falseの状態でrequiredにするとロックアウトされるので、laptopならsufficientで上書きする必要がある
-        rules.auth.u2f.control =  lib.mkForce (if self.pc == "laptop" then "sufficient" else "required" );
+        rules.auth.u2f.control =  lib.mkForce (if self.pc == "laptop" then "required" else "sufficient" );
+      };
+      tuigreet = {
+        u2fAuth = true;
+        # laptopなら、ログインはu2f + password
+        unixAuth = self.pc == "laptop";
+        # u2fAuth=true, unixAuth=falseの状態でrequiredにするとロックアウトされるので、laptopならsufficientで上書きする必要がある
+        rules.auth.u2f.control =  lib.mkForce (if self.pc == "laptop" then "required" else "sufficient" );
       };
       sudo = {
         u2fAuth = true;

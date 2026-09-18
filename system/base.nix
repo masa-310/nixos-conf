@@ -55,6 +55,7 @@
     usbutils
     pamixer
     libnotify
+    libsecret
   ];
 
   services.logind.settings.Login = {
