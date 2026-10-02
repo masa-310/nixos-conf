@@ -11,6 +11,7 @@ in {
   config = mkIf self.enable {
     home.packages = with pkgs; [
       openscad
+      openscad-lsp
       prusa-slicer
     ];
   };

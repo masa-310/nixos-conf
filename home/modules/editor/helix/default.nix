@@ -276,6 +276,7 @@ in
           }
           {
             name = "elm";
+            auto-format = true;
             language-servers = [
               "elm-language-server"
               "codebook"
@@ -287,6 +288,7 @@ in
             };
           }{
             name = "haskell";
+            auto-format = true;
             language-servers = [
               "hls"
               "codebook"
@@ -338,6 +340,18 @@ in
               "markdown-oxide"
               "codebook"
               "copilot-language-server"
+            ];
+            indent = {
+              tab-width = 2;
+              unit = " ";
+            };
+          }
+          {
+            name = "openscad";
+            auto-format = true;
+            language-servers = [
+              "openscad-lsp"
+              "codebook"
             ];
             indent = {
               tab-width = 2;
