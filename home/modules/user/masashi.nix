@@ -174,7 +174,8 @@ in
         riffdiff
         delta
         google-cloud-sdk
-        glow
+        frogmouth
+        mdcat
         dive
         wmctrl
         ffmpeg
@@ -185,6 +186,7 @@ in
         eww
         yubikey-manager
         yubioath-flutter
+        mermaid-cli
       ];
       pointerCursor = {
         #package = pkgs.redglass;
@@ -219,6 +221,7 @@ in
         nixconf-system = "pushd $HOME/nixos-conf; just update system; popd";
         nixconf-dotfiles = "pushd $HOME/nixos-conf; just update-dotfile home; popd";
         hey = "aichat";
+        paste-image = "xclip -selection clipboard -t image/png -o > $(date +%Y%m%d%H%M%S).png";
       };
     };
 

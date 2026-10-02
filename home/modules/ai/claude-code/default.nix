@@ -113,10 +113,9 @@ in
                 "chromium"
                 "--executable-path"
                 chrome-exec-path
-                "--user-data-dir"
-                "/tmp/pw-mcp"
                 "--ignore-https-errors"
               ];
+             env = { PLAYWRIGHT_MCP_USER_DATA_DIR = "/tmp/pw-mcp"; };
             };
             notion = {
               type = "http";

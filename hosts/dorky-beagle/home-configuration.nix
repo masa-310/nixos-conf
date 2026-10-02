@@ -1,4 +1,11 @@
-{ system, nixpkgs, pkgs, home-manager, hostname, ... }:
+{
+  system,
+  nixpkgs,
+  pkgs,
+  home-manager,
+  hostname,
+  ...
+}:
 
 {
   imports = [
@@ -36,5 +43,5 @@
       };
     };
   };
-  home.packages = [];
+  home.packages = [ ];
 }
