@@ -338,6 +338,7 @@ in
       secrets = {
         geminiApiKey.path = "${config.sops.defaultSymlinkPath}/geminiApiKey";
         linearApiKey.path = "${config.sops.defaultSymlinkPath}/linearApiKey";
+        oplocal.path = "${config.sops.defaultSymlinkPath}/oplocal";
       };
     };
   };
