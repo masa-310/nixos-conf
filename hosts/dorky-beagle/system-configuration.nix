@@ -33,6 +33,9 @@
         enable = true;
         places = "hplip";
       };
+      qmk = {
+        enable = true;
+      };
     };
   };
 
