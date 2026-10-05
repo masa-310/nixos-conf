@@ -1,10 +1,17 @@
-{ lib, config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 
 with builtins;
 with lib;
-let self = config.modules.shell.zsh;
-in {
-  imports = [];
+let
+  self = config.modules.shell.zsh;
+in
+{
+  imports = [ ];
   options.modules.shell.zsh = {
     enable = mkEnableOption "zsh";
     userName = mkOption {
@@ -14,7 +21,7 @@ in {
     };
     extraDirHashes = mkOption {
       type = types.attrsOf types.str;
-      default = {};
+      default = { };
       description = "Additional 'dirHashes'";
     };
     extraCommands = mkOption {
@@ -34,7 +41,8 @@ in {
       dirHashes = {
         pj = "$HOME/project";
         dl = "$HOME/Download";
-      } // self.extraDirHashes;
+      }
+      // self.extraDirHashes;
       history.expireDuplicatesFirst = true;
       history.ignoreDups = true;
       history.ignorePatterns = [
@@ -49,24 +57,39 @@ in {
         searchUpKey = "^P";
       };
       initContent = ''
-export DEVENV_TUI=false
-eval "$(devenv hook zsh)"
-${
-  if (hasAttr "geminiApiKey" config.sops.secrets) then  "export GEMINI_API_KEY=$(cat ${config.sops.secrets.geminiApiKey.path})" else ""
-}
-${
-if (hasAttr "" config.sops.secrets) then "export GOOGLE_GENERATIVE_AI_API_KEY=$(cat ${config.sops.secrets.geminiApiKey.path}" else ""
-}
-${
-if (hasAttr "" config.sops.secrets) then "export LINEAR_API_KEY=$(cat ${config.sops.secrets.linearApiKey.path}))" else ""
-}
-'';
+        export DEVENV_TUI=false
+        eval "$(devenv hook zsh)"
+        ${
+          if (hasAttr "geminiApiKey" config.sops.secrets) then
+            "export GEMINI_API_KEY=$(cat ${config.sops.secrets.geminiApiKey.path})"
+          else
+            ""
+        }
+        ${
+          if (hasAttr "geminiApiKey" config.sops.secrets) then
+            "export GOOGLE_GENERATIVE_AI_API_KEY=$(cat ${config.sops.secrets.geminiApiKey.path})"
+          else
+            ""
+        }
+        ${
+          if (hasAttr "linearApiKey" config.sops.secrets) then
+            "export LINEAR_API_KEY=$(cat ${config.sops.secrets.linearApiKey.path})"
+          else
+            ""
+        }
+        ${
+          if (hasAttr "oplocal" config.sops.secrets) then
+            "export OPLOCAL=$(cat ${config.sops.secrets.oplocal.path})"
+          else
+            ""
+        }
+      '';
       plugins = [
         {
           name = "zsh-autosuggestions";
           src = pkgs.fetchFromGitHub {
-            owner ="zsh-users";
-            repo ="zsh-autosuggestions";
+            owner = "zsh-users";
+            repo = "zsh-autosuggestions";
             rev = "v0.7.0";
             sha256 = "1g3pij5qn2j7v7jjac2a63lxd97mcsgw6xq6k5p7835q9fjiid98";
           };
@@ -74,20 +97,20 @@ if (hasAttr "" config.sops.secrets) then "export LINEAR_API_KEY=$(cat ${config.s
         {
           name = "zsh-syntax-highlighting";
           src = pkgs.fetchFromGitHub {
-            owner="zsh-users";
-            repo="zsh-syntax-highlighting";
-            rev= "0.7.1";
-            sha256= "sha256-gOG0NLlaJfotJfs+SUhGgLTNOnGLjoqnUp54V9aFJg8=";
+            owner = "zsh-users";
+            repo = "zsh-syntax-highlighting";
+            rev = "0.7.1";
+            sha256 = "sha256-gOG0NLlaJfotJfs+SUhGgLTNOnGLjoqnUp54V9aFJg8=";
           };
         }
         {
           name = "enhancd";
           file = "init.sh";
           src = pkgs.fetchFromGitHub {
-            owner="b4b4r07";
-            repo="babarot";
-            rev= "v2.5.1";
-            sha256= "1smskx9vkx78yhwspjq2c5r5swh9fc5xxa40ib4753f00wk4dwpp";
+            owner = "b4b4r07";
+            repo = "babarot";
+            rev = "v2.5.1";
+            sha256 = "1smskx9vkx78yhwspjq2c5r5swh9fc5xxa40ib4753f00wk4dwpp";
           };
         }
       ];
