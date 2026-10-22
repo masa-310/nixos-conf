@@ -184,8 +184,6 @@ in
         openai-whisper
         zenity
         eww
-        yubikey-manager
-        yubioath-flutter
         mermaid-cli
       ];
       pointerCursor = {
