@@ -187,6 +187,7 @@ in
         yubikey-manager
         yubioath-flutter
         mermaid-cli
+        w3m
       ];
       pointerCursor = {
         #package = pkgs.redglass;
@@ -288,21 +289,23 @@ in
       };
       git = {
         enable = true;
-        userName = "Masashi SATO";
-        userEmail = "gmasa.310@gmail.com";
-        package = pkgs.git;
-        aliases = {
-          ch = "checkout";
-          cm = "commit";
-          ad = "add";
-          df = "diff";
-          lg = "log";
-          pl = "pull";
-          ps = "push";
-          st = "status";
-          ignore = "update-index --skip-worktree";
-          unignore = "update-index --no-skip-worktree";
+        settings.user = {
+          name = "Masashi SATO";
+          email = "gmasa.310@gmail.com";
+          aliases = {
+            ch = "checkout";
+            cm = "commit";
+            ad = "add";
+            df = "diff";
+            lg = "log";
+            pl = "pull";
+            ps = "push";
+            st = "status";
+            ignore = "update-index --skip-worktree";
+            unignore = "update-index --no-skip-worktree";
+          };
         };
+        package = pkgs.git;
         ignores = [
           "*.swp"
           ".dccache"
@@ -319,7 +322,7 @@ in
         enable = true;
       };
       ssh = {
-        serverAliveInterval = 60;
+        settings."*".serverAliveInterval = 60;
       };
     };
 

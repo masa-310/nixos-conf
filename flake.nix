@@ -65,8 +65,7 @@
       ...
     }:
     let
-      overlay = final: prev: { };
-      overlays = [ overlay ];
+      overlays = import ./overlays;
       system = "x86_64-linux";
 
       config = {

@@ -149,6 +149,7 @@
   };
 
   # nixpkgs
+  nixpkgs.overlays = import ../overlays;
   nixpkgs.config = {
     allowUnfree = true;
     permittedInsecurePackages = [ "electron-18.1.0" ];

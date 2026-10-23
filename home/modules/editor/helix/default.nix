@@ -10,6 +10,28 @@ with builtins;
 with lib;
 let
   self = config.modules.editor.helix;
+
+  # glibc 2.44 以降は <stdlib.h> が bsearch を _Generic マクロとして定義する。
+  # tree-sitter-perl は src/bsearch.c に自前の bsearch を持っていて、
+  # tsp_unicode.h から include しているため定義がマクロ展開されて壊れる。
+  #   src/bsearch.c:69:7: error: expected identifier or '(' before '_Generic'
+  # 自前実装を使い続けたいのでマクロだけ打ち消す。
+  # 上流の tree-sitter-perl が対応したら削除してよい。
+  grammarOverlays = [
+    (_final: prev: {
+      perl = prev.perl.overrideAttrs (old: {
+        postPatch = (old.postPatch or "") + ''
+          substituteInPlace src/bsearch.c \
+            --replace-fail '#include <sys/types.h> /* size_t */' '#include <sys/types.h> /* size_t */
+          #undef bsearch'
+        '';
+      });
+    })
+  ];
+
+  helixPackage = extra.helix-flake.packages."${pkgs.system}".default.override {
+    inherit grammarOverlays;
+  };
 in
 {
   imports = [ ];
@@ -27,7 +49,7 @@ in
   config = mkIf self.enable {
     programs.helix = {
       enable = true;
-      package = extra.helix-flake.packages."${pkgs.system}".default;
+      package = helixPackage;
       defaultEditor = true;
       settings = {
         theme = "monokai";
