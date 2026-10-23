@@ -9,11 +9,33 @@
     '';
   };
   imports = [
+    ../../templates/home/base.nix
   ];
-  home.stateVersion = "24.05";
   modules = {
     user = {
       masashi.enable = true;
     };
+    editor = {
+      helix = {
+        enable = true;
+      };
+    };
+    program = {
+      terraform = {
+        enable = true;
+      };
+    };
+    tool = {
+      aws = {
+        enable = true;
+      };
+      xid-gen = {
+        enable = true;
+      };
+      geminicommit = {
+        enable = true;
+      };
+    };
   };
+  home.stateVersion = "24.05";
 }
