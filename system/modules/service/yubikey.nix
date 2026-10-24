@@ -58,9 +58,9 @@ in
       };
       sudo = {
         u2fAuth = true;
-        # sudoはlaptopで要求しない
+        # sudoはlaptopでもpasswordを要求しない
         unixAuth = false;
-        # u2fAuth=true, unixAuth=falseの状態でrequiredにするとロックアウトされるので、laptopならsufficientで上書きする必要がある
+        # sufficientで上書きしないと、password入力の設定が矛盾してロックアウトされる
         rules.auth.u2f.control =  lib.mkForce "sufficient";
       };
       sshd.u2f.enable = false;
