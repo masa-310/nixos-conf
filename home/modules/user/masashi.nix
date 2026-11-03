@@ -185,6 +185,8 @@ in
         zenity
         eww
         mermaid-cli
+        yt-dlp
+        gtypist
       ];
       pointerCursor = {
         #package = pkgs.redglass;
