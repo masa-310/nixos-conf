@@ -61,8 +61,6 @@ in
         ollama
         ghostscript
         uv
-        yubikey-manager
-        yubioath-flutter
       ];
     };
 

@@ -1,4 +1,4 @@
 #!/bin/sh
 
 hostname=`hostname`
-nix build ".?submodule=1#homeConfigurations.${hostname}.activationPackage" --extra-experimental-features 'nix-command flakes' && result/activate 
+NIX_CONFIG="access-tokens = github.com=$(gh auth token)" nix build ".?submodule=1#homeConfigurations.${hostname}.activationPackage" --extra-experimental-features 'nix-command flakes' && result/activate 

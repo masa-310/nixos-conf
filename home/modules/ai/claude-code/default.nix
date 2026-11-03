@@ -14,7 +14,7 @@ let
   browsers =
     (builtins.fromJSON (builtins.readFile "${pkgs.playwright-driver}/browsers.json")).browsers;
   chromium-rev = (builtins.head (builtins.filter (x: x.name == "chromium") browsers)).revision;
-  chrome-exec-path="${pkgs.playwright.browsers}/chromium-${chromium-rev}/chrome-linux64/chrome";
+  chrome-exec-path = "${pkgs.playwright.browsers}/chromium-${chromium-rev}/chrome-linux64/chrome";
 
   # Stopフックは本文を直接渡してくれないので、transcript(JSONL)から
   # 最後のassistantテキストを抜き出して通知bodyに載せる
@@ -82,6 +82,11 @@ in
       };
       enable = true;
     };
+    home.file.".claude/CLAUDE.md" = {
+      text = ''
+- Before working in a project, check for `AGENTS.local.md` at the project root and in the directories governing the work. If present, read it completely and follow its project-local instructions alongside `AGENTS.md`, even if it is ignored by Git.
+      '';
+    };
     # HACK: MCPサーバーをユーザーレベルで指定する方法がまともに無い
     # https://github.com/anthropics/claude-code/issues/3321
     home.shellAliases = {
@@ -115,7 +120,9 @@ in
                 chrome-exec-path
                 "--ignore-https-errors"
               ];
-             env = { PLAYWRIGHT_MCP_USER_DATA_DIR = "/tmp/pw-mcp"; };
+              env = {
+                PLAYWRIGHT_MCP_USER_DATA_DIR = "/tmp/pw-mcp";
+              };
             };
             notion = {
               type = "http";

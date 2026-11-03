@@ -20,6 +20,10 @@ in
     };
   };
   config = mkIf self.enable {
+    environment.systemPackages = with pkgs; [
+      yubioath-flutter
+      age-plugin-yubikey
+    ];
     services.udev.packages = [ pkgs.yubikey-personalization ];
     programs.gnupg.agent = {
       enable = true;
@@ -58,9 +62,9 @@ in
       };
       sudo = {
         u2fAuth = true;
-        # sudoはlaptopで要求しない
+        # sudoはlaptopでもpasswordを要求しない
         unixAuth = false;
-        # u2fAuth=true, unixAuth=falseの状態でrequiredにするとロックアウトされるので、laptopならsufficientで上書きする必要がある
+        # sufficientで上書きしないと、password入力の設定が矛盾してロックアウトされる
         rules.auth.u2f.control =  lib.mkForce "sufficient";
       };
       sshd.u2f.enable = false;

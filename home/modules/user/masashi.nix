@@ -184,10 +184,10 @@ in
         openai-whisper
         zenity
         eww
-        yubikey-manager
-        yubioath-flutter
         mermaid-cli
         w3m
+        yt-dlp
+        gtypist
       ];
       pointerCursor = {
         #package = pkgs.redglass;

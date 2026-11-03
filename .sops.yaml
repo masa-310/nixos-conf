@@ -2,38 +2,6 @@
 # without having to repeat yourself.
 # Also see https://github.com/Mic92/dotfiles/blob/d6114726d859df36ccaa32891c4963ae5717ef7f/nixos/.sops.yaml
 # for a more complex example.
-keys:
-  - &fishy-retriever age18ev7rfr2lqf7jm3vt028jctjjw6962gzsnmj90wmglc7mews39vq6uwlje
-  - &stinky-husky age1fu5x8gl2j9kre4sk9nwaw6ajytl7egvqwhujqdzgwqwehcy0ayhsmk3u6m
-  - &flatten-collie age14vwc6swaz72uasvmt99ae5h22zxd2pjfk56jf3nzcr76cg3e5fgstdx8m6
-  - &kusumoto-sigma age156ecdyrt7vdkudkfrd76yuh33nlnct0lcwnsj9egsswukseztg8s4jxkan
-  - &dorky-beagle age1jy35nwwcqayclw7cqrspcmp0t8zc23wk5heug8j0fawcgg7yg46s8wjkhp
 creation_rules:
-  - path_regex: secrets/shared.yaml$
-    key_groups:
-    - age:
-      - *fishy-retriever
-      - *stinky-husky
-      - *flatten-collie
-      - *kusumoto-sigma
-      - *dorky-beagle
-  - path_regex: secrets/hosts/fishy-retriever.yaml
-    key_groups:
-    - age:
-      - *fishy-retriever
-  - path_regex: secrets/hosts/stinky-husky.yaml
-    key_groups:
-    - age:
-      - *stinky-husky
-  - path_regex: secrets/hosts/flatten-collie.yaml
-    key_groups:
-    - age:
-      - *flatten-collie
-  - path_regex: secrets/hosts/kusumoto-sigma
-    key_groups:
-    - age:
-      - *kusumoto-sigma
-  - path_regex: secrets/hosts/dorky-beagle
-    key_groups:
-    - age:
-      - *dorky-beagle
+  - path_regex: .*/.*
+    age: age1yubikey1qgudsr30yplp5ht8yt979zg63q0yda6dwup20s49mjfyjh79cxs6g4rwmn6

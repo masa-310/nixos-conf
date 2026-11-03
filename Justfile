@@ -14,13 +14,13 @@ update-shared-sops:
     sops updatekeys secrets/shared.yaml
 
 home:
-    nix build ".?submodule=1#homeConfigurations.{{ host }}.activationPackage" --extra-experimental-features 'nix-command flakes' --show-trace && result/activate
+    NIX_CONFIG="access-tokens = github.com=$(gh auth token)" nix build ".?submodule=1#homeConfigurations.{{ host }}.activationPackage" --extra-experimental-features 'nix-command flakes' --show-trace && result/activate
 
 system:
-    sudo nixos-rebuild switch --flake ".?submodules=1#{{ host }}" --show-trace
+    NIX_CONFIG="access-tokens = github.com=$(gh auth token)" nixos-rebuild switch --sudo --flake ".?submodules=1#{{ host }}" --show-trace
 
 rollback:
-    sudo nixos-rebuild switch --rollback --flake ".?submodules=1#{{ host }}" --show-trace
+    nixos-rebuild switch --sudo --rollback --flake ".?submodules=1#{{ host }}" --show-trace
 
 fmt:
     nix fmt
