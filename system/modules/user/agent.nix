@@ -1,9 +1,16 @@
-{ lib, config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 
 with builtins;
 with lib;
-let self = config.modules.user.agent;
-in {
+let
+  self = config.modules.user.agent;
+in
+{
   imports = [
     ../service/yubikey.nix
   ];
@@ -17,13 +24,14 @@ in {
       shell = pkgs.zsh;
       linger = true;
     };
-    programs.zsh ={
+    programs.zsh = {
       enable = true;
     };
     modules = {
       service.yubikey = {
         enable = true;
-        pc = "desktop";
+        # ホスト側が pc を指定している場合はそちらを優先する
+        pc = mkDefault "desktop";
       };
     };
   };

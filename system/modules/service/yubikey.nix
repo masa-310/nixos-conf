@@ -20,6 +20,10 @@ in
     };
   };
   config = mkIf self.enable {
+    environment.systemPackages = with pkgs; [
+      yubioath-flutter
+      age-plugin-yubikey
+    ];
     services.udev.packages = [ pkgs.yubikey-personalization ];
     programs.gnupg.agent = {
       enable = true;
