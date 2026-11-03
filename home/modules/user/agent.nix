@@ -69,8 +69,10 @@ in
     programs = {
       git = {
         enable = true;
-        userName = "ai-agent";
-        userEmail = "agent@example.com";
+        settings.user = {
+          name = "ai-agent";
+          email = "agent@example.com";
+        };
         package = pkgs.git;
       };
     };
