@@ -35,7 +35,8 @@ clean-user:
     sudo rm /nix/var/nix/gcroots/auto/*
 
 gc:
-    sudo nix-collect-garbage -d
+    nix-collect-garbage --delete-older-than 14d
+    sudo nix-collect-garbage --delete-older-than 14d
 
 op:
     nix store optimise
