@@ -70,14 +70,6 @@
     tool.yazi = {
       enable = true;
     };
-    ai = {
-      opencode.enable = true;
-      crush.enable = true;
-      claude-code.enable = true;
-      codex.enable = true;
-      aider.enable = true;
-      aichat.enable = true;
-    };
     browser = {
       qutebrowser.enable = true;
     };
