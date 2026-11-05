@@ -92,8 +92,8 @@ in
         enable = true;
       };
       ai = {
-        opencode.enable = true;
-        crush.enable = true;
+        opencode.enable = false;
+        crush.enable = false;
         claude-code.enable = true;
         codex.enable = true;
         aider.enable = true;
