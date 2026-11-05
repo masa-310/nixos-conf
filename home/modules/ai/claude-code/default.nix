@@ -36,7 +36,7 @@ let
         [ "''${#msg}" -gt 200 ] && body="$body…"
       fi
     fi
-    ${pkgs.libnotify}/bin/notify-send "Claude Code" "$body"
+    ${pkgs.libnotify}/bin/notify-send "Claude Code" "$body" || true
   '';
 
 in

@@ -1,9 +1,14 @@
-{ lib, config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 
 {
   imports = [
-     ../../templates/system/base.nix
- ];
+    ../../templates/system/base.nix
+  ];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   modules = {
@@ -14,10 +19,10 @@
       agent = {
         enable = true;
       };
-      yubikey = {
-        enable = true;
-        pc = "desktop";
-      };
+    };
+    service.yubikey = {
+      enable = true;
+      pc = "desktop";
     };
   };
   home-manager.users.agent = {
